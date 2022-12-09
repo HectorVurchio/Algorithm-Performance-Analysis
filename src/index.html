@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Algorithm Performance analysis</title>
-    <link rel="stylesheet" href="index.css">
   </head>
   <body>
 	<header>
@@ -14,14 +13,18 @@
 	</header>
 	<article>
 		<section><!-- 1 -->
-		<p>
-			The main purpose of this analysis is to determine time taken of an algorithm
-			to carry on its process. Suppose for example that a presidential election period
-			is taken place in some country of the world and every elector is approaching to its
-			corresponding table for the sake of get its own data necessary to exercise the right to vote.
-		</p>
+			<p>
+				The main purpose of this analysis is to determine time taken of an algorithm
+				to carry on its process. Suppose for example that a presidential election period
+				is taken place in some country of the world and every elector is approaching to its
+				corresponding table for the sake of get its own data necessary to exercise the right to vote.
+			</p>
 		</section>
 		<section> <!-- 2 -->
+			<figure>
+			  <img id="fig-1" src="./images/pic_1.png" alt="Algorithm Performance Analysis, Voters List" style="width:100%">
+			  <figcaption>Fig.1 - Enormous Voters List.</figcaption>
+			</figure>
 			<aside>
 				<p>The entire data could be logged in memory whether in an array or in a list.
 				In this case and for example purposes, a basic data structure such as an Array 
@@ -36,27 +39,19 @@
 					information will be:
 				</p>
 				<figure>
-				  <img id="fig-2" src="./images/pic_2.png" alt="#">
+				  <img id="fig-2" src="./images/pic_2.png" alt="Algorithm Performance Analysis" style="width:100%">
 				  <figcaption>Fig.2 - Data Displayed for Index 1586. </figcaption>
 				</figure>
 				<p>
 				For an elector like Peter Parker, who by introducing its index 2, the information that prompt on the screen would be:
 				</p>
 				<figure>
-					<img id="fig-3" src="./images/pic_3.png" alt="#">
+					<img id="fig-3" src="./images/pic_3.png" alt="Algorithm Performance Analysis" style="width:100%">
 					<figcaption>Fig.3 - Data Displayed for Index 2. </figcaption>
 				</figure>
 			</aside>
-			<figure>
-			  <img id="fig-1" src="./images/pic_1.png" alt="#">
-			  <figcaption>Fig.1 - Enormous Voters List.</figcaption>
-			</figure>
 		</section>
-		<section><!-- 3 -->
-			
-			
-		</section>
-		<section> <!-- 4 -->
+		<section> <!-- 3 -->
 			<aside>
 				<p>
 				In this case whichever be the elector to be consulted, the response time will be pretty much the same 
@@ -75,47 +70,41 @@
 				</p>
 			</aside>
 			<figure>
-			  <img id="fig-4" src="./images/pic_4.png" alt="#">
+			  <img id="fig-4" src="./images/pic_4.png" alt="Algorithm Performance Analysis, array collection" style="width:100%">
 			  <figcaption>Fig.4 - Slight Idea of an Array Collection. </figcaption>
 			</figure>
 		</section>
-		<section> <!-- 5 -->
-			<div>
-				
-				<aside>
-				
-				</aside>
-			</div>
-			<div>
-				<figure>
-				  <img id="fig-5" src="./images/pic_5.png" alt="#">
-				  <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
-				</figure>
-				<aside>
-					<div class="left-code">
-						<pre class="code">
-							<code>searchElector(ID)</code>
-							<code>  n = A.length</code>
-							<code>  from I = 1 to n</code>
-							<code>  X = A[I].ID</code>
-							<code>  if(X = ID)</code>
-							<code>  Return F</code>
-							<code>Return null</code>
-						</pre>
-					</div>
-					<div class="right-code">
-						<pre class="code">
-							<code>searchElector(13844652)</code>
-							<code>  n = 2 x 10^7</code>
-							<code>  from I = 1 to n</code>
-							<code>  X = A[I].ID</code>
-							<code>  if(X = ID)</code>
-							<code>  Return F</code>
-							<code>Return null</code>
-						</pre>
-					</div>
-				</aside>
-			</div>
+		<section><!-- 4 -->
+			<figure>
+				 <img id="fig-5" src="./images/pic_5.png" alt="Algorithm Performance Analysis, Constant Time" style="width:100%">
+				 <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
+			</figure>
+			<aside>
+				<div class="left-code">
+					<pre class="code">
+						<code>searchElector(ID)</code>
+						<code>  n = A.length</code>
+						<code>  from I = 1 to n</code>
+						<code>  X = A[I].ID</code>
+						<code>  if(X = ID)</code>
+						<code>  Return F</code>
+						<code>Return null</code>
+					</pre>
+				</div>
+				<div class="right-code">
+					<pre class="code">
+						<code>searchElector(13844652)</code>
+						<code>  n = 2 x 10^7</code>
+						<code>  from I = 1 to n</code>
+						<code>  X = A[I].ID</code>
+						<code>  if(X = ID)</code>
+						<code>  Return F</code>
+						<code>Return null</code>
+					</pre>
+				</div>
+			</aside>
+		</section>
+		<section><!-- 5 -->
 			<p> The cicles that algorithm search takes are:</p>
 			<ol>
 				<li><code>X = A[I].ID = A[1].ID = 15789673 </code> different from 13844652.</li>
@@ -123,10 +112,10 @@
 				<li><code>X = A[I].ID = A[3].ID = 13844652 </code> different from 13844652.</li>	
 			</ol>
 		</section>
-		<section> <!-- 6 -->
+		<section><!-- 6 -->
 			<figure>
-				  <img id="fig-6" src="./images/pic_6.png" alt="#">
-				  <figcaption>Fig.6 - Searching Cycle of the Algorithm. </figcaption>
+				<img id="fig-6" src="./images/pic_6.png" alt="Algorithm Performance Analysis, Searching Cycles O(n)" style="width:100%">
+				<figcaption>Fig.6 - Searching Cycle of the Algorithm. </figcaption>
 			</figure>
 			<aside>
 				<p>
@@ -144,18 +133,19 @@
 			</aside>
 		</section>
 		<section> <!-- 7 -->
-			
-			<p>
-			The worst case by the usage of this algorithm is that our desired record is either absent or occupying 
-			the last position within the array which result in perform so cycles as rows exist. In our example because 
-			of how so big the data could be, the election period could finish with not even know if one person is or 
-			not in the records.
-			</p>
-			<p>
-			Now suppose that we want sort an array from smallest to largest. The set which we will operate on is:
-			</p>
-			<p><code>A = [3,5,2,4,1,6,9,8,7]</code></p>
-			<p>Let’s find an algorithm that meets our purpose, let’s say:</p>
+			<aside>
+				<p>
+				The worst case by the usage of this algorithm is that our desired record is either absent or occupying 
+				the last position within the array which result in perform so cycles as rows exist. In our example because 
+				of how so big the data could be, the election period could finish with not even know if one person is or 
+				not in the records.
+				</p>
+				<p>
+				Now suppose that we want sort an array from smallest to largest. The set which we will operate on is:
+				</p>
+				<p><code>A = [3,5,2,4,1,6,9,8,7]</code></p>
+				<p>Let’s find an algorithm that meets our purpose, let’s say:</p>
+			</aside>
 			<div>
 				<pre class="code">
 					<code>sort(A)</code>
@@ -169,11 +159,11 @@
 				</pre>
 			</div>
 		</section>
-		<section> <!-- 8 -->
+		<section><!-- 8 -->
 			<p>The algorithm analysis will be:</p>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>1</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>2</td><td>3</td><td>5</td><td>NO</td></tr>
@@ -187,7 +177,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
@@ -203,7 +193,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>2</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>3</td><td>5</td><td>3</td><td>OK</td></tr>
@@ -216,7 +206,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"><code>A = [1,3,5,4,2,6,9,8,7]</code></td><td></td><td></td></tr>
@@ -231,7 +221,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>3</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>4</td><td>5</td><td>4</td><td>OK</td></tr>
@@ -243,7 +233,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"><code>A = [1,2,4,5,3,6,9,8,7]</code></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,9,8,7]</code></td><td></td><td></td></tr>
@@ -257,7 +247,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>4</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>5</td><td>4</td><td>5</td><td>NO</td></tr>
@@ -268,7 +258,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
@@ -281,7 +271,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>5</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>6</td><td>5</td><td>6</td><td>NO</td></tr>
@@ -291,7 +281,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
@@ -303,7 +293,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>6</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>7</td><td>6</td><td>9</td><td>NO</td></tr>
@@ -312,7 +302,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
@@ -323,7 +313,7 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>7</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>8</td><td>9</td><td>8</td><td>OK</td></tr>
@@ -331,7 +321,7 @@
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,8,9,7]</code></td><td></td><td></td></tr>
@@ -341,14 +331,14 @@
 			</div>
 			<div>
 				<div class="analysis-left">
-					<table>
+					<table class="table-left">
 						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
 						<tr><td>8</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td></td><td>9</td><td>9</td><td>8</td><td>OK</td></tr>
 					</table>
 				</div>
 				<div class="analysis-right">
-					<table>
+					<table class="table-right">
 						<tr><th>LOOPS</th></tr>
 						<tr><td class="cell-arr"></td><td></td><td></td></tr>
 						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,7,8,9]</code></td><td>1</td><td>N-8</td></tr>
@@ -356,19 +346,19 @@
 				</div>
 			</div>
 		</section>
-		<section> <!-- 9 -->
+		<section><!-- 9 -->
 			<p>
 			Seen the way in which the calculation was performed above, it can lead to conclude that by sorting 
 			an array of 9 elements the algorithm has to iterate <code>8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 </code> 
 			yielding a total of 36 iterations. Being N the number of elements in the array, the account would be:
 			</p>
 			<figure>
-				  <img id="fig-7" src="./images/pic_7.png" alt="#">
+				  <img id="fig-7" src="./images/pic_7.png" alt="Algorithm Performance Analysis, sorting serie" style="width:100%">
 				  <figcaption>Fig.7 - Sorting serie. </figcaption>
 			</figure>
 			<p>Giving as a solution:</p>
 			<figure>
-				  <img id="fig-8" src="./images/pic_8.png" alt="#">
+				  <img id="fig-8" src="./images/pic_8.png" alt="Algorithm Performance Analysis, sorting serie" style="width:40%">
 				  <figcaption>Fig.8 - Sorting serie. </figcaption>
 			</figure>
 		</section>
@@ -385,36 +375,34 @@
 				that our algorithm has to perform a task of cycles equivalents to:
 				</p>
 				<figure>
-					  <img id="fig-10" src="./images/pic_10.png" alt="#">
-					  <figcaption>Fig.10 - Cycles of electors array </figcaption>
+					  <img id="fig-10" src="./images/pic_10.png" alt="Algorithm Performance Analysis, sorting array cycles" style="width:70%">
+					  <figcaption>Fig.10 - Sorting electors array - cycles </figcaption>
 				</figure>
 				<p>
-			Having this result, we can conclude that our algorithm in extremely inefficient, therefore we have to find 
-			another way to solve our problem in order to sort an electors array with 20 millions of members. In the 
-			algorithms and data structures study, many solutions of this kind will be perfectly found approaching eventually 
-			with behaviors of type f(n) =  log(n), function that growth slowly when its domain tends to infinity.
-			</p>
+					Having this result, we can conclude that our algorithm in extremely inefficient, therefore we have to find 
+					another way to solve our problem in order to sort an electors array with 20 millions of members. In the 
+					algorithms and data structures study, many solutions of this kind will be perfectly found approaching eventually 
+					with behaviors of type f(n) =  log(n), function that growth slowly when its domain tends to infinity.
+				</p>
 			</aside>
 			<figure>
-				  <img id="fig-9" src="./images/pic_9.png" alt="#">
+				  <img id="fig-9" src="./images/pic_9.png" alt="Algorithm Performance Analysis, cycles O(n2)" style="width:100%">
 				  <figcaption>Fig.9 - Cycles of sorting algorithms </figcaption>
 			</figure>
 		</section>
 		<section> <!-- 11 -->
-			
+			<aside>
+				<p>
+					Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
+					mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
+					and higher which point to a not desirable performance.  
+				</p>
+			</aside>
 			<figure>
-				  <img id="fig-11" src="./images/pic_11.png" alt="#">
+				  <img id="fig-11" src="./images/pic_11.png" alt="Algorithm Performance Analysis, cycles" style="width:100%">
 				  <figcaption>Fig.11 - Amount of cycles </figcaption>
 			</figure>
-			<p>
-			Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
-			mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
-			and higher which point to a not desirable performance.  
-			</p>
-		
 		</section>
 	</article>
-	<footer></footer>
-	<script src="index.js"></script>
   </body>
 </html>

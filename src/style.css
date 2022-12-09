@@ -1,0 +1,161 @@
+body{
+	padding:10px;
+}
+header{
+    color:#687183;
+}
+header span{
+    display:inline-block;
+    margin: auto;
+    width:100%;
+    text-align:right;
+}
+header h1{
+    font-size: 22px;
+	text-align:center;
+}
+
+article section p,
+article section aside p{
+    font-size:14px;
+	text-align: justify;
+    color:#3a3930;
+}
+figcaption{
+	font-size: 12px;
+	font-weight:bold;
+	text-align:center;
+}
+
+/*codes*/
+pre.code {
+    white-space: pre-wrap;
+    line-height: 0.8;
+    width: 280px;
+	padding-left:40px;
+	color:#3a3930;
+}
+
+pre.code::before {
+    counter-reset: listing;
+}
+
+pre.code code {
+    counter-increment: listing;
+}
+
+pre.code code::before {
+    content: counter(listing) ".";
+    display: inline-block;
+    padding-left: auto;
+    margin-left: auto;
+    text-align: right;
+}
+
+article > section:nth-child(5) > ol{
+	text-align:left;
+	list-style-position: inside;
+	color:#3a3930;
+	font-size: 9px;
+	line-height: 16px;
+}
+
+/*tables*/
+table{
+	width:320px;
+}
+tr{
+	height:24px;
+}
+td{
+	font-size: 14px;
+}
+td.cell-arr{
+	width:260px;
+}
+.table-left tr :nth-child(n+1){
+	width:30px;
+	text-align:center;
+}
+
+article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-child(2) aside > p:nth-child(4) {
+    text-align: center;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 800px){
+	header h1{
+	    font-size: 30px;
+	}
+	article section p,
+	article section aside p{
+	    font-size:22px;
+	}
+	figcaption{
+		font-size: 18px;
+	}
+	article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-child(2) aside > p:nth-child(4) {
+	    font-size: 26px;
+	}
+	article > section:nth-child(4) aside{
+		display:flex;
+		justify-content: space-between;
+	}
+	article > section:nth-child(5) > ol{
+		text-align:center;
+		font-size: 20px;
+		line-height: 26px;
+	}
+	pre.code {
+		font-size:20px;
+	    width: 320px;
+	}
+	article > section:nth-child(7) aside > p:nth-child(3){
+		text-align:center;
+		font-size: 24px;
+	}
+	article > section:nth-child(8) > div{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom:60px;
+	}
+	td,th{
+		font-size: 18px;
+	}
+}
+
+@media screen and (min-width: 1000px){
+	article > section:nth-child(2),
+	article > section:nth-child(3),
+	article > section:nth-child(4),
+	article > section:nth-child(6),
+	article > section:nth-child(10){
+		display:flex;
+	}
+	article > section:nth-child(2) figure:nth-child(1),
+	article > section:nth-child(3) figure,
+	article > section:nth-child(4) figure,
+	article > section:nth-child(6) figure,
+	article > section:nth-child(10) figure{
+		width:50%;
+	}
+	article > section:nth-child(2) aside,
+	article > section:nth-child(3) aside,
+	article > section:nth-child(4) aside,
+	article > section:nth-child(6) aside,
+	article > section:nth-child(10) aside{
+		width:50%;
+	}
+	article > section:nth-child(4) aside .left-code .code{
+		width:220px;
+		padding-left:10px;
+	}
+	article > section:nth-child(4) aside .right-code .code{
+		width:280px;
+		padding-left:10px;
+	}
+	
+	pre.code {
+	    margin:auto;
+	}
+}
