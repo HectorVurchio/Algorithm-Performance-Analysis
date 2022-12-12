@@ -54,6 +54,61 @@ pre.code code::before {
     text-align: right;
 }
 
+/*codes Java code*/
+pre.java_code {
+    white-space: pre;
+    line-height: 1.6;
+	font-size:14px;
+    padding-left:10px;
+    color:#b5b4aa;
+	background:#141313;
+	margin:auto;
+	overflow: auto;
+}
+
+pre.java_code::before {
+    counter-reset: listing;
+}
+
+pre.java_code code {
+    counter-increment: listing;
+}
+
+pre.java_code code::before {
+    content: counter(listing) ".  ";
+    display: inline-block;
+    padding-left: auto;
+    margin-left: auto;
+    text-align: right;
+}
+code .reserved{
+	color:#8da0eb;
+	font-weight:bold;
+}
+code .import{
+	color:#e6b26e;
+	font-weight:bold;
+}
+code .comment{
+	color:#14c427;
+	font-weight:bold;
+}
+code .ets{
+	color:#c4c014;
+	font-weight:bold;
+}
+code .marks{
+	color:#e75151;
+}
+
+article > section:nth-child(5) > ol{
+	text-align:left;
+	list-style-position: inside;
+	color:#3a3930;
+	font-size: 9px;
+	line-height: 16px;
+}
+
 article > section:nth-child(5) > ol{
 	text-align:left;
 	list-style-position: inside;
@@ -84,7 +139,6 @@ article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-chi
     text-align: center;
     font-weight: bold;
 }
-
 @media screen and (min-width: 800px){
 	header h1{
 	    font-size: 30px;
@@ -127,29 +181,27 @@ article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-chi
 	td,th{
 		font-size: 18px;
 	}
+	/*codes Java code*/
+	pre.java_code {
+		font-size:22px;
+	}
 }
 
 @media screen and (min-width: 1000px){
-	article > section:nth-child(2),
-	article > section:nth-child(3),
-	article > section:nth-child(4),
-	article > section:nth-child(6),
-	article > section:nth-child(10){
+	.section_2{
 		display:flex;
 	}
-	article > section:nth-child(2) figure:nth-child(1),
-	article > section:nth-child(3) figure,
-	article > section:nth-child(4) figure,
-	article > section:nth-child(6) figure,
-	article > section:nth-child(10) figure{
+	.section_2 figure:nth-child(1),
+	.section_2 figure{
 		width:50%;
 	}
-	article > section:nth-child(2) aside,
-	article > section:nth-child(3) aside,
-	article > section:nth-child(4) aside,
-	article > section:nth-child(6) aside,
-	article > section:nth-child(10) aside{
+	.section_2 aside{
 		width:50%;
+	}
+	article > section:nth-child(11) figure,
+	article > section:nth-child(13) figure{
+		width:50%;
+		margin:auto;
 	}
 	article > section:nth-child(4) aside .left-code .code{
 		width:220px;

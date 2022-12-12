@@ -28,7 +28,7 @@
 				corresponding table for the sake of get its own data necessary to exercise the right to vote.
 			</p>
 		</section>
-		<section> <!-- 2 -->
+		<section class="section_2"> <!-- 2 -->
 			<figure>
 			  <img id="fig-1" src="./images/pic_1.png" alt="Algorithm Performance Analysis, Voters List" style="width:100%">
 			  <figcaption>Fig.1 - Enormous Voters List.</figcaption>
@@ -59,7 +59,7 @@
 				</figure>
 			</aside>
 		</section>
-		<section> <!-- 3 -->
+		<section class="section_2"> <!-- 3 -->
 			<aside>
 				<p>
 				In this case whichever be the elector to be consulted, the response time will be pretty much the same 
@@ -82,7 +82,7 @@
 			  <figcaption>Fig.4 - Slight Idea of an Array Collection. </figcaption>
 			</figure>
 		</section>
-		<section><!-- 4 -->
+		<section class="section_2"><!-- 4 -->
 			<figure>
 				 <img id="fig-5" src="./images/pic_5.png" alt="Algorithm Performance Analysis, Constant Time" style="width:100%">
 				 <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
@@ -120,7 +120,7 @@
 				<li><code>X = A[I].ID = A[3].ID = 13844652 </code> different from 13844652.</li>	
 			</ol>
 		</section>
-		<section><!-- 6 -->
+		<section class="section_2"><!-- 6 -->
 			<figure>
 				<img id="fig-6" src="./images/pic_6.png" alt="Algorithm Performance Analysis, Searching Cycles O(n)" style="width:100%">
 				<figcaption>Fig.6 - Searching Cycle of the Algorithm. </figcaption>
@@ -370,7 +370,7 @@
 				  <figcaption>Fig.8 - Sorting serie. </figcaption>
 			</figure>
 		</section>
-		<section> <!-- 10 -->
+		<section class="section_2"> <!-- 10 -->
 			<aside>
 				<p>
 				With the purpose of algorithm analysis, no matter if the equation has a lineal component in it, 
@@ -410,6 +410,128 @@
 				  <img id="fig-11" src="./images/pic_11.png" alt="Algorithm Performance Analysis, cycles" style="width:100%">
 				  <figcaption>Fig.11 - Amount of cycles </figcaption>
 			</figure>
+		</section>
+		<section><!-- 12 -->
+			<h2>Java Class for Electors in the Algorithm Performance Analysis.</h2>
+			<p>
+				In order to keep going with the algorithm analysis above, it is necessary an object creation so that the electors
+				id, name, last name could be set and why not his/her birth date, gender, voting status, voting date and time, 
+				the political party of which him/her support, and a field where an event name such as 
+				“Mega Elections 2021 Great Day” we can put in. All these data for each voter is going to be saved in a 
+				cluster (object), then after this operation will be collected one by one of the object in an array, ArrayList or LinkedList.
+			</p>
+		</section>
+		<section> <!-- 13 -->
+			<aside>
+				<p>
+					Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
+					mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
+					and higher which point to a not desirable performance.  
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-12" src="./images/pic_12.png" alt="Elector Object Collection" style="width:100%">
+				  <figcaption>Fig.12 - Elector Object Collection </figcaption>
+			</figure>
+		</section>
+		<section><!-- 14 -->
+			<p>
+				The first thing we need is get all the information of every voter from the source. Even though the following
+				practice is far away of what it is, let’s say for the purpose of this post the whole data is inserted through
+				the console and there are people adding it in the back. We need also write some code, but how could we start it?
+				First, we need a class that allows us to collect all the information from the console, some kind of 
+				“GetFromConsole” Class by which the following code will be written:
+
+			</p>
+		</section>
+		<section>
+<div>
+<pre class="java_code">
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code><span class="import">import</span> java.io.Console<span class="marks">;</span></code>
+<code><span class="import">import</span> java.io.Reader<span class="marks">;</span></code>
+<code><span class="import">import</span> java.io.BufferedReader<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.StringTokenizer<span class="marks">;</span></code>
+<code><span class="import">import</span> java.io.IOException<span class="marks">;</span></code>
+<code><span class="comment">/**</span></code>
+<code><span class="comment">* The GetFromConsole is a class that works with Election2021 class</span></code>
+<code><span class="comment">* in an application that will be used to give examples of some data structures</span></code>
+<code><span class="comment">* and algorithms as well as talk about Java.</span></code>
+<code><span class="comment">*</span></code>
+<code><span class="comment">* The current class takes the input data inserted by users in the console.</span></code>
+<code><span class="comment">*</span><span class="ets"> @author </span><span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">*</span><span class="ets"> @version </span><span class="comment">1.0</span></code>
+<code><span class="comment">*</span><span class="ets"> @since </span><span class="comment">2021-05-15</span></code> 
+<code><span class="comment">*/</span></code>
+<code><span class="reserved">class</span> GetFromConsole<span class="marks">{</span></code>
+<code>  <span class="reserved">private</span> Console console<span class="marks">;</span></code>
+<code>  <span class="reserved">private</span> Reader reader<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> BufferedReader br<span class="marks">;</span></code>
+<code>	<span class="reserved">int</span> counter<span class="marks">;</span></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* This method is used to get a StringTokenizer instance.</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@exception</span> <span class="comment">IOException, required by br.readLine() method</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@return</span> <span class="comment">a StringTokenizer instance.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code>	<span class="reserved">public</span> StringTokenizer readForDim<span class="marks">()</span><span class="import">throws</span> IOException<span class="marks">{</span></code>
+<code>		console <span class="marks">=</span> System.console<span class="marks">();</span></code>
+<code>		reader <span class="marks">=</span> console.reader<span class="marks">();</span></code>
+<code>		br <span class="marks">=</span> <span class="import">new</span> BufferedReader<span class="marks">(</span>reader<span class="marks">);</span></code>
+<code>		StringTokenizer tzer <span class="marks">=</span> <span class="import">new</span> StringTokenizer<span class="marks">(</span>br.readLine<span class="marks">());</span></code>
+<code>		<span class="import">return</span> tzer<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* This method is used to log an Elector class fields.</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@exception</span> <span class="comment">IOException, required by readForDim() method</span></code>
+<code>	<span class="comment">*</span> <span class="comment">@return</span><span class="comment">an Elector instance.</span></code>
+<code>	<span class="comment">*/</span></code>	
+<code>	<span class="reserved">public</span> Elector buffRead<span class="marks">()</span><span class="import">throws</span> IOException<span class="marks">{</span></code>
+<code>		<span class="reserved">int</span> count <span class="marks">=</span> <span class="import">0</span><span class="marks">;</span></code>
+<code>		StringTokenizer tzer <span class="marks">=</span> readForDim<span class="marks">();</span></code>
+<code>		BirthCertificate bicert <span class="marks">=</span> <span class="import">null</span><span class="marks">;</span></code>
+<code>		String placeOBirth <span class="marks">=</span> <span class="import">null</span><span class="marks">;</span></code>
+<code>		String birth <span class="marks">=</span> <span class="import">null</span><span class="marks">;</span></code>
+<code>		CitizenId citizenId <span class="marks">=</span> <span class="import">null</span><span class="marks">;</span></code>
+<code>		Elector elector <span class="marks">=</span> <span class="import">null</span><span class="marks">;</span></code>
+<code>		<span class="import">while</span> <span class="marks">(</span>tzer.hasMoreTokens<span class="marks">()) {</span></code>
+<code>			<span class="import">switch</span><span class="marks">(<span>count<span class="marks">){</span></code>
+<code>				<span class="import">case 0</span><span class="marks">:</span></code>
+<code>				placeOBirth <span class="marks">=</span> tzer.nextToken<span class="marks">();</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 1</span><span class="marks">:</span></code>
+<code>				birth <span class="marks">=</span> tzer.nextToken<span class="marks">();</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 2</span><span class="marks">:</span></code>
+<code>				bicert <span class="marks">=</span> <span class="import">new</span> BirthCertificate<span class="marks">(</span>placeOBirth,</code>
+<code>				                              birth,</code>
+<code>				                       tzer.nextToken<span class="marks">()</span>.charAt<span class="marks">(</span>0<span class="marks">));</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 3</span><span class="marks">:</span></code>
+<code>				citizenId <span class="marks">=</span> <span class="import">new</span> CitizenId<span class="marks">(</span>bicert,tzer.nextToken<span class="marks">());</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 4</span><span class="marks">:</span></code>
+<code>				citizenId.setName<span class="marks">(</span>tzer.nextToken<span class="marks">());</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 5</span><span class="marks">:</span></code>
+<code>				citizenId.setLastName<span class="marks">(</span>tzer.nextToken<span class="marks">());</span></code>
+<code>				elector <span class="marks">=</span> <span class="import">new</span> Elector<span class="marks">(</span>citizenId<span class="marks">);</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 6</span><span class="marks">:</span></code>
+<code>				elector.setParty<span class="marks">(</span>tzer.nextToken<span class="marks">());</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 7</span><span class="marks">:</span></code>
+<code>				elector.setVoteStatus<span class="marks">(</span>tzer.nextToken<span class="marks">()</span>.charAt<span class="marks">(0));</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>				<span class="import">case 8</span><span class="marks">:</span></code>
+<code>				elector.setTime<span class="marks">(</span>tzer.nextToken<span class="marks">());</span></code>
+<code>			<span class="marks">}</span></code>
+<code>			count<span class="marks">++;</span></code>
+<code>		<span class="marks">}</span></code>
+<code>		<span class="import">return</span> elector<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code><span class="marks">}</span></code>
+</pre>
+</div>
 		</section>
 	</article>
   <script src="index.js"></script>
