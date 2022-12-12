@@ -135,6 +135,46 @@ td.cell-arr{
 	text-align:center;
 }
 
+/*Electors table*/
+.elector-table-zone{
+	width:100%;
+	overflow:auto;
+}
+.elector-data{
+	table-layout:fixed;
+	font-size:14px;
+	margin:auto;
+}
+.elector-data tr .col-1{
+	width:90px;
+}
+.elector-data tr .col-2{
+	width:70px;
+}
+.elector-data tr .col-3{
+	width:80px;
+}
+.elector-data tr .col-4{
+	width:30px;
+}
+.elector-data tr .col-5{
+	width:100px;
+}
+.elector-data tr .col-6{
+	width:150px;
+}
+.elector-data tr .col-7{
+	width:20px;
+}
+.elector-data tr .col-8{
+	width:60px;
+}
+.section_3{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
 article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-child(2) aside > p:nth-child(4) {
     text-align: center;
     font-weight: bold;
@@ -198,6 +238,10 @@ article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-chi
 	.section_2 aside{
 		width:50%;
 	}
+	.section_3 aside{
+		padding-right:60px;
+		width:850px;
+	}
 	article > section:nth-child(11) figure,
 	article > section:nth-child(13) figure{
 		width:50%;
@@ -214,5 +258,11 @@ article > section:nth-child(2) aside > p:nth-child(2), article > section:nth-chi
 	
 	pre.code {
 	    margin:auto;
+	}
+}
+
+@media screen and (min-width: 1200px){
+	.section_3{
+		flex-direction:row;
 	}
 }

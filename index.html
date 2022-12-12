@@ -533,6 +533,495 @@
 </pre>
 </div>
 		</section>
+		<section class="section_3"><!-- 15 -->
+			<aside>
+				<p>
+					Let’s construct the code above step by step naming our Java class “GetFromConsole” and so collect 
+					all data provided manually by the operator who is the alleged person in charge of insert it in the 
+					console giving at first the number of lines to be processed and then the lines that contain all the 
+					information of the voters.
+				</p>
+				<p>
+					Within the GetFromConsole class is required some method which allows read line by line, then word by word. 
+					For the first, exist in Java language a built-in class named BufferReader and inside this, a method 
+					called readLine(). So, checking the Java API for the class BufferReader we can see two constructors:
+				</p>
+			</aside>
+			<div class="elector-table-zone">
+				<table class="elector-data">
+					<tr><td class="col-1">12</td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td></tr>
+					<tr><td class="col-1">15789673</td><td class="col-2">Bruce</td><td class="col-3">Wayne</td><td class="col-4">m</td><td class="col-5">1950-01-04</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">11:55:37</td></tr>
+					<tr><td class="col-1">18554251</td><td class="col-2">Peter</td><td class="col-3">Parker</td><td class="col-4">m</td><td class="col-5">1960-08-24</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+					<tr><td class="col-1">13844652</td><td class="col-2">Selina</td><td class="col-3">Kyle</td><td class="col-4">f</td><td class="col-5">1991-03-05</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">15:53:17</td></tr>
+					<tr><td class="col-1">00000008</td><td class="col-2">Barbara</td><td class="col-3">Gordon</td><td class="col-4">f</td><td class="col-5">1985-05-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">08:44:16</td></tr>
+					<tr><td class="col-1">00125252</td><td class="col-2">Jesica</td><td class="col-3">Drew</td><td class="col-4">f</td><td class="col-5">1981-10-18</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+					<tr><td class="col-1">00005874</td><td class="col-2">Felicia</td><td class="col-3">Hardy</td><td class="col-4">f</td><td class="col-5">1998-11-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:27:03</td></tr>
+					<tr><td class="col-1">10987432</td><td class="col-2">Steve</td><td class="col-3">Rogers</td><td class="col-4">m</td><td class="col-5">1989-02-04</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:01:23</td></tr>
+					<tr><td class="col-1">18931501</td><td class="col-2">Tony</td><td class="col-3">Stark</td><td class="col-4">m</td><td class="col-5">1970-02-14</td><td class="col-6">Right_Wing_party</td><td class="col-7">y</td><td class="col-8">14:17:09</td></tr>
+					<tr><td class="col-1">19999999</td><td class="col-2">Janet</td><td class="col-3">VanDyne</td><td class="col-4">f</td><td class="col-5">1975-06-16</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+					<tr><td class="col-1">00060552</td><td class="col-2">Bruce</td><td class="col-3">Banner</td><td class="col-4">m</td><td class="col-5">1983-05-19</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">13:44:28</td></tr>
+					<tr><td class="col-1">00897456</td><td class="col-2">Carol</td><td class="col-3">Danvers</td><td class="col-4">f</td><td class="col-5">1990-04-19</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+					<tr><td class="col-1">00000465</td><td class="col-2">Clark</td><td class="col-3">Kent</td><td class="col-4">m</td><td class="col-5">1960-12-22</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">14:25:02</td></tr>
+				</table>
+			</div>
+		</section>
+		<section class="section_2"><!-- 16 -->
+			<figure>
+				<img id="fig-13" src="./images/pic_13.png" alt="Java API for the class BufferReader" style="width:100%">
+				<figcaption>Fig.13 - Java API for the class BufferReader. </figcaption>
+			</figure>
+			<aside>
+				<div><img  id="fig-14" src="./images/pic_14.png" alt="method" style="width:100%"></div>
+				<p>
+					The first constructor uses a parameter in from Reader class, so, let’s check the Reader class in order
+					to see how we could instantiate an object from such class:
+				</p>
+				<div><img  id="fig-15" src="./images/pic_15.png" alt="method" style="width:100%"></div>
+				<p>
+					This is an abstract class, that means it cannot be instantiated, so we have to take a look if within 
+					there is some Static Reader class method. 
+				</p>
+			</aside>
+		</section>
+		<section><!-- 17 -->
+			<figure>
+				<img id="fig-16" src="./images/pic_16.png" alt="Java API some methods of BufferReader class" style="width:100%">
+				<figcaption>Fig.13 - Java API for the class BufferReader. </figcaption>
+			</figure>
+			<aside>
+				<p>
+					The reader object above is the only methods of a class Reader that is static and returns a Read class 
+					object but reads no characters. It doesn’t seem a good choice making us keep searching for another way 
+					to get an object of type Read since it could not be from this class.
+				</p>
+			</aside>
+		</section>
+		<section class="section_2"><!-- 18 -->
+			<figure>
+				<p>The next class will be:</p>
+				<img id="fig-17" src="./images/pic_17.png" alt="Java API for the class Console" style="width:100%">
+				<figcaption>Fig.17 - Java API for the class Console. </figcaption>
+			</figure>
+			<aside>
+				<p>
+					This is a Java built in class which is used to work with the console. A final class is the one 
+					that does not allow to be subclassed. From here on will not have more children classes. Let us 
+					examine if within this class there is a method such that we could achieve the Read object:
+				</p>
+				<div><img  id="fig-18" src="./images/pic_18.png" alt="method" style="width:100%"></div>
+				<p>
+					This method retrieves the unique Reader object associated with this console.
+				</p>
+			</aside>
+		</section>
+		<section> <!-- 19 -->
+			<aside>
+				<p>
+					Ok, but we still need a Console object to instantiate the Read class. In the Java API for the 
+					Console class there is an explanation where is instantiated the Console object from a method 
+					in the System class. 
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-19" src="./images/pic_19.png" alt="Console object from a method in the System class" style="width:100%">
+				  <figcaption>Fig.19 - Console object from a method in the System class. </figcaption>
+			</figure>
+		</section>
+		<section> <!-- 20 -->
+			<aside>
+				<p>
+					Looking at System class in the Java API:
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-20" src="./images/pic_20.png" alt="Class System in the Java API" style="width:100%">
+				  <figcaption>Fig.20 - Class System in the Java API. </figcaption>
+			</figure>
+		</section>
+		<section> <!-- 21 -->
+			<aside>
+				<p>
+					static Console console() returns the unique console object associated with the current Java virtual 
+					machine, if any. With the last three object we already have, we proceed to build our code as follows:
+				</p>
+				<p><code>Console console = System.console();</code> //our object Console</p>
+				<p><code>Reader reader = console.Reader();</code></p>
+				<p><code>BufferReader br = new BufferReader(reader);</code>// at last our object BufferReader.</p>
+				<p>
+					From the BufferReader we get the <code>readLine()</code>methods that returns an String object. 
+					Moreover, we need the line read word by word by which one suitable class would be StringTokenizer 
+					class. The string tokenizer class allows an application to break a string into tokens.
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-21" src="./images/pic_21.png" alt="Class StringTokenizer in the Java API." style="width:100%">
+				  <figcaption>Fig.21 - Class StringTokenizer in the Java API. </figcaption>
+			</figure>
+		</section><!-- 22 -->
+		<section>
+			<p>
+				Recapping the code we are constructing by wrapping the StringTokenizer object with the method from 
+				<code>BufferReader readLine()</code> (returns an String):
+			</p>
+			<div>
+				<code>Console console = System.console();</code><br/>
+				<code>Reader reader = console.Reader();</code><br/>
+				<code>BufferReader br = new BufferReader(reader);</code><br/>
+				<code>StringTokenizer tzer = new StringTokenizer(br.readLine()); // StringTokenizer already instantiated with the object name tzer.</code><br/>
+			</div>
+			<p>
+				With the code above, we continue by encapsulate it inside a method named <code>readForDim()</code> which 
+				will returns an object of type StringTokenizer being at the same time  located within the class GetFromConsole in the subsequent manner:
+			</p>
+		</section>
+		<section><!-- 23 -->
+<div>
+<pre class="java_code">
+<code>	<span class="reserved">public</span> StringTokenizer readForDim<span class="marks">()</span><span class="import">throws</span> IOException<span class="marks">{</span></code>
+<code>		console <span class="marks">=</span> System.console<span class="marks">();</span></code>
+<code>		reader <span class="marks">=</span> console.reader<span class="marks">();</span></code>
+<code>		br <span class="marks">=</span> <span class="import">new</span> BufferedReader<span class="marks">(</span>reader<span class="marks">);</span></code>
+<code>		StringTokenizer tzer <span class="marks">=</span> <span class="import">new</span> StringTokenizer<span class="marks">(</span>br.readLine<span class="marks">());</span></code>
+<code>		<span class="import">return</span> tzer<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+</pre>
+</div>
+		</section>
+		<section><!-- 24 -->
+			<p>
+				The fields console, reader and br have been written as a global fields of <code>GetFromConsole</code> class.
+			</p>
+<div>
+<pre class="java_code">
+<code><span class="reserved">class</span> GetFromConsole<span class="marks">{</span></code>
+<code>  <span class="reserved">private</span> Console console<span class="marks">;</span></code>
+<code>  <span class="reserved">private</span> Reader reader<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> BufferedReader br<span class="marks">;</span></code>
+<code>	<span class="reserved">int</span> counter<span class="marks">;</span></code>
+<code></code>
+<code>	<span class="reserved">public</span> StringTokenizer readForDim<span class="marks">()</span><span class="import">throws</span> IOException<span class="marks">{</span></code>
+<code>		console <span class="marks">=</span> System.console<span class="marks">();</span></code>
+<code>		reader <span class="marks">=</span> console.reader<span class="marks">();</span></code>
+<code>		br <span class="marks">=</span> <span class="import">new</span> BufferedReader<span class="marks">(</span>reader<span class="marks">);</span></code>
+<code>		StringTokenizer tzer <span class="marks">=</span> <span class="import">new</span> StringTokenizer<span class="marks">(</span>br.readLine<span class="marks">());</span></code>
+<code>		<span class="import">return</span> tzer<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code></code>
+</pre>
+</div>
+		</section>
+		<section><!-- 25 -->
+			<aside>
+				<p>
+					The method readForDim() must handle an IOException because is mandatory for the method stringLine() from the BufferReader class encapsulated inside as we can look over 
+					the Java API documentation at BufferReader class section:
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-22" src="./images/pic_22.png" alt="Class BufferedReader in the Java API." style="width:100%">
+				  <figcaption>Fig.22 - Class BufferedReader in the Java API. </figcaption>
+			</figure>
+		</section>
+		<section><!-- 26 -->
+			<aside>
+				<p>
+					Failure to meet this requirement lead to have compile-time exception consequences.
+				</p>
+			</aside>
+			<figure>
+				  <img id="fig-23" src="./images/pic_23.png" alt="compile-time exception" style="width:100%">
+				  <figcaption>Fig.23 - compile-time exception. </figcaption>
+			</figure>
+		</section>
+		<section><!-- 27 -->
+					<div>
+						<p>
+							The method we already built is able to read a line inserted from the console and process 
+							it as an object StringTokenizer so that we can apply all the available methods and fields 
+							of this class, being nextToken() and  hasMoreTokens() some of them. The next step is to create
+							a method inside the getFromConsole class which returns from the second line on an object 
+							with all the information of every elector. This object belongs to the Elector class, class 
+							that we have still not mentioned but we must construct later to store the voter data. 
+							The code of elector will be shown now below but will be explained later on:
+						</p>
+					</div>
+<div>
+<pre class="java_code">
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code><span class="import">import</span> import java.time.LocalDate<span class="marks">;</span></code>
+<code><span class="import">import</span> import java.time.LocalTime<span class="marks">;</span></code>
+<code><span class="comment">/**</span></code>
+<code><span class="comment">* Elector is a class that works with Election2021 class</span></code>
+<code><span class="comment">* in an application that will be used to give examples of some data structures</span></code>
+<code><span class="comment">* and algorithms as well as talk about Java.</span></code>
+<code><span class="comment">*</span></code>
+<code><span class="comment">* The current class is a sub class of Citizen having thought with it to be the last</span></code>
+<code><span class="comment">* subclass from Citizen. This encloses three new fields from its super class.</span></code>
+<code><span class="comment">*</span><span class="ets"> @author </span><span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">*</span><span class="ets"> @version </span><span class="comment">1.0</span></code>
+<code><span class="comment">*</span><span class="ets"> @since </span><span class="comment">2021-05-15</span></code>
+<code><span class="comment">*/</span></code>
+<code>	</code>
+<code><span class="reserved">final class</span> Elector<span class="import"> extends</span> Citizen<span class="marks">{</span></code>
+<code>	<span class="reserved">static</span> String eventOfDay<span class="marks">=</span><span class="comment">"Mega Election 2021 Great Day"</span><span class="marks">;</span></code>
+<code>	<span class="reserved">static</span> LocalDate electDay<span class="marks">=</span>LocalDate.of<span class="marks">(</span><span class="import">2021<span class="marks">,</span>4<span class="marks">,</span>24</span><span class="marks">)</span><span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String party<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String voteStatus<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> LocalTime time<span class="marks">;</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* The constructor which start with CitizenId object.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">citizenId, Object of type CitizenId.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">Nothing.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	Elector<span class="marks">(</span>CitizenId citizenId<span class="marks">)</span></span><span class="marks">{</span></code>
+<code>		<span class="import">super</span><span class="marks">(</span> citizenId, <span class="comment">"Country Of Freedom"</span><span class="marks">);</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* a setter method to define the voter's party.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">party, Object of type String with the name of</span></code>
+<code>	<span class="comment">* the elector's party.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">Nothing.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public void</span> setParty<span class="marks">(</span>String party<span class="marks">){</span></code>
+<code>		<span class="import">this</span>.party <span class="marks">=</span> party<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* a setter method to define the voter's status, that means</span></code>
+<code>	<span class="comment">* if he/she has or not exercise his/her vote. This method</span></code>
+<code>	<span class="comment">* populates the voteStatus field with yes or no.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">s, using the letter y or n.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">Nothing.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public void</span> setVoteStatus<span class="marks">(</span><span class="reserved">char</span> s<span class="marks">){</span></code>
+<code>		<span class="import">switch</span><span class="marks">(<span>s<span class="marks">){</span></code>
+<code>			<span class="import">case 'y'</span><span class="marks">:</span></code>
+<code>				<span class="import">this</span>.voteStatus <span class="marks">=</span> "Yes"<span class="marks">;</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>			<span class="import">case 'n'</span><span class="marks">:</span></code>
+<code>				<span class="import">this</span>.voteStatus <span class="marks">=</span> "No"<span class="marks">;</span></code>
+<code>				<span class="import">break</span><span class="marks">;</span></code>
+<code>		<span class="marks">}</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">* a setter method to define the voter's time at the moment</span></code>
+<code>	<span class="comment">* when he/she has exercised his/her vote.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">time, with format hh:mm:ss.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">Nothing.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public void</span> setTime<span class="marks">(</span>String time<span class="marks">){</span></code>
+<code>		String<span class="marks">[] </span>vt<span class="marks">;</span></code>
+<code>		<span class="import">if</span><span class="marks">(</span>time.contains<span class="marks">(</span><span class="comment">":"</span><span class="marks">)</span><span class="marks">) {</span></code>
+<code>			vt <span class="marks">=</span> time.split<span class="marks">(</span><span class="comment">":"</span><span class="marks">)</span><span class="marks">;</span></code>
+<code>		<span class="marks">}</span><span class="import">else</span><span class="marks">{</span></code>
+<code>			vt <span class="marks">=</span> <span class="import">new</span> String<span class="marks">[]</span><span class="marks">{</span><span class="comment">"0"</span><span class="marks">,</span><span class="comment">"0"</span><span class="marks">,</span><span class="comment">"0"</span><span class="marks">};</span></code>
+<code>		<span class="marks">}</span></code>
+<code>		<span class="import">this</span>.time <span class="marks">=</span> LocalTime.of<span class="marks">(</span>Integer.parseInt<span class="marks">(</span>vt<span class="marks">[</span><span class="import">0</span><span class="marks">]</span><span class="marks">),</span></code>
+<code>					Integer.parseInt<span class="marks">(</span>vt<span class="marks">[</span><span class="import">1</span><span class="marks">]</span><span class="marks">),</span></code>
+<code>					Integer.parseInt<span class="marks">(</span>vt<span class="marks">[</span><span class="import">2</span><span class="marks">]</span><span class="marks">));</span></code>
+<code>	<span class="marks">}</span></code>
+<code>	<span class="reserved">public</span> LocalTime getTime<span class="marks">(){</span><span class="import">return this.</span>time<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getVoteStatus<span class="marks">(){</span><span class="import">return this.</span>voteStatus<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getParty<span class="marks">(){</span><span class="import">return this.</span>party<span class="marks">;}</span></code>
+<code><span class="marks">}</span></code>
+</pre>
+</div>
+		</section>
+		<section><!-- 28 -->
+			<div>
+				<p>
+					Every elector is a citizen from some country, state or city but not all citizens have the privilege 
+					of voting whether because is underage or convict or any other reason. That’s why Elector is a sub 
+					class of Citizen class which we have to build, also with the purpose of talk about the inheritance 
+					for the object-oriented programming.
+				</p>
+			</div>
+<div>
+<pre class="java_code">
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code><span class="import">import</span> import java.time.LocalDate<span class="marks">;</span></code>
+<code></code>
+<code><span class="comment">/**</span></code>
+<code><span class="comment">* Citizen is a class that works with Election2021 class </span></code>
+<code><span class="comment">* in an application that will be used to give examples of some data structures</span></code>
+<code><span class="comment">* and algorithms as well as talk about Java.</span></code>
+<code><span class="comment">*</span></code>
+<code><span class="comment">* The current class enclose a field named citizenship and a CitizenId object.</span></code>
+<code><span class="comment">*</span><span class="ets"> @author </span><span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">*</span><span class="ets"> @version </span><span class="comment">1.0</span></code>
+<code><span class="comment">*</span><span class="ets"> @since </span><span class="comment">2021-05-15</span></code>
+<code><span class="comment">*/</span></code>
+<code><span class="reserved">class</span> Citizen<span class="marks">{</span></code>
+<code>	<span class="reserved">private</span> CitizenId citizenId<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> private String citizenship<span class="marks">;</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* The constructor which populates the two private fields citizenship and citizenId.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">citizenId, a CitizenId object.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">citizenship, a String type object representing the citizenship.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">Nothing.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	Citizen<span class="marks">(</span>CitizenId citizenId <span class="marks">,</span> String citizenship<span class="marks">)</span></span><span class="marks">{</span></code>
+<code>		<span class="import">this</span>.citizenId <span class="marks">=</span> citizenId<span class="marks">;</span></code>
+<code>		<span class="import">this</span>.citizenship <span class="marks">=</span> citizenship<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* public getters metods.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public</span> CitizenId getCitizenId<span class="marks">(){</span><span class="import">return this.</span>citizenId<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getCitizenship<span class="marks">(){</span><span class="import">return this.</span>citizenship<span class="marks">;}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* protected getters method written having in mind playing with the Java inheritance.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @return </span><span class="comment">private fields from citizenId and birthCertificate class.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">protected</span> String geId<span class="marks">(){</span><span class="import">return this.</span>citizenId.getId<span class="marks">();}</span></code>
+<code>	<span class="reserved">protected</span> String getName<span class="marks">(){</span><span class="import">return this.</span>citizenId.getName<span class="marks">();}</span></code>
+<code>	<span class="reserved">protected</span> String getLastName<span class="marks">(){</span><span class="import">return this.</span>citizenId.getLastName<span class="marks">();}</span></code>
+<code>	<span class="reserved">protected</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this.</span>citizenId.citizenId.getBirthCertificate<span class="marks">()</span>.getBirth<span class="marks">();}</span></code>
+<code>	<span class="reserved">protected</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this.</span>citizenId.citizenId.getBirthCertificate<span class="marks">()</span>.getGender<span class="marks">();}</span></code>
+<code>	<span class="reserved">protected</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this.</span>citizenId.citizenId.getBirthCertificate<span class="marks">()</span>.getPlaceOfBirth<span class="marks">();}</span></code>
+<code><span class="marks">}</span></code>
+</pre>
+</div>
+		</section>
+		<section><!-- 29 -->
+			<p>
+				The first thing we can observe in <code>GetFromConsole.java</code> class is that we are using the 
+				<code>readForDim()</code> method created before to get an StringTokenizer object named tzer with 
+				which we will invoke the <code>nextToken()</code> method to get word by word of a line and 
+				<code>hasMoreTokens()</code> method that reply us if there is another word in the text line. Each 
+				word (token) must be inserted as appropriate inside the class Elector which in turn will be stored 
+				in an object collection as an array or an array List.
+			</p>
+			<figure>
+				  <img id="fig-24" src="./images/pic_24.png" alt="StringTokenizer cycle" style="width:100%">
+				  <figcaption>Fig.24 - StringTokenizer cycle. </figcaption>
+			</figure>
+		</section>
+		<section><!-- 30 -->
+			<p>
+				So far, we have done the class that get the input data from the console and process it. Now the class 
+				that works as an engine to set in motion from the input to the object storage will be called Election2021. 
+				This class holds the Java main method, another method whose function get the amount of lines to be processed
+				and of course get the lines of data.
+			</p>
+<div>
+<pre class="java_code">
+
+package societyAperson;
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.io.IOException;
+import java.util.ListIterator;
+import java.util.Random;
+/**
+* The Election2021 runs an application that will be used to give examples
+*  of some data structures and algorithms as well as talk about Java .
+*
+* @author  Hector Jose Vurchio Hurtado
+* @version 1.0
+* @since   2021-05-15 
+*/
+public class Election2021{
+	int n = 0;
+	Elector elector; 
+	GetFromConsole gfc;
+	StringTokenizer tzer;
+	public ArrayList<Elector> elecList;
+	/**
+    * This method is used to get the arguments that users insert through console.
+	* @exception IOException, required by tzer = gfc.readForDim() 
+	* and by elector = gfc.buffRead() to be thrown.
+    * @see IOException.
+    */
+	void getElectors()throws IOException{
+		gfc = new GetFromConsole();
+		tzer = gfc.readForDim();
+		n = Integer.parseInt(tzer.nextToken());
+		elecList = new ArrayList<Elector>(n);
+		for (int i = 0; i < n; ++i) {
+			elector = gfc.buffRead();
+			elecList.add(elector);
+		}
+	}
+	/**
+    * This method is used to print the arguments that users insert through console.
+    */
+	private void printVoters() throws ClassNotFoundException,NoSuchFieldException,
+									IllegalArgumentException, IllegalAccessException{
+		Random random = new Random();
+		int size = elecList.size();
+		int index = random.nextInt(size-1);
+		boolean empty = elecList.isEmpty();
+		if(elecList.get(index).getClass().getName() == "societyAperson.Elector"){
+			Elector elecObj = elecList.get(index);
+			Elector2021Data electObjData = new Elector2021Data(elecObj);
+			PrintResultsThree pr = new PrintResultsThree(electObjData);
+			ListIterator<Elector> iterator = elecList.listIterator();
+			while (iterator.hasNext()) {
+				elecObj = iterator.next();
+				electObjData = new Elector2021Data(elecObj);
+				pr.printObject(electObjData);
+			}
+		}else{
+			System.out.println("The Income object doesn't belong to societyAperson.Elector");
+		}			
+	}
+	
+	/**
+   * The main method that starts the program.
+   * @param args, the command line arguments which not in use.
+   * @exception IOException, required by elec2021.getElectors() and start() methods
+   * to be thrown as well as InterruptedException, also required by waitFor() method to be thrown.
+   * ClassNotFoundException is required by reflectionHeader method.
+   * @see IOException,InterruptedException, NoSuchFieldException belonging to printVoters().
+   */
+	public static void main(String[] arg)throws IOException,InterruptedException,NoSuchFieldException,IllegalArgumentException, IllegalAccessException,ClassNotFoundException{
+		Election2021 elec2021 = new Election2021();
+		elec2021.getElectors();
+		ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");//clear screen 
+		pb.inheritIO().start().waitFor(); 
+		elec2021.printVoters();
+	}
+}
+</pre>
+</div>
+		</section>
+		<section><!-- 31 -->
+			<p>
+				All those objects obtained by the input process are going to be stored in an rezsizable form of array 
+				such as Java ArrayList collection which will be named electList. This is how the ArrayList works:
+			</p>
+			<figure>
+				  <img id="fig-25" src="./images/pic_25.png" alt="ArrayList class" style="width:100%">
+				  <figcaption>Fig.25 - ArrayList class. </figcaption>
+			</figure>
+		</section>
+		<section><!-- 32 -->
+			<p>
+				Our E = Elector which is the object type that we are working with, so: 
+				<code>ArrayList<Elector> elecList = new ArrayList<Elector>(n)</code>, where n is te first line of 
+				input from console or the number of lines to be written. As we know the initial capacity, we will 
+				construct then the ArrayList object taking into account this variable.
+
+			</p>
+			<figure>
+				  <img id="fig-25" src="./images/pic_26.png" alt="ArrayList class" style="width:100%">
+				  <figcaption>Fig.26 - ArrayList class. </figcaption>
+			</figure>
+		</section>
 	</article>
   <script src="index.js"></script>
   </body>
