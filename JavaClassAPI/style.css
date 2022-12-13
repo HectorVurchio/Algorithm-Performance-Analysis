@@ -1,0 +1,139 @@
+body {
+    background-color: #ffffff;
+    color: #353833;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+h3 {
+    font-size: 16px;
+    font-style: italic;
+}
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-left: 1px solid #EEE;
+    border-right: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #4A6782;
+}
+.memberNameLink{
+	color: #4A6782;
+}
+ul {
+    list-style-type: disc;
+}
+ul.inheritance {
+    margin: 0;
+    padding: 0;
+}
+ul.inheritance li {
+    display: inline;
+    list-style: none;
+}
+ul.inheritance li ul.inheritance {
+    
+	margin-left:15px;
+    
+	padding-left:15px;
+    
+	padding-top:1px;
+
+}
+.header{
+	clear: both;
+    margin: 0 20px;
+    padding: 5px 0 0 0;
+}
+.contentContainer{
+    clear: both;
+    padding: 10px 20px;
+    position: relative;
+}
+.subTitle{
+	margin: 5px 0 0 0;
+}
+.moduleLabelInType{
+	font-weight: bold;
+}
+.packageLabelInType{
+	font-weight: bold;
+}
+ul.blockList, ul.blockListLast {
+	min-width: 400px;
+    margin: 10px 0 10px 0;
+    padding: 0;
+}
+ul.blockList li.blockList, ul.blockListLast li.blockList {
+    list-style: none;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+ul.blockList ul.blockList li.blockList, ul.blockList ul.blockListLast li.blockList {
+    padding: 0px 20px 5px 10px;
+    border: 1px solid #ededed;
+    background-color: #f8f8f8;
+}
+ul.blockList ul.blockList li.blockList h3 {
+    padding: 0;
+    margin: 15px 0;
+}
+.overviewSummary caption, .memberSummary caption, .typeSummary caption, .useSummary caption, .constantsSummary caption, .deprecatedSummary caption, .requiresSummary caption, .packagesSummary caption, .providesSummary caption, .usesSummary caption {
+    position: relative;
+    text-align: left;
+    background-repeat: no-repeat;
+    color: #253441;
+    font-weight: bold;
+    clear: none;
+    overflow: hidden;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 1px;
+    margin: 0px;
+    white-space: pre;
+}
+.overviewSummary caption span, .memberSummary caption span, .typeSummary caption span, .useSummary caption span, .constantsSummary caption span, .deprecatedSummary caption span, .requiresSummary caption span, .packagesSummary caption span, .providesSummary caption span, .usesSummary caption span {
+    white-space: nowrap;
+    padding-top: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 7px;
+    display: inline-block;
+    float: left;
+    background-color: #F8981D;
+    border: none;
+    height: 16px;
+}
+.overviewSummary caption, .memberSummary caption, .typeSummary caption, .useSummary caption, .constantsSummary caption, .deprecatedSummary caption, .requiresSummary caption, .packagesSummary caption, .providesSummary caption, .usesSummary caption {
+    position: relative;
+    text-align: left;
+    background-repeat: no-repeat;
+    color: #253441;
+    font-weight: bold;
+    clear: none;
+    overflow: hidden;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 1px;
+    margin: 0px;
+    white-space: pre;
+}
+th.colFirst, th.colSecond, th.colLast,th.colDeprecatedItemName, .packagesSummary th {
+    background: #dee3e9;
+    text-align: left;
+    padding: 8px 3px 3px 7px;
+}
+.overviewSummary [role=tablist] .tableTab, .memberSummary [role=tablist] .tableTab, .typeSummary [role=tablist] .tableTab, .packagesSummary [role=tablist] .tableTab {
+    background: #4D7A97;
+    color: #FFFFFF;
+}
+.overviewSummary [role=tablist] .activeTableTab, .memberSummary [role=tablist] .activeTableTab, .typeSummary [role=tablist] .activeTableTab, .packagesSummary [role=tablist] .activeTableTab {
+    background: #F8981D;
+    color: #253441;
+}
