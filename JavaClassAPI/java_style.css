@@ -137,3 +137,30 @@ th.colFirst, th.colSecond, th.colLast,th.colDeprecatedItemName, .packagesSummary
     background: #F8981D;
     color: #253441;
 }
+.contentContainer .description dl dt, .contentContainer .details dl dt, .serializedFormContainer dl dt {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    color: #4E4E4E;
+}
+.deprecatedLabel, .descfrmTypeLabel, .implementationLabel, .memberNameLabel, .memberNameLink, .moduleLabelInPackage, .moduleLabelInType, .overrideSpecifyLabel, .packageLabelInType, .packageHierarchyLabel, .paramLabel, .returnLabel, .seeLabel, .simpleTagLabel, .throwsLabel, .typeNameLabel, .typeNameLink, .searchTagLink {
+    font-weight: bold;
+}
+ul.blockList ul.blockList ul.blockList li.blockList h3 {
+    font-style: normal;
+}
+ul.blockList ul.blockList ul.blockList li.blockList h3 {
+    background-color: #dee3e9;
+    border: 1px solid #d0d9e0;
+    margin: 0 0 6px -8px;
+    padding: 7px 5px;
+}
+.rowColor, .rowColor th {
+    background-color: #EEEEEF;
+}
+.memberSummary caption .tabEnd,
+.memberSummary caption .tableTab
+{
+	color: white;
+    background-color: #4D7A97;
+}
