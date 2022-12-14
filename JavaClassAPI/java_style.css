@@ -19,6 +19,9 @@ table {
     border-right: 1px solid #EEE;
     border-bottom: 1px solid #EEE;
 }
+tbody{
+	text-align: justify;
+}
 a:link, a:visited {
     text-decoration: none;
     color: #4A6782;
@@ -65,8 +68,11 @@ ul.inheritance li ul.inheritance {
 .packageLabelInType{
 	font-weight: bold;
 }
+.block{
+	text-align: justify;
+}
 ul.blockList, ul.blockListLast {
-	min-width: 400px;
+	min-width: 700px;
     margin: 10px 0 10px 0;
     padding: 0;
 }

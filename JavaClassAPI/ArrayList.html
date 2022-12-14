@@ -19,128 +19,126 @@
 		</div>
 		<div class="contentContainer">
 			<ul class="inheritance">
-			<li><span class="memberNameLink">java.lang.Object</span></li>
-			<li>
-			<ul class="inheritance">
-			<li><span class="memberNameLink">java.util.AbstractCollection</span>&lt;E&gt;</li>
-			<li>
-			<ul class="inheritance">
-			<li><span class="memberNameLink">java.util.AbstractList</span>&lt;E&gt;</li>
-			<li>
-			<ul class="inheritance">
-			<li>java.util.ArrayList&lt;E&gt;</li>
-			</ul>
-			</li>
-			</ul>
-			</li>
-			</ul>
-			</li>
+				<li><span class="memberNameLink">java.lang.Object</span></li>
+				<li>
+				<ul class="inheritance">
+				<li><span class="memberNameLink">java.util.AbstractCollection</span>&lt;E&gt;</li>
+				<li>
+				<ul class="inheritance">
+				<li><span class="memberNameLink">java.util.AbstractList</span>&lt;E&gt;</li>
+				<li>
+				<ul class="inheritance">
+				<li>java.util.ArrayList&lt;E&gt;</li>
+				</ul>
+				</li>
+				</ul>
+				</li>
+				</ul>
+				</li>
 			</ul>
 			<div class="description">
-			<ul class="blockList">
-			<li class="blockList">
-			<dl>
-			<dt><span class="paramLabel">Type Parameters:</span></dt>
-			<dd><code>E</code> - the type of elements in this list</dd>
-			</dl>
-			<dl>
-			<dt>All Implemented Interfaces:</dt>
-			<dd>
-				<code><span class="memberNameLink">Serializable</span></code>, 
-				<code><span class="memberNameLink">Cloneable</span></code>, 
-				<code><span class="memberNameLink">Iterable</span>&lt;E&gt;</code>, 
-				<code><span class="memberNameLink">Collection</span>&lt;E&gt;</code>, 
-				<code><span class="memberNameLink">List</span>&lt;E&gt;</code>, 
-				<code><span class="memberNameLink">RandomAccess</span></code>
-			</dd>
-			</dl>
-			<dl>
-			<dt>Direct Known Subclasses:</dt>
-			<dd>
-				<code><span class="memberNameLink">AttributeList</span></code>, 
-				<code><span class="memberNameLink">RoleList</span></code>, 
-				<code><span class="memberNameLink">RoleUnresolvedList</span></code>
-			</dd>
-			</dl>
-			<hr>
-			<pre>public class <span class="typeNameLabel">ArrayList&lt;E&gt;</span>
-			extends <span class="memberNameLink">AbstractList</span>&lt;E&gt;
-			implements <span class="memberNameLink">List</span>&lt;E&gt;, <span class="memberNameLink">RandomAccess</span>, <span class="memberNameLink">Cloneable</span>, <span class="memberNameLink">Serializable</span></pre>
-			<div class="block">Resizable-array implementation of the <code>List</code> interface.  Implements
-			 all optional list operations, and permits all elements, including
-			 <code>null</code>.  In addition to implementing the <code>List</code> interface,
-			 this class provides methods to manipulate the size of the array that is
-			 used internally to store the list.  (This class is roughly equivalent to
-			 <code>Vector</code>, except that it is unsynchronized.)
+				<ul class="blockList">
+					<li class="blockList">
+						<dl>
+							<dt><span class="paramLabel">Type Parameters:</span></dt>
+							<dd><code>E</code> - the type of elements in this list</dd>
+						</dl>
+						<dl>
+							<dt>All Implemented Interfaces:</dt>
+							<dd>
+								<code><span class="memberNameLink">Serializable</span></code>, 
+								<code><span class="memberNameLink">Cloneable</span></code>, 
+								<code><span class="memberNameLink">Iterable</span>&lt;E&gt;</code>, 
+								<code><span class="memberNameLink">Collection</span>&lt;E&gt;</code>, 
+								<code><span class="memberNameLink">List</span>&lt;E&gt;</code>, 
+								<code><span class="memberNameLink">RandomAccess</span></code>
+							</dd>
+						</dl>
+						<dl>
+							<dt>Direct Known Subclasses:</dt>
+							<dd>
+								<code><span class="memberNameLink">AttributeList</span></code>, 
+								<code><span class="memberNameLink">RoleList</span></code>, 
+								<code><span class="memberNameLink">RoleUnresolvedList</span></code>
+							</dd>
+						</dl>
+						<hr>
+						<pre>public class <span class="typeNameLabel">ArrayList&lt;E&gt;</span>
+	extends <span class="memberNameLink">AbstractList</span>&lt;E&gt;
+		implements <span class="memberNameLink">List</span>&lt;E&gt;, <span class="memberNameLink">RandomAccess</span>, <span class="memberNameLink">Cloneable</span>, <span class="memberNameLink">Serializable</span></pre>
+						<div class="block">Resizable-array implementation of the <code>List</code> interface.  Implements
+							 all optional list operations, and permits all elements, including
+							 <code>null</code>.  In addition to implementing the <code>List</code> interface,
+							 this class provides methods to manipulate the size of the array that is
+							 used internally to store the list.  (This class is roughly equivalent to
+							 <code>Vector</code>, except that it is unsynchronized.)
 
-			 <p>The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
-			 <code>iterator</code>, and <code>listIterator</code> operations run in constant
-			 time.  The <code>add</code> operation runs in <i>amortized constant time</i>,
-			 that is, adding n elements requires O(n) time.  All of the other operations
-			 run in linear time (roughly speaking).  The constant factor is low compared
-			 to that for the <code>LinkedList</code> implementation.
+							 <p>The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
+							 <code>iterator</code>, and <code>listIterator</code> operations run in constant
+							 time.  The <code>add</code> operation runs in <i>amortized constant time</i>,
+							 that is, adding n elements requires O(n) time.  All of the other operations
+							 run in linear time (roughly speaking).  The constant factor is low compared
+							 to that for the <code>LinkedList</code> implementation.
 
-			 </p><p>Each <code>ArrayList</code> instance has a <i>capacity</i>.  The capacity is
-			 the size of the array used to store the elements in the list.  It is always
-			 at least as large as the list size.  As elements are added to an ArrayList,
-			 its capacity grows automatically.  The details of the growth policy are not
-			 specified beyond the fact that adding an element has constant amortized
-			 time cost.
+							 </p><p>Each <code>ArrayList</code> instance has a <i>capacity</i>.  The capacity is
+							 the size of the array used to store the elements in the list.  It is always
+							 at least as large as the list size.  As elements are added to an ArrayList,
+							 its capacity grows automatically.  The details of the growth policy are not
+							 specified beyond the fact that adding an element has constant amortized
+							 time cost.
 
-			 </p><p>An application can increase the capacity of an <code>ArrayList</code> instance
-			 before adding a large number of elements using the <code>ensureCapacity</code>
-			 operation.  This may reduce the amount of incremental reallocation.
+							 </p><p>An application can increase the capacity of an <code>ArrayList</code> instance
+							 before adding a large number of elements using the <code>ensureCapacity</code>
+							 operation.  This may reduce the amount of incremental reallocation.
 
-			 </p><p><strong>Note that this implementation is not synchronized.</strong>
-			 If multiple threads access an <code>ArrayList</code> instance concurrently,
-			 and at least one of the threads modifies the list structurally, it
-			 <i>must</i> be synchronized externally.  (A structural modification is
-			 any operation that adds or deletes one or more elements, or explicitly
-			 resizes the backing array; merely setting the value of an element is not
-			 a structural modification.)  This is typically accomplished by
-			 synchronizing on some object that naturally encapsulates the list.
+							 </p><p><strong>Note that this implementation is not synchronized.</strong>
+							 If multiple threads access an <code>ArrayList</code> instance concurrently,
+							 and at least one of the threads modifies the list structurally, it
+							 <i>must</i> be synchronized externally.  (A structural modification is
+							 any operation that adds or deletes one or more elements, or explicitly
+							 resizes the backing array; merely setting the value of an element is not
+							 a structural modification.)  This is typically accomplished by
+							 synchronizing on some object that naturally encapsulates the list.
 
-			 If no such object exists, the list should be "wrapped" using the
-			 <span class="memberNameLink"><code>Collections.synchronizedList</code></span>
-			 method.  This is best done at creation time, to prevent accidental
-			 unsynchronized access to the list:<pre>
-			   List list = Collections.synchronizedList(new ArrayList(...));</pre>
+							 If no such object exists, the list should be "wrapped" using the
+							 <span class="memberNameLink"><code>Collections.synchronizedList</code></span>
+							 method.  This is best done at creation time, to prevent accidental
+							 unsynchronized access to the list:<pre>List list = Collections.synchronizedList(new ArrayList(...));</pre>
 
-			 </p><p id="fail-fast">
-			 The iterators returned by this class's <a href="#iterator()"><code>iterator</code></a> and
-			 <span class="memberNameLink"><code>listIterator</code></span> methods are <em>fail-fast</em>:
-			 if the list is structurally modified at any time after the iterator is
-			 created, in any way except through the iterator's own
-			 <span class="memberNameLink"><code>remove</code></span> or
-			 <span class="memberNameLink"><code>add</code></span> methods, the iterator will throw a
-			 <span class="memberNameLink"><code>ConcurrentModificationException</code></span>.  Thus, in the face of
-			 concurrent modification, the iterator fails quickly and cleanly, rather
-			 than risking arbitrary, non-deterministic behavior at an undetermined
-			 time in the future.
+							 </p><p id="fail-fast">
+							 The iterators returned by this class's <a href="#iterator()"><code>iterator</code></a> and
+							 <span class="memberNameLink"><code>listIterator</code></span> methods are <em>fail-fast</em>:
+							 if the list is structurally modified at any time after the iterator is
+							 created, in any way except through the iterator's own
+							 <span class="memberNameLink"><code>remove</code></span> or
+							 <span class="memberNameLink"><code>add</code></span> methods, the iterator will throw a
+							 <span class="memberNameLink"><code>ConcurrentModificationException</code></span>.  Thus, in the face of
+							 concurrent modification, the iterator fails quickly and cleanly, rather
+							 than risking arbitrary, non-deterministic behavior at an undetermined
+							 time in the future.
 
-			 </p><p>Note that the fail-fast behavior of an iterator cannot be guaranteed
-			 as it is, generally speaking, impossible to make any hard guarantees in the
-			 presence of unsynchronized concurrent modification.  Fail-fast iterators
-			 throw <code>ConcurrentModificationException</code> on a best-effort basis.
-			 Therefore, it would be wrong to write a program that depended on this
-			 exception for its correctness:  <i>the fail-fast behavior of iterators
-			 should be used only to detect bugs.</i>
-
-			 </p><p>This class is a member of the
-			 <a>
-			 Java Collections Framework</a>.</p></div>
-			<dl>
-			<dt><span class="simpleTagLabel">Since:</span></dt>
-			<dd>1.2</dd>
-			<dt><span class="seeLabel">See Also:</span></dt>
-			<dd><span class="memberNameLink"><code>Collection</code></span>, 
-			<span class="memberNameLink"><code>List</code></span>, 
-			<span class="memberNameLink"><code>LinkedList</code></span>, 
-			<span class="memberNameLink"><code>Vector</code></span>, 
-			<span class="memberNameLink">Serialized Form</span></dd>
-			</dl>
-			</li>
-			</ul>
+							 </p><p>Note that the fail-fast behavior of an iterator cannot be guaranteed
+							 as it is, generally speaking, impossible to make any hard guarantees in the
+							 presence of unsynchronized concurrent modification.  Fail-fast iterators
+							 throw <code>ConcurrentModificationException</code> on a best-effort basis.
+							 Therefore, it would be wrong to write a program that depended on this
+							 exception for its correctness:  <i>the fail-fast behavior of iterators
+							 should be used only to detect bugs.</i>
+							 </p>
+							 <p>This class is a member of the<a>Java Collections Framework</a>.</p>
+						 </div>
+						<dl>
+							<dt><span class="simpleTagLabel">Since:</span></dt>
+							<dd>1.2</dd>
+							<dt><span class="seeLabel">See Also:</span></dt>
+							<dd><span class="memberNameLink"><code>Collection</code></span>, 
+							<span class="memberNameLink"><code>List</code></span>, 
+							<span class="memberNameLink"><code>LinkedList</code></span>, 
+							<span class="memberNameLink"><code>Vector</code></span>, 
+							<span class="memberNameLink">Serialized Form</span></dd>
+						</dl>
+					</li>
+				</ul>
 			</div>
 			<div class="summary">
 			<ul class="blockList">
