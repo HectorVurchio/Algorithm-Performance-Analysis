@@ -921,83 +921,99 @@
 			</p>
 <div>
 <pre class="java_code">
-
-package societyAperson;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import java.io.IOException;
-import java.util.ListIterator;
-import java.util.Random;
-/**
-* The Election2021 runs an application that will be used to give examples
-*  of some data structures and algorithms as well as talk about Java .
-*
-* @author  Hector Jose Vurchio Hurtado
-* @version 1.0
-* @since   2021-05-15 
-*/
-public class Election2021{
-	int n = 0;
-	Elector elector; 
-	GetFromConsole gfc;
-	StringTokenizer tzer;
-	public ArrayList<Elector> elecList;
-	/**
-    * This method is used to get the arguments that users insert through console.
-	* @exception IOException, required by tzer = gfc.readForDim() 
-	* and by elector = gfc.buffRead() to be thrown.
-    * @see IOException.
-    */
-	void getElectors()throws IOException{
-		gfc = new GetFromConsole();
-		tzer = gfc.readForDim();
-		n = Integer.parseInt(tzer.nextToken());
-		elecList = new ArrayList<Elector>(n);
-		for (int i = 0; i < n; ++i) {
-			elector = gfc.buffRead();
-			elecList.add(elector);
-		}
-	}
-	/**
-    * This method is used to print the arguments that users insert through console.
-    */
-	private void printVoters() throws ClassNotFoundException,NoSuchFieldException,
-									IllegalArgumentException, IllegalAccessException{
-		Random random = new Random();
-		int size = elecList.size();
-		int index = random.nextInt(size-1);
-		boolean empty = elecList.isEmpty();
-		if(elecList.get(index).getClass().getName() == "societyAperson.Elector"){
-			Elector elecObj = elecList.get(index);
-			Elector2021Data electObjData = new Elector2021Data(elecObj);
-			PrintResultsThree pr = new PrintResultsThree(electObjData);
-			ListIterator<Elector> iterator = elecList.listIterator();
-			while (iterator.hasNext()) {
-				elecObj = iterator.next();
-				electObjData = new Elector2021Data(elecObj);
-				pr.printObject(electObjData);
-			}
-		}else{
-			System.out.println("The Income object doesn't belong to societyAperson.Elector");
-		}			
-	}
-	
-	/**
-   * The main method that starts the program.
-   * @param args, the command line arguments which not in use.
-   * @exception IOException, required by elec2021.getElectors() and start() methods
-   * to be thrown as well as InterruptedException, also required by waitFor() method to be thrown.
-   * ClassNotFoundException is required by reflectionHeader method.
-   * @see IOException,InterruptedException, NoSuchFieldException belonging to printVoters().
-   */
-	public static void main(String[] arg)throws IOException,InterruptedException,NoSuchFieldException,IllegalArgumentException, IllegalAccessException,ClassNotFoundException{
-		Election2021 elec2021 = new Election2021();
-		elec2021.getElectors();
-		ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");//clear screen 
-		pb.inheritIO().start().waitFor(); 
-		elec2021.printVoters();
-	}
-}
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.StringTokenizer<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.ArrayList<span class="marks">;</span></code>
+<code><span class="import">import</span> java.io.IOException<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.ListIterator<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.Random<span class="marks">;</span></code>
+<code></code>
+<code><span class="comment">/**</span></code>
+<code><span class="comment">* The Election2021 runs an application that will be used to give examples</span></code>
+<code><span class="comment">* of some data structures and algorithms as well as talk about Java .</span></code>
+<code><span class="comment">*</span></code>
+<code><span class="comment">* The current class takes the input data inserted by users in the console.</span></code>
+<code><span class="comment">*</span><span class="ets"> @author </span><span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">*</span><span class="ets"> @version </span><span class="comment">1.0</span></code>
+<code><span class="comment">*</span><span class="ets"> @since </span><span class="comment">2021-05-15</span></code> 
+<code><span class="comment">*/</span></code>
+<code></code>
+<code><span class="reserved">public class</span> Election2021<span class="marks">{</span></code>
+<code>   <span class="reserved">int</span> n <span class="marks">=</span> 0<span class="marks">;</span></code>
+<code>   Elector elector<span class="marks">;</span></code>
+<code>	GetFromConsole gfc<span class="marks">;</span></code>
+<code>	StringTokenizer tzer<span class="marks">;</span></code>
+<code>	<span class="reserved">public</span> ArrayList<span class="marks">&lt;</span>Elector<span class="marks">&gt;</span> elecList<span class="marks">;</span></code>
+<code></code>
+<code>   <span class="comment">/**</span></code>
+<code>   <span class="comment">* This method is used to get the arguments that users insert through console.</span></code>
+<code>   <span class="comment">*</span><span class="ets"> @exception </span><span class="comment">IOException, required by <code>tzer = gfc.readForDim()</code></span></code>
+<code>   <span class="comment">*<span class="comment"> and by <code>elector = gfc.buffRead()</code> to be thrown.</span></code>
+<code>   <span class="comment">*</span><span class="ets"> @see </span><span class="comment"> IOException.</span></code>
+<code>   <span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">void</span> getElectors<span class="marks">(</span><span class="marks">)</span> <span class="import">throws</span> IOException<span class="marks">{</span></code>
+<code>		gfc <span class="marks">=</span> <span class="import">new</span> GetFromConsole <span class="marks">();<span></code>
+<code>		tzer <span class="marks">=</span> gfc.readForDim<span class="marks">();<span></code>
+<code>		n <span class="marks">=</span> Integer.parseInt<span class="marks">(</span>tzer.nextToken<span class="marks">());</span></code>
+<code>		elecList <span class="marks">=</span> <span class="import">new</span> ArrayList<span class="marks">&lt;</span>Elector<span class="marks">&gt;(</span>n<span class="marks">);</span></code>
+<code>      	<span class="import">for</span><span class="marks">(</span><span class="reserved">int</span> i <span class="marks">=</span><span class="import"> 0</span><span class="marks">;</span> i <span class="marks">&gt;</span> n <span class="marks">; ++</span>i<span class="marks">){</span></code>
+<code>			elector <span class="marks">=</span> gfc.buffRead<span class="marks">();</span></code>
+<code>			elecList.add<span class="marks">(</span> elector <span class="marks">);</span></code>	
+<code>		<span class="marks">}</span></code>
+<code>  <span class="marks">}</span></code>
+<code></code>
+<code>   <span class="comment">/**</span></code>
+<code>   <span class="comment">* This method is used to print the arguments that users insert through console.</span></code>
+<code>   <span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">private void</span> printVoters<span class="marks">()</span> <span class="import">throws</span> ClassNotFoundException<span class="marks">,</span></code>
+<code>	 					ClassNotFoundException<span class="marks">,</span></code>
+<code>	 					 NoSuchFieldException<span class="marks">,</span></code>
+<code>	 					  IllegalArgumentException<span class="marks">,</span></code>
+<code>	 					   IllegalAccessException<span class="marks">{</span></code>
+<code>		Random random <span class="marks">=</span> <span class="import">new</span> Rancom<span class="marks">();<span></code>
+<code>		<span class="reserved">int</span> size <span class="marks">=</span> elecList.size<span class="marks">();<span></code>
+<code>		<span class="reserved">int</span> index <span class="marks">=</span> random.nextInt<span class="marks">(</span>size<span class="marks">-</span><span class="import">1</span><span class="marks">);<span></code>
+<code>		<span class="reserved">boolean</span> empty <span class="marks">=</span> elecList.isEmpty<span class="marks">();</code>
+<code>      	<span class="import">if</span><span class="marks">(</span>elecList.get<span class="marks">(</span>index<span class="marks">)</span>.getClass<span class="marks">()</span>.getName<span class="marks">() == </span> <span class="comment">"societyAperson.Elector"</span><span class="marks">){</span></code>
+<code>			Elector elecObj <span class="marks">=</span> elecList.get<span class="marks">(</span>index<span class="marks">);</span></code>
+<code>			Elector2021Data electObjData <span class="marks">=</span> <span class="import">new </span>Elector2021Data<span class="marks">(</span>elecObj<span class="marks">);</span></code>
+<code>			PrintResultsThree pr <span class="marks">=</span> <span class="import">new </span>PrintResultsThree<span class="marks">(</span>electObjData<span class="marks">);</span></code>
+<code>			ListIterator iterator<span class="marks">&lt;</span>Elector<span class="marks">&gt;</span> iterator <span class="marks">=</span> elecList.listIterator<span class="marks">();</span></code>	
+<code>			<span class="import">while</span><span class="marks">(</span>iterator.hasNext<span class="marks">()){</span></code>
+<code>				elecObj <span class="marks">=</span> iterator.next<span class="marks">();</span></code>
+<code>				electObjData <span class="marks">=</span> <span class="import">new</span> Elector2021Data<span class="marks">(</span>elecObj<span class="marks">);</span></code>
+<code>				pr.printObject<span class="marks">(</span>electObjData<span class="marks">);</span></code>
+<code>			<span class="marks">}</span></code>		
+<code>		<span class="marks">}</span><span class="import"> else </span><span class="marks">{</span></code>
+<code>			System.out.println<span class="marks">(</span><span class="comment">"The Income object doesn't belong to societyAperson.Elector"</span><span class="marks">);</span></code>
+<code>		<span class="marks">}</span></code>
+<code>   <span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* The main method that starts the program.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @param </span><span class="comment">args, the command line arguments which not in use.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @exception </span><span class="comment">IOException, required by elec2021.getElectors() and start() methods</span></code>
+<code>	<span class="comment">* to be thrown as well as InterruptedException, also required by waitFor() method to be thrown.</span></code>
+<code>	<span class="comment">* ClassNotFoundException is required by reflectionHeader method.</span></code>
+<code>	<span class="comment">*</span><span class="ets"> @see </span><span class="comment">IOException,InterruptedException, NoSuchFieldException belonging to printVoters().</span></code> 
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public static void</span> main<span class="marks">(</span>String<span class="marks">[]</span> args<span class="marks">)</span><span class="import">throws</span> IOException<span class="marks">,</span></code>
+<code>					InterruptedException<span class="marks">,</span></code>
+<code>						NoSuchFieldException<span class="marks">,</span></code>
+<code>							IllegalArgumentException<span class="marks">,</span></code>
+<code>								IllegalAccessException<span class="marks">,</span></code>
+<code>									ClassNotFoundException<span class="marks">{</span></code>
+<code></code>
+<code>		Election2021 elec2021 <span class="marks">=</span> <span class="import">new</span> Election2021<span class="marks">()</span><span class="marks">;</span></code>
+<code>		elec2021.getElectors<span class="marks">();</span></code>
+<code>		ProcessBuilder pb <span class="marks">=</span> <span class="import">new</span> ProcessBuilder<span class="marks">(</span><span class="comment">"cmd"</span><span class="marks">,</span> <span class="comment">"/c"</span><span class="marks">,</span> <span class="comment">"cls"</span><span class="marks">);</span><span class="comment"> //clear screen</span></code>
+<code>		pb.inheritIO<span class="marks">()</span>.start<span class="marks">()</span>.waitFor<span class="marks">();</span></code>
+<code>		elec2021.printVoters<span class="marks">();</span></code>
+<code>	}</code>
+<code><span class="marks">}</span></code>
 </pre>
 </div>
 		</section>
