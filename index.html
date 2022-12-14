@@ -9,9 +9,11 @@
 	<meta name="KEYWORDS" content="Analysis of Algorithms,Algorithms,Algorithm Performance Analysis,data structures,Big O notation">
 	<meta name="DESCRIPTION" content="Algorithm Analysys explained through an example. How to get big O notation and what does actually mean">
 	<meta name="TITLE" content="Algorithm Performance Analysis">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="algo_style.css">
 	<link rel="canonical" href="https://www.hjvalue.com">
 	<meta name="ROBOTS" content="INDEX,FOLLOW">
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
 	<header>
@@ -19,433 +21,424 @@
 		<h1>Algorithm Performance Analysis</h1>
 	</header>
 	<article>
-		<section><!-- 1 -->
+		<section class="page" id="page-1"><!-- 1 -->
 			<h2>One Example of Algorithm Analysis</h2>
-			<p>
-				The main purpose of this analysis is to determine time taken of an algorithm
-				to carry on its process. Suppose for example that a presidential election period
-				is taken place in some country of the world and every elector is approaching to its
-				corresponding table for the sake of get its own data necessary to exercise the right to vote.
-			</p>
-		</section>
-		<section class="section_2"> <!-- 2 -->
-			<figure>
-			  <img id="fig-1" src="./images/pic_1.png" alt="Algorithm Performance Analysis, Voters List" style="width:100%">
-			  <figcaption>Fig.1 - Enormous Voters List.</figcaption>
-			</figure>
-			<aside>
-				<p>The entire data could be logged in memory whether in an array or in a list.
-				In this case and for example purposes, a basic data structure such as an Array 
-				will be used to store all the data, therefore querying a name like Tony Starks in 
-				the records needs write some code like this:</p>
-				<p><code>A [1586] = {18931501, Tony, Stark}.</code></p>
-				<p>And for Selina Kyle is:</p>
-				<p><code>A [3] = {13844652, Selina, Kyle}</code></p>
-				<p>All data stored in the array is sorted by the order in which every record  has been inserted. 
-					Once the elector Tony Stark get to the table where he will exercise its vote, he must insert in 
-					the software form the index corresponding to its record into the propper field, 1586 and the queried 
-					information will be:
-				</p>
-				<figure>
-				  <img id="fig-2" src="./images/pic_2.png" alt="Algorithm Performance Analysis" style="width:100%">
-				  <figcaption>Fig.2 - Data Displayed for Index 1586. </figcaption>
-				</figure>
-				<p>
-				For an elector like Peter Parker, who by introducing its index 2, the information that prompt on the screen would be:
-				</p>
-				<figure>
-					<img id="fig-3" src="./images/pic_3.png" alt="Algorithm Performance Analysis" style="width:100%">
-					<figcaption>Fig.3 - Data Displayed for Index 2. </figcaption>
-				</figure>
-			</aside>
-		</section>
-		<section class="section_2"> <!-- 3 -->
-			<aside>
-				<p>
-				In this case whichever be the elector to be consulted, the response time will be pretty much the same 
-				since the array query by index, this aimed its search direct at the memory address where the data is located.
-				</p>
-				<p>
-					When the array data query takes the same time to return no matter which record this is being searching 
-					then it could say that the information access is constant time with O(1) notation.
-				</p>
-				<p>
-					The time complexity that has been used to search for every elector in the data is of order O(1) 
-					which in turn is called constant big O notation or O(1). <span>But something comes up.</spam> The previous operation 
-					in reality has not been carried out in the way in which all of us wanted, with constant time O(1)  
-					because none of the electors know the index that points to their name and id number. For that reason 
-					an algorithm must be used in order to seek the right position of the records.
-				</p>
-			</aside>
-			<figure>
-			  <img id="fig-4" src="./images/pic_4.png" alt="Algorithm Performance Analysis, array collection" style="width:100%">
-			  <figcaption>Fig.4 - Slight Idea of an Array Collection. </figcaption>
-			</figure>
-		</section>
-		<section class="section_2"><!-- 4 -->
-			<figure>
-				 <img id="fig-5" src="./images/pic_5.png" alt="Algorithm Performance Analysis, Constant Time" style="width:100%">
-				 <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
-			</figure>
-			<aside>
-				<div class="left-code">
-					<pre class="code">
-						<code>searchElector(ID)</code>
-						<code>  n = A.length</code>
-						<code>  from I = 1 to n</code>
-						<code>  X = A[I].ID</code>
-						<code>  if(X = ID)</code>
-						<code>  Return F</code>
-						<code>Return null</code>
-					</pre>
+			<div class="content">
+				<div class="left">
+					<p>
+						The main purpose of this analysis is to determine time taken of an algorithm
+						to carry on its process. Suppose for example that a presidential election period
+						is taken place in some country of the world and every elector is approaching to its
+						corresponding table for the sake of get its own data necessary to exercise the right to vote.
+					</p>
+					<figure>
+					  <img id="fig-1" src="./images/pic_1.png" alt="Algorithm Performance Analysis, Voters List" style="width:100%">
+					  <figcaption>Fig.1 - Enormous Voters List.</figcaption>
+					</figure>
+					<p>
+						The entire data could be logged in memory whether in an array or in a list.
+						In this case and for example purposes, a basic data structure such as an Array 
+						will be used to store all the data, therefore querying a name like Tony Starks in 
+						the records needs write some code like this:
+					</p>
+					<p><code>A [1586] = {18931501, Tony, Stark}.</code></p>
+					<p>And for Selina Kyle is:</p>
+					<p><code>A [3] = {13844652, Selina, Kyle}</code></p>
+					<p>
+						All data stored in the array is sorted by the order in which every record  has been inserted. 
+						Once the elector Tony Stark get to the table where he will exercise its vote, he must insert in 
+						the software form the index corresponding to its record into the propper field, 1586 and the queried 
+						information will be:
+					</p>
+					<figure>
+					  <img id="fig-2" src="./images/pic_2.png" alt="Algorithm Performance Analysis" style="width:100%">
+					  <figcaption>Fig.2 - Data Displayed for Index 1586. </figcaption>
+					</figure>
+					<p>
+						For an elector like Peter Parker, who by introducing its index 2, the information that prompt on the screen would be:
+					</p>
+					<figure>
+						<img id="fig-3" src="./images/pic_3.png" alt="Algorithm Performance Analysis" style="width:100%">
+						<figcaption>Fig.3 - Data Displayed for Index 2. </figcaption>
+					</figure>
 				</div>
-				<div class="right-code">
-					<pre class="code">
-						<code>searchElector(13844652)</code>
-						<code>  n = 2 x 10^7</code>
-						<code>  from I = 1 to n</code>
-						<code>  X = A[I].ID</code>
-						<code>  if(X = ID)</code>
-						<code>  Return F</code>
-						<code>Return null</code>
-					</pre>
-				</div>
-			</aside>
-		</section>
-		<section><!-- 5 -->
-			<p> The cicles that algorithm search takes are:</p>
-			<ol>
-				<li><code>X = A[I].ID = A[1].ID = 15789673 </code> different from 13844652.</li>
-				<li><code>X = A[I].ID = A[2].ID = 18554251 </code> different from 13844652.</li>
-				<li><code>X = A[I].ID = A[3].ID = 13844652 </code> different from 13844652.</li>	
-			</ol>
-		</section>
-		<section class="section_2"><!-- 6 -->
-			<figure>
-				<img id="fig-6" src="./images/pic_6.png" alt="Algorithm Performance Analysis, Searching Cycles O(n)" style="width:100%">
-				<figcaption>Fig.6 - Searching Cycle of the Algorithm. </figcaption>
-			</figure>
-			<aside>
-				<p>
-					The algorithm will recover: <code>F =  [3, 13844652 ,Selina, Kyle]</code> after having  checked 
-					the rows one by one. For that activity it took a total of three cycles but if 
-					desired information is located at index 1586 then, 1586 steps must be required by 
-					the algorithm to find the result occurring the same with every row of the array.
-				</p>
-				<p>
-					No matter who the elector is in order to be consulted, the response time will be pretty much the same
-					since the array query by its index lead its search directly to memory address where the records are located.
-					this kind of search has its cycles directly proportional to the position of the row in which the data is 
-					located resulting in a linear behavior denoted with a big O(n);			
-				</p>
-			</aside>
-		</section>
-		<section> <!-- 7 -->
-			<aside>
-				<p>
-				The worst case by the usage of this algorithm is that our desired record is either absent or occupying 
-				the last position within the array which result in perform so cycles as rows exist. In our example because 
-				of how so big the data could be, the election period could finish with not even know if one person is or 
-				not in the records.
-				</p>
-				<p>
-				Now suppose that we want sort an array from smallest to largest. The set which we will operate on is:
-				</p>
-				<p><code>A = [3,5,2,4,1,6,9,8,7]</code></p>
-				<p>Let’s find an algorithm that meets our purpose, let’s say:</p>
-			</aside>
-			<div>
-				<pre class="code">
-					<code>sort(A)</code>
-					<code>  for i = 1 to A.length-1</code>
-					<code>  X = A[i]</code>
-					<code>  for j =i+1 to A.length</code>
-					<code>    if (X > A[j])</code>
-					<code>    X= A[j]</code>
-					<code>    A[j] = A[i]</code>
-					<code>    A[i] = X</code>
-				</pre>
-			</div>
-		</section>
-		<section><!-- 8 -->
-			<p>The algorithm analysis will be:</p>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>1</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>2</td><td>3</td><td>5</td><td>NO</td></tr>
-						<tr><td></td><td>3</td><td>3</td><td>2</td><td>OK</td></tr>
-						<tr><td></td><td>4</td><td>2</td><td>4</td><td>NO</td></tr>
-						<tr><td></td><td>5</td><td>2</td><td>1</td><td>OK</td></tr>
-						<tr><td></td><td>6</td><td>1</td><td>6</td><td>NO</td></tr>
-						<tr><td></td><td>7</td><td>1</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>1</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>1</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [2,5,3,4,1,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,5,3,4,2,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>8</td><td>N-1</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>2</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>3</td><td>5</td><td>3</td><td>OK</td></tr>
-						<tr><td></td><td>4</td><td>3</td><td>4</td><td>NO</td></tr>
-						<tr><td></td><td>5</td><td>3</td><td>2</td><td>OK</td></tr>
-						<tr><td></td><td>6</td><td>2</td><td>6</td><td>NO</td></tr>
-						<tr><td></td><td>7</td><td>2</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>2</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>2</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,3,5,4,2,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,5,4,3,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>7</td><td>N-2</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>3</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>4</td><td>5</td><td>4</td><td>OK</td></tr>
-						<tr><td></td><td>5</td><td>4</td><td>3</td><td>OK</td></tr>
-						<tr><td></td><td>6</td><td>3</td><td>6</td><td>NO</td></tr>
-						<tr><td></td><td>7</td><td>3</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>3</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>3</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,4,5,3,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,9,8,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>6</td><td>N-3</td></tr>
-					</table>	
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>4</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>5</td><td>4</td><td>5</td><td>NO</td></tr>
-						<tr><td></td><td>6</td><td>4</td><td>6</td><td>NO</td></tr>
-						<tr><td></td><td>7</td><td>4</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>4</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>4</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>5</td><td>N-4</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>5</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>6</td><td>5</td><td>6</td><td>NO</td></tr>
-						<tr><td></td><td>7</td><td>5</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>5</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>5</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>4</td><td>N-5</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>6</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>7</td><td>6</td><td>9</td><td>NO</td></tr>
-						<tr><td></td><td>8</td><td>6</td><td>8</td><td>NO</td></tr>
-						<tr><td></td><td>9</td><td>6</td><td>7</td><td>NO</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"></td><td>3</td><td>N-6</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>7</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>8</td><td>9</td><td>8</td><td>OK</td></tr>
-						<tr><td></td><td>9</td><td>8</td><td>7</td><td>OK</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,8,9,7]</code></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,7,9,8]</code></td><td>2</td><td>N-7</td></tr>
-					</table>
-				</div>
-			</div>
-			<div>
-				<div class="analysis-left">
-					<table class="table-left">
-						<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
-						<tr><td>8</td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td>9</td><td>9</td><td>8</td><td>OK</td></tr>
-					</table>
-				</div>
-				<div class="analysis-right">
-					<table class="table-right">
-						<tr><th>LOOPS</th></tr>
-						<tr><td class="cell-arr"></td><td></td><td></td></tr>
-						<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,7,8,9]</code></td><td>1</td><td>N-8</td></tr>
-					</table>
+				<div class="right">
+					<p>
+						In this case whichever be the elector to be consulted, the response time will be pretty much the same 
+						since the array query by index, this aimed its search direct at the memory address where the data is located.
+					</p>
+					<p>
+						When the array data query takes the same time to return no matter which record this is being searching 
+						then it could say that the information access is constant time with O(1) notation.
+					</p>
+					<p>
+						The time complexity that has been used to search for every elector in the data is of order O(1) 
+						which in turn is called constant big O notation or O(1). <span>But something comes up.</spam> The previous operation 
+						in reality has not been carried out in the way in which all of us wanted, with constant time O(1)  
+						because none of the electors know the index that points to their name and id number. For that reason 
+						an algorithm must be used in order to seek the right position of the records.
+					</p>
+					<figure>
+					  <img id="fig-4" src="./images/pic_4.png" alt="Algorithm Performance Analysis, array collection" style="width:100%">
+					  <figcaption>Fig.4 - Slight Idea of an Array Collection. </figcaption>
+					</figure>
+					<figure>
+						 <img id="fig-5" src="./images/pic_5.png" alt="Algorithm Performance Analysis, Constant Time" style="width:100%">
+						 <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
+					</figure>
+					<div class="left-code">
+<pre class="code">
+	<code>searchElector(ID)</code>
+	<code>  n = A.length</code>
+	<code>  from I = 1 to n</code>
+	<code>  X = A[I].ID</code>
+	<code>  if(X = ID)</code>
+	<code>  Return F</code>
+	<code>Return null</code>
+</pre>
+					</div>
+					<div class="right-code">
+<pre class="code">
+	<code>searchElector(13844652)</code>
+	<code>  n = 2 x 10^7</code>
+	<code>  from I = 1 to n</code>
+	<code>  X = A[I].ID</code>
+	<code>  if(X = ID)</code>
+	<code>  Return F</code>
+	<code>Return null</code>
+</pre>
+					</div>
+					
 				</div>
 			</div>
 		</section>
-		<section><!-- 9 -->
-			<p>
-			Seen the way in which the calculation was performed above, it can lead to conclude that by sorting 
-			an array of 9 elements the algorithm has to iterate <code>8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 </code> 
-			yielding a total of 36 iterations. Being N the number of elements in the array, the account would be:
-			</p>
-			<figure>
-				  <img id="fig-7" src="./images/pic_7.png" alt="Algorithm Performance Analysis, sorting serie" style="width:100%">
-				  <figcaption>Fig.7 - Sorting serie. </figcaption>
-			</figure>
-			<p>Giving as a solution:</p>
-			<figure>
-				  <img id="fig-8" src="./images/pic_8.png" alt="Algorithm Performance Analysis, sorting serie" style="width:40%">
-				  <figcaption>Fig.8 - Sorting serie. </figcaption>
-			</figure>
+		<section class="page" id="page-2"><!-- 2 -->
+			<div class="content">
+				<div class="left">
+					<p> The cicles that the algorithm takes for search are:</p>
+					<ol>
+						<li><code>X = A[I].ID = A[1].ID = 15789673 </code> different from 13844652.</li>
+						<li><code>X = A[I].ID = A[2].ID = 18554251 </code> different from 13844652.</li>
+						<li><code>X = A[I].ID = A[3].ID = 13844652 </code> different from 13844652.</li>	
+					</ol>
+					<figure>
+						<img id="fig-6" src="./images/pic_6.png" alt="Algorithm Performance Analysis, Searching Cycles O(n)" style="width:100%">
+						<figcaption>Fig.6 - Searching Cycle of the Algorithm. </figcaption>
+					</figure>
+					<p>
+						The algorithm will recover: <code>F =  [3, 13844652 ,Selina, Kyle]</code> after having  checked 
+						the rows one by one. For that activity it took a total of three cycles but if 
+						desired information is located at index 1586 then, 1586 steps must be required by 
+						the algorithm to find the result occurring the same with every row of the array.
+					</p>
+					<p>
+						No matter who the elector is in order to be consulted, the response time will be pretty much the same
+						since the array query by its index lead its search directly to memory address where the records are located.
+						this kind of search has its cycles directly proportional to the position of the row in which the data is 
+						located resulting in a linear behavior denoted with a big O(n);			
+					</p>
+					<p>
+						The worst case by the usage of this algorithm is that our desired record is either absent or occupying 
+						the last position within the array which result in perform so cycles as rows exist. In our example because 
+						of how so big the data could be, the election period could finish with not even know if one person is or 
+						not in the records.
+					</p>
+					<p>
+						Now suppose that we want sort an array from smallest to largest. The set which we will operate on is:
+					</p>
+					<p><code>A = [3,5,2,4,1,6,9,8,7]</code></p>
+					<p>Let’s find an algorithm that meets our purpose, let’s say:</p>
+				</div>
+				<div class="right">
+<pre class="code">
+	<code>sort(A)</code>
+	<code>  for i = 1 to A.length-1</code>
+	<code>  X = A[i]</code>
+	<code>  for j =i+1 to A.length</code>
+	<code>    if (X > A[j])</code>
+	<code>    X= A[j]</code>
+	<code>    A[j] = A[i]</code>
+	<code>    A[i] = X</code>
+</pre>
+					<p>The algorithm analysis will be:</p>
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>2</td><td>3</td><td>5</td><td>NO</td></tr>
+								<tr><td></td><td>3</td><td>3</td><td>2</td><td>OK</td></tr>
+								<tr><td></td><td>4</td><td>2</td><td>4</td><td>NO</td></tr>
+								<tr><td></td><td>5</td><td>2</td><td>1</td><td>OK</td></tr>
+								<tr><td></td><td>6</td><td>1</td><td>6</td><td>NO</td></tr>
+								<tr><td></td><td>7</td><td>1</td><td>9</td><td>NO</td></tr>
+								<tr><td></td><td>8</td><td>1</td><td>8</td><td>NO</td></tr>
+								<tr><td></td><td>9</td><td>1</td><td>7</td><td>NO</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [2,5,3,4,1,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,5,3,4,2,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td>8</td><td>N-1</td></tr>
+							</table>
+						</div>
+					</div>
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>3</td><td>5</td><td>3</td><td>OK</td></tr>
+								<tr><td></td><td>4</td><td>3</td><td>4</td><td>NO</td></tr>
+								<tr><td></td><td>5</td><td>3</td><td>2</td><td>OK</td></tr>
+								<tr><td></td><td>6</td><td>2</td><td>6</td><td>NO</td></tr>
+								<tr><td></td><td>7</td><td>2</td><td>9</td><td>NO</td></tr>
+								<tr><td></td><td>8</td><td>2</td><td>8</td><td>NO</td></tr>
+								<tr><td></td><td>9</td><td>2</td><td>7</td><td>NO</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,3,5,4,2,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,5,4,3,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td>7</td><td>N-2</td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
-		<section class="section_2"> <!-- 10 -->
-			<aside>
-				<p>
-				With the purpose of algorithm analysis, no matter if the equation has a lineal component in it, 
-				in this case subtracting the quadratic one, when the domain of f(n) tends to infinity the quadratic 
-				value will have a huge growth compared to the lineal one, so that just the quadratic will be taken 
-				into account resulting in a notation of big O(n2).
-				</p>
-				<p>
-				Now, let’s check our election topic, in which we have an amount of 20 million of voters what means 
-				that our algorithm has to perform a task of cycles equivalents to:
-				</p>
-				<figure>
-					  <img id="fig-10" src="./images/pic_10.png" alt="Algorithm Performance Analysis, sorting array cycles" style="width:70%">
-					  <figcaption>Fig.10 - Sorting electors array - cycles </figcaption>
-				</figure>
-				<p>
-					Having this result, we can conclude that our algorithm in extremely inefficient, therefore we have to find 
-					another way to solve our problem in order to sort an electors array with 20 millions of members. In the 
-					algorithms and data structures study, many solutions of this kind will be perfectly found approaching eventually 
-					with behaviors of type f(n) =  log(n), function that growth slowly when its domain tends to infinity.
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-9" src="./images/pic_9.png" alt="Algorithm Performance Analysis, cycles O(n2)" style="width:100%">
-				  <figcaption>Fig.9 - Cycles of sorting algorithms </figcaption>
-			</figure>
+		<section class="page" id="page-3"><!-- 3 -->
+			<div class="content">
+				<div class="left">
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>4</td><td>5</td><td>4</td><td>OK</td></tr>
+								<tr><td></td><td>5</td><td>4</td><td>3</td><td>OK</td></tr>
+								<tr><td></td><td>6</td><td>3</td><td>6</td><td>NO</td></tr>
+								<tr><td></td><td>7</td><td>3</td><td>9</td><td>NO</td></tr>
+								<tr><td></td><td>8</td><td>3</td><td>8</td><td>NO</td></tr>
+								<tr><td></td><td>9</td><td>3</td><td>7</td><td>NO</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,4,5,3,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,9,8,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td>6</td><td>N-3</td></tr>
+							</table>	
+						</div>
+					</div>
+					<div class="tableset">
+							<div class="analysis-left">
+								<table class="table-left">
+									<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+									<tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+									<tr><td></td><td>5</td><td>4</td><td>5</td><td>NO</td></tr>
+									<tr><td></td><td>6</td><td>4</td><td>6</td><td>NO</td></tr>
+									<tr><td></td><td>7</td><td>4</td><td>9</td><td>NO</td></tr>
+									<tr><td></td><td>8</td><td>4</td><td>8</td><td>NO</td></tr>
+									<tr><td></td><td>9</td><td>4</td><td>7</td><td>NO</td></tr>
+								</table>
+							</div>
+							<div class="analysis-right">
+								<table class="table-right">
+									<tr><th>LOOPS</th></tr>
+									<tr><td class="cell-arr"></td><td></td><td></td></tr>
+									<tr><td class="cell-arr"></td><td></td><td></td></tr>
+									<tr><td class="cell-arr"></td><td></td><td></td></tr>
+									<tr><td class="cell-arr"></td><td></td><td></td></tr>
+									<tr><td class="cell-arr"></td><td></td><td></td></tr>
+									<tr><td class="cell-arr"></td><td>5</td><td>N-4</td></tr>
+								</table>
+							</div>
+					</div>
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>6</td><td>5</td><td>6</td><td>NO</td></tr>
+								<tr><td></td><td>7</td><td>5</td><td>9</td><td>NO</td></tr>
+								<tr><td></td><td>8</td><td>5</td><td>8</td><td>NO</td></tr>
+								<tr><td></td><td>9</td><td>5</td><td>7</td><td>NO</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td>4</td><td>N-5</td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="right">
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>7</td><td>6</td><td>9</td><td>NO</td></tr>
+								<tr><td></td><td>8</td><td>6</td><td>8</td><td>NO</td></tr>
+								<tr><td></td><td>9</td><td>6</td><td>7</td><td>NO</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"></td><td>3</td><td>N-6</td></tr>
+							</table>
+						</div>
+					</div>
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>8</td><td>9</td><td>8</td><td>OK</td></tr>
+								<tr><td></td><td>9</td><td>8</td><td>7</td><td>OK</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,8,9,7]</code></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,7,9,8]</code></td><td>2</td><td>N-7</td></tr>
+							</table>
+						</div>
+					</div>
+					<div class="tableset">
+						<div class="analysis-left">
+							<table class="table-left">
+								<tr><th>I</th><th>J</th><th>K</th><th>A[J]</th><th>X>A[J]</th></tr>
+								<tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td>9</td><td>9</td><td>8</td><td>OK</td></tr>
+							</table>
+						</div>
+						<div class="analysis-right">
+							<table class="table-right">
+								<tr><th>LOOPS</th></tr>
+								<tr><td class="cell-arr"></td><td></td><td></td></tr>
+								<tr><td class="cell-arr"><code>A = [1,2,3,4,5,6,7,8,9]</code></td><td>1</td><td>N-8</td></tr>
+							</table>
+						</div>
+					</div>
+					<p>
+						Seen the way in which the calculation was performed above, it can lead to conclude that by sorting 
+						an array of 9 elements the algorithm has to iterate <code>8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 </code> 
+						yielding a total of 36 iterations. Being N the number of elements in the array, the account would be:
+					</p>
+					<figure>
+						  <img id="fig-7" src="./images/pic_7.png" alt="Algorithm Performance Analysis, sorting serie" style="width:100%">
+						  <figcaption>Fig.7 - Sorting serie. </figcaption>
+					</figure>
+					<p>Giving as a solution:</p>
+					<figure>
+						  <img id="fig-8" src="./images/pic_8.png" alt="Algorithm Performance Analysis, sorting serie" style="width:40%">
+						  <figcaption>Fig.8 - Sorting serie. </figcaption>
+					</figure>
+					<p>
+						With the purpose of algorithm analysis, no matter if the equation has a lineal component in it, 
+						in this case subtracting the quadratic one, when the domain of f(n) tends to infinity the quadratic 
+						value will have a huge growth compared to the lineal one, so that just the quadratic will be taken 
+						into account resulting in a notation of big O(n2).
+					</p>
+					
+				</div>
+			</div>
 		</section>
-		<section> <!-- 11 -->
-			<aside>
-				<p>
-					Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
-					mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
-					and higher which point to a not desirable performance.  
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-11" src="./images/pic_11.png" alt="Algorithm Performance Analysis, cycles" style="width:100%">
-				  <figcaption>Fig.11 - Amount of cycles </figcaption>
-			</figure>
+		<section class="page" id="page-4"><!-- 4 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						Now, let’s check our election topic, in which we have an amount of 20 million of voters what means 
+						that our algorithm has to perform a task of cycles equivalents to:
+					</p>
+					<figure>
+						  <img id="fig-10" src="./images/pic_10.png" alt="Algorithm Performance Analysis, sorting array cycles" style="width:70%">
+						  <figcaption>Fig.10 - Sorting electors array - cycles </figcaption>
+					</figure>
+					<p>
+						Having this result, we can conclude that our algorithm in extremely inefficient, therefore we have to find 
+						another way to solve our problem in order to sort an electors array with 20 millions of members. In the 
+						algorithms and data structures study, many solutions of this kind will be perfectly found approaching eventually 
+						with behaviors of type f(n) =  log(n), function that growth slowly when its domain tends to infinity.
+					</p>
+					<figure>
+						  <img id="fig-9" src="./images/pic_9.png" alt="Algorithm Performance Analysis, cycles O(n2)" style="width:100%">
+						  <figcaption>Fig.9 - Cycles of sorting algorithms </figcaption>
+					</figure>
+					<p>
+						Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
+						mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
+						and higher which point to a not desirable performance.  
+					</p>
+					<figure>
+						  <img id="fig-11" src="./images/pic_11.png" alt="Algorithm Performance Analysis, cycles" style="width:100%">
+						  <figcaption>Fig.11 - Amount of cycles </figcaption>
+					</figure>
+				</div>
+				<div class="right">
+					<h2>Java Class for Electors in the Algorithm Performance Analysis.</h2>
+					<p>
+						In order to keep going with the algorithm analysis above, it is necessary an object creation so that the electors
+						id, name, last name could be set and why not his/her birth date, gender, voting status, voting date and time, 
+						the political party of which him/her support, and a field where an event name such as 
+						“Mega Elections 2021 Great Day” we can put in. All these data for each voter is going to be saved in a 
+						cluster (object), then after this operation will be collected one by one of the object in an array, ArrayList or LinkedList.
+					</p>
+					<p>
+						Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
+						mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
+						and higher which point to a not desirable performance.  
+					</p>
+					<figure>
+						  <img id="fig-12" src="./images/pic_12.png" alt="Elector Object Collection" style="width:100%">
+						  <figcaption>Fig.12 - Elector Object Collection </figcaption>
+					</figure>
+					<p>
+						The first thing we need is get all the information of every voter from the source. Even though the following
+						practice is far away of what it is, let’s say for the purpose of this post the whole data is inserted through
+						the console and there are people adding it in the back. We need also write some code, but how could we start it?
+						First, we need a class that allows us to collect all the information from the console, some kind of 
+						“GetFromConsole” Class by which the following code will be written:
+					</p>
+				</div>
+			</div>
 		</section>
-		<section><!-- 12 -->
-			<h2>Java Class for Electors in the Algorithm Performance Analysis.</h2>
-			<p>
-				In order to keep going with the algorithm analysis above, it is necessary an object creation so that the electors
-				id, name, last name could be set and why not his/her birth date, gender, voting status, voting date and time, 
-				the political party of which him/her support, and a field where an event name such as 
-				“Mega Elections 2021 Great Day” we can put in. All these data for each voter is going to be saved in a 
-				cluster (object), then after this operation will be collected one by one of the object in an array, ArrayList or LinkedList.
-			</p>
-		</section>
-		<section> <!-- 13 -->
-			<aside>
-				<p>
-					Big O notation is an indicator that provide us an idea of the algorithm performance and so, when someone 
-					mention an algorithm of type O(1) we can think of a good performance unlike the kind of algorithms O(n2) 
-					and higher which point to a not desirable performance.  
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-12" src="./images/pic_12.png" alt="Elector Object Collection" style="width:100%">
-				  <figcaption>Fig.12 - Elector Object Collection </figcaption>
-			</figure>
-		</section>
-		<section><!-- 14 -->
-			<p>
-				The first thing we need is get all the information of every voter from the source. Even though the following
-				practice is far away of what it is, let’s say for the purpose of this post the whole data is inserted through
-				the console and there are people adding it in the back. We need also write some code, but how could we start it?
-				First, we need a class that allows us to collect all the information from the console, some kind of 
-				“GetFromConsole” Class by which the following code will be written:
-
-			</p>
-		</section>
-		<section>
-<div>
+		<section class="page" id="page-5"><!-- 5 -->
+			<div class="content">
+				<div class="left">
 <pre class="java_code">
 <code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
 <code><span class="import">import</span> java.io.Console<span class="marks">;</span></code>
@@ -530,155 +523,156 @@
 <code>		<span class="import">return</span> elector<span class="marks">;</span></code>
 <code>	<span class="marks">}</span></code>
 <code><span class="marks">}</span></code>
-</pre>
-</div>
-		</section>
-		<section class="section_3"><!-- 15 -->
-			<aside>
-				<p>
-					Let’s construct the code above step by step naming our Java class “GetFromConsole” and so collect 
-					all data provided manually by the operator who is the alleged person in charge of insert it in the 
-					console giving at first the number of lines to be processed and then the lines that contain all the 
-					information of the voters.
-				</p>
-				<p>
-					Within the GetFromConsole class is required some method which allows read line by line, then word by word. 
-					For the first, exist in Java language a built-in class named BufferReader and inside this, a method 
-					called readLine(). So, checking the Java API for the class BufferReader we can see two constructors:
-				</p>
-			</aside>
-			<div class="elector-table-zone">
-				<table class="elector-data">
-					<tr><td class="col-1">12</td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td></tr>
-					<tr><td class="col-1">15789673</td><td class="col-2">Bruce</td><td class="col-3">Wayne</td><td class="col-4">m</td><td class="col-5">1950-01-04</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">11:55:37</td></tr>
-					<tr><td class="col-1">18554251</td><td class="col-2">Peter</td><td class="col-3">Parker</td><td class="col-4">m</td><td class="col-5">1960-08-24</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
-					<tr><td class="col-1">13844652</td><td class="col-2">Selina</td><td class="col-3">Kyle</td><td class="col-4">f</td><td class="col-5">1991-03-05</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">15:53:17</td></tr>
-					<tr><td class="col-1">00000008</td><td class="col-2">Barbara</td><td class="col-3">Gordon</td><td class="col-4">f</td><td class="col-5">1985-05-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">08:44:16</td></tr>
-					<tr><td class="col-1">00125252</td><td class="col-2">Jesica</td><td class="col-3">Drew</td><td class="col-4">f</td><td class="col-5">1981-10-18</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
-					<tr><td class="col-1">00005874</td><td class="col-2">Felicia</td><td class="col-3">Hardy</td><td class="col-4">f</td><td class="col-5">1998-11-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:27:03</td></tr>
-					<tr><td class="col-1">10987432</td><td class="col-2">Steve</td><td class="col-3">Rogers</td><td class="col-4">m</td><td class="col-5">1989-02-04</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:01:23</td></tr>
-					<tr><td class="col-1">18931501</td><td class="col-2">Tony</td><td class="col-3">Stark</td><td class="col-4">m</td><td class="col-5">1970-02-14</td><td class="col-6">Right_Wing_party</td><td class="col-7">y</td><td class="col-8">14:17:09</td></tr>
-					<tr><td class="col-1">19999999</td><td class="col-2">Janet</td><td class="col-3">VanDyne</td><td class="col-4">f</td><td class="col-5">1975-06-16</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
-					<tr><td class="col-1">00060552</td><td class="col-2">Bruce</td><td class="col-3">Banner</td><td class="col-4">m</td><td class="col-5">1983-05-19</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">13:44:28</td></tr>
-					<tr><td class="col-1">00897456</td><td class="col-2">Carol</td><td class="col-3">Danvers</td><td class="col-4">f</td><td class="col-5">1990-04-19</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
-					<tr><td class="col-1">00000465</td><td class="col-2">Clark</td><td class="col-3">Kent</td><td class="col-4">m</td><td class="col-5">1960-12-22</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">14:25:02</td></tr>
-				</table>
+</pre>				
+					<p>
+						Let’s construct the code above step by step naming our Java class “GetFromConsole” and so collect 
+						all data provided manually by the operator who is the alleged person in charge of insert it in the 
+						console giving at first the number of lines to be processed and then the lines that contain all the 
+						information of the voters.
+					</p>
+					<p>
+						Within the GetFromConsole class is required some method which allows read line by line, then word by word. 
+						For the first, exist in Java language a built-in class named BufferReader and inside this, a method 
+						called readLine(). So, checking the Java API for the class BufferReader we can see two constructors:
+					</p>
+				</div>
+				<div class="right">
+					<div class="elector-table-zone">
+						<table class="elector-data">
+							<tr><td class="col-1">12</td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td></tr>
+							<tr><td class="col-1">15789673</td><td class="col-2">Bruce</td><td class="col-3">Wayne</td><td class="col-4">m</td><td class="col-5">1950-01-04</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">11:55:37</td></tr>
+							<tr><td class="col-1">18554251</td><td class="col-2">Peter</td><td class="col-3">Parker</td><td class="col-4">m</td><td class="col-5">1960-08-24</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+							<tr><td class="col-1">13844652</td><td class="col-2">Selina</td><td class="col-3">Kyle</td><td class="col-4">f</td><td class="col-5">1991-03-05</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">15:53:17</td></tr>
+							<tr><td class="col-1">00000008</td><td class="col-2">Barbara</td><td class="col-3">Gordon</td><td class="col-4">f</td><td class="col-5">1985-05-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">08:44:16</td></tr>
+							<tr><td class="col-1">00125252</td><td class="col-2">Jesica</td><td class="col-3">Drew</td><td class="col-4">f</td><td class="col-5">1981-10-18</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+							<tr><td class="col-1">00005874</td><td class="col-2">Felicia</td><td class="col-3">Hardy</td><td class="col-4">f</td><td class="col-5">1998-11-18</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:27:03</td></tr>
+							<tr><td class="col-1">10987432</td><td class="col-2">Steve</td><td class="col-3">Rogers</td><td class="col-4">m</td><td class="col-5">1989-02-04</td><td class="col-6">Green_party</td><td class="col-7">y</td><td class="col-8">11:01:23</td></tr>
+							<tr><td class="col-1">18931501</td><td class="col-2">Tony</td><td class="col-3">Stark</td><td class="col-4">m</td><td class="col-5">1970-02-14</td><td class="col-6">Right_Wing_party</td><td class="col-7">y</td><td class="col-8">14:17:09</td></tr>
+							<tr><td class="col-1">19999999</td><td class="col-2">Janet</td><td class="col-3">VanDyne</td><td class="col-4">f</td><td class="col-5">1975-06-16</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+							<tr><td class="col-1">00060552</td><td class="col-2">Bruce</td><td class="col-3">Banner</td><td class="col-4">m</td><td class="col-5">1983-05-19</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">13:44:28</td></tr>
+							<tr><td class="col-1">00897456</td><td class="col-2">Carol</td><td class="col-3">Danvers</td><td class="col-4">f</td><td class="col-5">1990-04-19</td><td class="col-6">Right_Wing_party</td><td class="col-7">n</td><td class="col-8"></td></tr>
+							<tr><td class="col-1">00000465</td><td class="col-2">Clark</td><td class="col-3">Kent</td><td class="col-4">m</td><td class="col-5">1960-12-22</td><td class="col-6">Comunist_Party</td><td class="col-7">y</td><td class="col-8">14:25:02</td></tr>
+						</table>
+					</div>
+					<figure>
+						<!--<img id="fig-13" src="./images/pic_13.png" alt="Java API for the class BufferReader" style="width:100%">-->
+						<iframe src="./JavaClassAPI/BufferedReader.html" style="width:100%;height:600px;" title="Java API for the class BufferReader"></iframe>
+						<figcaption>Fig.13 - Java API for the class BufferReader.  <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/BufferedReader.html">Source</a></figcaption>
+					</figure>
+					<div><img  id="fig-14" src="./images/pic_14.png" alt="method" style="width:100%"></div>
+					<p>
+						The first constructor uses a parameter in from Reader class, so, let’s check the Reader class in order
+						to see how we could instantiate an object from such class:
+					</p>
+				</div>
 			</div>
 		</section>
-		<section class="section_2"><!-- 16 -->
-			<figure>
-				<!--<img id="fig-13" src="./images/pic_13.png" alt="Java API for the class BufferReader" style="width:100%">-->
-				<iframe src="./JavaClassAPI/BufferedReader.html" style="width:100%;height:600px;" title="Java API for the class BufferReader"></iframe>
-				<figcaption>Fig.13 - Java API for the class BufferReader.  <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/BufferedReader.html">Source</a></figcaption>
-			</figure>
-			<aside>
-				<div><img  id="fig-14" src="./images/pic_14.png" alt="method" style="width:100%"></div>
-				<p>
-					The first constructor uses a parameter in from Reader class, so, let’s check the Reader class in order
-					to see how we could instantiate an object from such class:
-				</p>
-				<div><img  id="fig-15" src="./images/pic_15.png" alt="method" style="width:100%"></div>
-				<p>
-					This is an abstract class, that means it cannot be instantiated, so we have to take a look if within 
-					there is some Static Reader class method. 
-				</p>
-			</aside>
-		</section>
-		<section><!-- 17 -->
-			<figure>
-				<img id="fig-16" src="./images/pic_16.png" alt="Java API some methods of BufferReader class" style="width:100%">
-				<figcaption>Fig.13 - Java API for the class BufferReader. </figcaption>
-			</figure>
-			<aside>
-				<p>
-					The reader object above is the only methods of a class Reader that is static and returns a Read class 
-					object but reads no characters. It doesn’t seem a good choice making us keep searching for another way 
-					to get an object of type Read since it could not be from this class.
-				</p>
-			</aside>
-		</section>
-		<section class="section_2"><!-- 18 -->
-			<figure>
-				<p>The next class will be:</p>
-				<img id="fig-17" src="./images/pic_17.png" alt="Java API for the class Console" style="width:100%">
-				<figcaption>Fig.17 - Java API for the class Console. </figcaption>
-			</figure>
-			<aside>
-				<p>
-					This is a Java built in class which is used to work with the console. A final class is the one 
-					that does not allow to be subclassed. From here on will not have more children classes. Let us 
-					examine if within this class there is a method such that we could achieve the Read object:
-				</p>
-				<div><img  id="fig-18" src="./images/pic_18.png" alt="method" style="width:100%"></div>
-				<p>
-					This method retrieves the unique Reader object associated with this console.
-				</p>
-			</aside>
-		</section>
-		<section> <!-- 19 -->
-			<aside>
-				<p>
-					Ok, but we still need a Console object to instantiate the Read class. In the Java API for the 
-					Console class there is an explanation where is instantiated the Console object from a method 
-					in the System class. 
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-19" src="./images/pic_19.png" alt="Console object from a method in the System class" style="width:100%">
-				  <figcaption>Fig.19 - Console object from a method in the System class. </figcaption>
-			</figure>
-		</section>
-		<section> <!-- 20 -->
-			<aside>
-				<p>
-					Looking at System class in the Java API:
-				</p>
-			</aside>
-			<figure>
-				  <!--<img id="fig-20" src="./images/pic_20.png" alt="Class System in the Java API" style="width:100%">-->
-				  <iframe src="./JavaClassAPI/System.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
-				  <figcaption>Fig.20 - Class System in the Java API. <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html"> Source</a></figcaption>
-			</figure>
-		</section>
-		<section> <!-- 21 -->
-			<aside>
-				<p>
-					static Console console() returns the unique console object associated with the current Java virtual 
-					machine, if any. With the last three object we already have, we proceed to build our code as follows:
-				</p>
-				<p><code>Console console = System.console();</code> //our object Console</p>
-				<p><code>Reader reader = console.Reader();</code></p>
-				<p><code>BufferReader br = new BufferReader(reader);</code>// at last our object BufferReader.</p>
-				<p>
-					From the BufferReader we get the <code>readLine()</code>methods that returns an String object. 
-					Moreover, we need the line read word by word by which one suitable class would be StringTokenizer 
-					class. The string tokenizer class allows an application to break a string into tokens.
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-21" src="./images/pic_21.png" alt="Class StringTokenizer in the Java API." style="width:100%">
-				  <figcaption>Fig.21 - Class StringTokenizer in the Java API. </figcaption>
-			</figure>
-		</section><!-- 22 -->
-		<section>
-			<p>
-				Recapping the code we are constructing by wrapping the StringTokenizer object with the method from 
-				<code>BufferReader readLine()</code> (returns an String):
-			</p>
-			<div>
-				<code>Console console = System.console();</code><br/>
-				<code>Reader reader = console.Reader();</code><br/>
-				<code>BufferReader br = new BufferReader(reader);</code><br/>
-				<code>StringTokenizer tzer = new StringTokenizer(br.readLine()); // StringTokenizer already instantiated with the object name tzer.</code><br/>
+		<section class="page" id="page-6"><!-- 6 -->
+			<div class="content">
+				<div class="left">
+					<figure>
+						<iframe src="./JavaClassAPI/Reader.html" style="width:100%;height:600px;" title="Class Reader in the Java API"></iframe>
+						<figcaption>Fig.14 - Java API for the class Reader. <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/Reader.html">Source</a></figcaption>
+					</figure>
+					<p>
+						This is an abstract class, that means it cannot be instantiated, so we have to take a look if within 
+						there is some Static Reader class method. 
+					</p>
+					<figure>
+						<img id="fig-16" src="./images/pic_16.png" alt="Java API some methods of BufferReader class" style="width:100%">
+						<figcaption>Fig.15 - Java API for the class BufferReader. </figcaption>
+					</figure>
+					<p>
+						The reader object above is the only methods of a class Reader that is static and returns a Read class 
+						object but reads no characters. It doesn’t seem a good choice making us keep searching for another way 
+						to get an object of type Read since it could not be from this class.
+					</p>
+					<p>The next class will be:</p>
+				</div>
+				<div class="right">
+					<figure>
+						<!--<img id="fig-17" src="./images/pic_17.png" alt="Java API for the class Console" style="width:100%">-->
+						<iframe src="./JavaClassAPI/Console.html" style="width:100%;height:600px;" title="Java API for the class Console"></iframe>
+						<figcaption>Fig.17 - Java API for the class Console. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Console.html">Source</a></figcaption>
+					</figure>
+					<p>
+						This is a Java built in class which is used to work with the console. A final class is the one 
+						that does not allow to be subclassed. From here on will not have more children classes. Let us 
+						examine if within this class there is a method such that we could achieve the Read object:
+					</p>
+					<figure>
+						<!--<img id="fig-17" src="./images/pic_17.png" alt="Java API for the class Console" style="width:100%">-->
+						<img  id="fig-18" src="./images/pic_18.png" alt="method" style="width:100%">
+						<figcaption>Fig.18 - Java reader() method of type Reader.</figcaption>
+					</figure>
+					<p>
+						This method retrieves the unique Reader object associated with this console.
+					</p>
+				</div>
+				
 			</div>
-			<p>
-				With the code above, we continue by encapsulate it inside a method named <code>readForDim()</code> which 
-				will returns an object of type StringTokenizer being at the same time  located within the class GetFromConsole in the subsequent manner:
-			</p>
 		</section>
-		<section><!-- 23 -->
-<div>
-<pre class="java_code">
+		<section class="page" id="page-7"><!-- 7 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						Ok, but we still need a Console object to instantiate the Read class. In the Java API for the 
+						Console class there is an explanation where is instantiated the Console object from a method 
+						in the System class. 
+					</p>
+					<figure>
+						  <img id="fig-19" src="./images/pic_19.png" alt="Console object from a method in the System class" style="width:100%">
+						  <figcaption>Fig.19 - Console object from a method in the System class. </figcaption>
+					</figure>
+					<p>
+						Looking at System class in the Java API:
+					</p>
+					<figure>
+						  <!--<img id="fig-20" src="./images/pic_20.png" alt="Class System in the Java API" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/System.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
+						  <figcaption>Fig.20 - Class System in the Java API. <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html"> Source</a></figcaption>
+					</figure>
+					<p>
+						static Console console() returns the unique console object associated with the current Java virtual 
+						machine, if any. With the last three object we already have, we proceed to build our code as follows:
+					</p>
+				</div>
+				<div class="right">
+					<p><code>Console console = System.console(); //our object Console</code></p>
+					<p><code>Reader reader = console.Reader();</code></p>
+					<p><code>BufferReader br = new BufferReader(reader); // at last our object BufferReader</code></p>
+					<p>
+						From the BufferReader we get the <code>readLine()</code>methods that returns an String object. 
+						Moreover, we need the line read word by word by which one suitable class would be StringTokenizer 
+						class. The string tokenizer class allows an application to break a string into tokens.
+					</p>
+					<figure>
+						  <!--<img id="fig-21" src="./images/pic_21.png" alt="Class StringTokenizer in the Java API." style="width:100%">-->
+						  <iframe src="./JavaClassAPI/StringTokenizer.html" style="width:100%;height:600px;" title="Class StringTokenizer in the Java API"></iframe>
+						  <figcaption>Fig.21 - Class StringTokenizer in the Java API. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringTokenizer.html">Source</a></figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+		
+		<section class="page" id="page-8"><!-- 8 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						Recapping the code we are constructing by wrapping the StringTokenizer object with the method from 
+						<code>BufferReader readLine()</code> (returns an String):
+					</p>
+					<div>
+						<code>Console console = System.console();</code><br/>
+						<code>Reader reader = console.Reader();</code><br/>
+						<code>BufferReader br = new BufferReader(reader);</code><br/>
+						<code>StringTokenizer tzer = new StringTokenizer(br.readLine()); // StringTokenizer already instantiated with the object name tzer.</code><br/>
+					</div>
+					<p>
+						With the code above, we continue by encapsulate it inside a method named <code>readForDim()</code> which 
+						will returns an object of type StringTokenizer being at the same time  located within the class GetFromConsole in the subsequent manner:
+					</p>
+<pre class="java_code java2">
 <code>	<span class="reserved">public</span> StringTokenizer readForDim<span class="marks">()</span><span class="import">throws</span> IOException<span class="marks">{</span></code>
 <code>		console <span class="marks">=</span> System.console<span class="marks">();</span></code>
 <code>		reader <span class="marks">=</span> console.reader<span class="marks">();</span></code>
@@ -687,14 +681,10 @@
 <code>		<span class="import">return</span> tzer<span class="marks">;</span></code>
 <code>	<span class="marks">}</span></code>
 </pre>
-</div>
-		</section>
-		<section><!-- 24 -->
-			<p>
-				The fields console, reader and br have been written as a global fields of <code>GetFromConsole</code> class.
-			</p>
-<div>
-<pre class="java_code">
+					<p>
+						The fields console, reader and br have been written as a global fields of <code>GetFromConsole</code> class.
+					</p>
+<pre class="java_code java3">
 <code><span class="reserved">class</span> GetFromConsole<span class="marks">{</span></code>
 <code>  <span class="reserved">private</span> Console console<span class="marks">;</span></code>
 <code>  <span class="reserved">private</span> Reader reader<span class="marks">;</span></code>
@@ -711,45 +701,33 @@
 <code></code>
 <code></code>
 </pre>
-</div>
-		</section>
-		<section><!-- 25 -->
-			<aside>
 				<p>
 					The method readForDim() must handle an IOException because is mandatory for the method stringLine() from the BufferReader class encapsulated inside as we can look over 
 					the Java API documentation at BufferReader class section:
 				</p>
-			</aside>
-			<figure>
-				  <img id="fig-22" src="./images/pic_22.png" alt="Class BufferedReader in the Java API." style="width:100%">
-				  <figcaption>Fig.22 - Class BufferedReader in the Java API. </figcaption>
-			</figure>
-		</section>
-		<section><!-- 26 -->
-			<aside>
-				<p>
-					Failure to meet this requirement lead to have compile-time exception consequences.
-				</p>
-			</aside>
-			<figure>
-				  <img id="fig-23" src="./images/pic_23.png" alt="compile-time exception" style="width:100%">
-				  <figcaption>Fig.23 - compile-time exception. </figcaption>
-			</figure>
-		</section>
-		<section><!-- 27 -->
-					<div>
-						<p>
-							The method we already built is able to read a line inserted from the console and process 
-							it as an object StringTokenizer so that we can apply all the available methods and fields 
-							of this class, being nextToken() and  hasMoreTokens() some of them. The next step is to create
-							a method inside the getFromConsole class which returns from the second line on an object 
-							with all the information of every elector. This object belongs to the Elector class, class 
-							that we have still not mentioned but we must construct later to store the voter data. 
-							The code of elector will be shown now below but will be explained later on:
-						</p>
-					</div>
-<div>
-<pre class="java_code">
+				</div>
+				<div class="right">
+					<figure>
+						  <img id="fig-22" src="./images/pic_22.png" alt="Class BufferedReader in the Java API." style="width:100%">
+						  <figcaption>Fig.22 - Class BufferedReader in the Java API. </figcaption>
+					</figure>
+					<p>
+						Failure to meet this requirement lead to have compile-time exception consequences.
+					</p>
+					<figure>
+						  <img id="fig-23" src="./images/pic_23.png" alt="compile-time exception" style="width:100%">
+						  <figcaption>Fig.23 - compile-time exception. </figcaption>
+					</figure>
+					<p>
+						The method we already built is able to read a line inserted from the console and process 
+						it as an object StringTokenizer so that we can apply all the available methods and fields 
+						of this class, being nextToken() and  hasMoreTokens() some of them. The next step is to create
+						a method inside the getFromConsole class which returns from the second line on an object 
+						with all the information of every elector. This object belongs to the Elector class, class 
+						that we have still not mentioned but we must construct later to store the voter data. 
+						The code of elector will be shown now below but will be explained later on:
+					</p>
+<pre class="java_code java4">
 <code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
 <code><span class="import">import</span> import java.time.LocalDate<span class="marks">;</span></code>
 <code><span class="import">import</span> import java.time.LocalTime<span class="marks">;</span></code>
@@ -834,19 +812,20 @@
 <code>	<span class="reserved">public</span> String getParty<span class="marks">(){</span><span class="import">return this.</span>party<span class="marks">;}</span></code>
 <code><span class="marks">}</span></code>
 </pre>
-</div>
-		</section>
-		<section><!-- 28 -->
-			<div>
-				<p>
-					Every elector is a citizen from some country, state or city but not all citizens have the privilege 
-					of voting whether because is underage or convict or any other reason. That’s why Elector is a sub 
-					class of Citizen class which we have to build, also with the purpose of talk about the inheritance 
-					for the object-oriented programming.
-				</p>
+				</div>
 			</div>
-<div>
-<pre class="java_code">
+		</section>
+		
+		<section class="page" id="page-9"><!-- 9 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						Every elector is a citizen from some country, state or city but not all citizens have the privilege 
+						of voting whether because is underage or convict or any other reason. That’s why Elector is a sub 
+						class of Citizen class which we have to build, also with the purpose of talk about the inheritance 
+						for the object-oriented programming.
+					</p>
+<pre class="java_code java5">
 <code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
 <code><span class="import">import</span> import java.time.LocalDate<span class="marks">;</span></code>
 <code></code>
@@ -896,31 +875,27 @@
 <code>	<span class="reserved">protected</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this.</span>citizenId.citizenId.getBirthCertificate<span class="marks">()</span>.getPlaceOfBirth<span class="marks">();}</span></code>
 <code><span class="marks">}</span></code>
 </pre>
-</div>
-		</section>
-		<section><!-- 29 -->
-			<p>
-				The first thing we can observe in <code>GetFromConsole.java</code> class is that we are using the 
-				<code>readForDim()</code> method created before to get an StringTokenizer object named tzer with 
-				which we will invoke the <code>nextToken()</code> method to get word by word of a line and 
-				<code>hasMoreTokens()</code> method that reply us if there is another word in the text line. Each 
-				word (token) must be inserted as appropriate inside the class Elector which in turn will be stored 
-				in an object collection as an array or an array List.
-			</p>
-			<figure>
-				  <img id="fig-24" src="./images/pic_24.png" alt="StringTokenizer cycle" style="width:100%">
-				  <figcaption>Fig.24 - StringTokenizer cycle. </figcaption>
-			</figure>
-		</section>
-		<section><!-- 30 -->
-			<p>
-				So far, we have done the class that get the input data from the console and process it. Now the class 
-				that works as an engine to set in motion from the input to the object storage will be called Election2021. 
-				This class holds the Java main method, another method whose function get the amount of lines to be processed
-				and of course get the lines of data.
-			</p>
-<div>
-<pre class="java_code">
+					<p>
+						The first thing we can observe in <code>GetFromConsole.java</code> class is that we are using the 
+						<code>readForDim()</code> method created before to get an StringTokenizer object named tzer with 
+						which we will invoke the <code>nextToken()</code> method to get word by word of a line and 
+						<code>hasMoreTokens()</code> method that reply us if there is another word in the text line. Each 
+						word (token) must be inserted as appropriate inside the class Elector which in turn will be stored 
+						in an object collection as an array or an array List.
+					</p>
+				</div>
+				<div class="right">
+				<figure>
+					  <img id="fig-24" src="./images/pic_24.png" alt="StringTokenizer cycle" style="width:100%">
+					  <figcaption>Fig.24 - StringTokenizer cycle. </figcaption>
+				</figure>
+				<p>
+					So far, we have done the class that get the input data from the console and process it. Now the class 
+					that works as an engine to set in motion from the input to the object storage will be called Election2021. 
+					This class holds the Java main method, another method whose function get the amount of lines to be processed
+					and of course get the lines of data.
+				</p>
+<pre class="java_code java6">
 <code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
 <code><span class="import">import</span> java.util.StringTokenizer<span class="marks">;</span></code>
 <code><span class="import">import</span> java.util.ArrayList<span class="marks">;</span></code>
@@ -1015,26 +990,34 @@
 <code>	}</code>
 <code><span class="marks">}</span></code>
 </pre>
-</div>
-		</section>
-		<section><!-- 31 -->
-			<p>
-				All those objects obtained by the input process are going to be stored in an rezsizable form of array 
-				such as Java ArrayList collection which will be named electList. This is how the ArrayList works:
-			</p>
-			<p>
-				Our E = Elector which is the object type that we are working with, so: 
-				<code>ArrayList&lt;Elector&gt; elecList = new ArrayList<Elector>(n)</code>, where n is te first line of 
-				input from console or the number of lines to be written. As we know the initial capacity, we will 
-				construct then the ArrayList object taking into account this variable.
 
-			</p>
-			<figure>
-				  <!--<img id="fig-25" src="./images/pic_26.png" alt="ArrayList class" style="width:100%">-->
-				  <iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
-				  <figcaption>Fig.25 - ArrayList class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html">Source</a></figcaption>
-			</figure>
+				</div>
+			</div>
 		</section>
+		<section class="page" id="page-10"><!-- 10 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						All those objects obtained by the input process are going to be stored in an rezsizable form of array 
+						such as Java ArrayList collection which will be named electList. This is how the ArrayList works:
+					</p>
+					<p>
+						Our E = Elector which is the object type that we are working with, so: 
+						<code>ArrayList&lt;Elector&gt; elecList = new ArrayList<Elector>(n)</code>, where n is te first line of 
+						input from console or the number of lines to be written. As we know the initial capacity, we will 
+						construct then the ArrayList object taking into account this variable.
+					</p>
+					<figure>
+						  <!--<img id="fig-25" src="./images/pic_26.png" alt="ArrayList class" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
+						  <figcaption>Fig.25 - ArrayList class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html">Source</a></figcaption>
+					</figure>
+				</div>
+				<div class="right">
+				</div>
+			</div>
+		</section>
+
 	</article>
   <script src="index.js"></script>
   </body>
