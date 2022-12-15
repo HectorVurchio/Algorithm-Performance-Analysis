@@ -32,6 +32,28 @@ section > div figure figcaption{
 	font-weight:bold;
 	text-align:center;
 }
+#page-5 > div > div figure iframe{
+		height:800px;
+}
+#page-6 > div > div figure #if-left{
+		height:660px;
+}
+#page-6 > div > div figure #if-right{
+		height:760px;
+}
+#page-7 > div > div figure #if-left{
+		height:760px;
+}
+#page-7 > div > div figure #if-right{
+		height:960px;
+}
+#page-10 > div > div figure iframe{
+		height:1020px;
+}
+.rawalgo{
+	display:flex;
+	flex-direction:column;
+}
 .page .content{
 	display:flex;
 	flex-direction:column;
@@ -42,7 +64,7 @@ section > div figure figcaption{
 	width: 300px;
 	width:95%;
 	max-width:600px;
-	height:1280px;
+	/*height:1280px;*/
 }
 
 .page > div > div figure{
@@ -99,8 +121,10 @@ pre.java_code {
     padding-left:10px;
     color:#b5b4aa;
 	background:#141313;
-	height: 800px;
 	overflow: auto;
+}
+pre.java1{
+	height: 1200px;
 }
 pre.java2{
 	height:170px;
@@ -109,10 +133,10 @@ pre.java3{
 	height:320px;
 }
 pre.java4{
-	height:500px;
+	height:780px;
 }
 pre.java6{
-	height:900px;
+	height:1200px;
 }
 pre.java_code::before {
     counter-reset: listing;
@@ -187,11 +211,16 @@ code .marks{
 }
 
 #page-9 .content .right figure{
-	/*height:600px;*/
+	height:460px;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+}
+@media screen and (min-width: 500px){
+	#page-9 .content .right figure{
+		height:900px;
+	}	
 }
 @media screen and (min-width: 1000px){
 	.page > div .left,
@@ -201,11 +230,33 @@ code .marks{
 	.page .content{
 		flex-direction:row;
 	}
-	
+	#page-9 .content .right figure{
+		height:900px;
+	}	
 }
+
 @media screen and (min-width: 1300px){
 	.page > div .left,
 	.page > div .right{
+		padding-top:40px;
+		height:1240px;
 		width: 650px;
+	}
+	.rawalgo{
+		flex-direction:row;
+	}
+	pre.code {
+	    line-height: 1.6;
+	}
+	table {
+	    width: 500px;
+	    margin: auto;
+	}
+	.elector-table-zone {
+	    width: 560px;
+		height:400px;
+	}
+	#page-9 .content .right figure{
+		height:930px;
 	}
 }

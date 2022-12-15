@@ -22,9 +22,9 @@
 	</header>
 	<article>
 		<section class="page" id="page-1"><!-- 1 -->
-			<h2>One Example of Algorithm Analysis</h2>
 			<div class="content">
 				<div class="left">
+					<h2>One Example of Algorithm Analysis</h2>
 					<p>
 						The main purpose of this analysis is to determine time taken of an algorithm
 						to carry on its process. Suppose for example that a presidential election period
@@ -54,6 +54,9 @@
 					  <img id="fig-2" src="./images/pic_2.png" alt="Algorithm Performance Analysis" style="width:100%">
 					  <figcaption>Fig.2 - Data Displayed for Index 1586. </figcaption>
 					</figure>
+					
+				</div>
+				<div class="right">
 					<p>
 						For an elector like Peter Parker, who by introducing its index 2, the information that prompt on the screen would be:
 					</p>
@@ -61,8 +64,6 @@
 						<img id="fig-3" src="./images/pic_3.png" alt="Algorithm Performance Analysis" style="width:100%">
 						<figcaption>Fig.3 - Data Displayed for Index 2. </figcaption>
 					</figure>
-				</div>
-				<div class="right">
 					<p>
 						In this case whichever be the elector to be consulted, the response time will be pretty much the same 
 						since the array query by index, this aimed its search direct at the memory address where the data is located.
@@ -85,8 +86,15 @@
 					<figure>
 						 <img id="fig-5" src="./images/pic_5.png" alt="Algorithm Performance Analysis, Constant Time" style="width:100%">
 						 <figcaption>Fig.5 - O(1) Notation or Constant Time. </figcaption>
-					</figure>
-					<div class="left-code">
+					</figure>					
+				</div>
+			</div>
+		</section>
+		<section class="page" id="page-2"><!-- 2 -->
+			<div class="content">
+				<div class="left">
+					<div class="rawalgo">
+						<div class="left-code">
 <pre class="code">
 	<code>searchElector(ID)</code>
 	<code>  n = A.length</code>
@@ -96,8 +104,8 @@
 	<code>  Return F</code>
 	<code>Return null</code>
 </pre>
-					</div>
-					<div class="right-code">
+						</div>
+						<div class="right-code">
 <pre class="code">
 	<code>searchElector(13844652)</code>
 	<code>  n = 2 x 10^7</code>
@@ -107,14 +115,8 @@
 	<code>  Return F</code>
 	<code>Return null</code>
 </pre>
+						</div>
 					</div>
-					
-				</div>
-			</div>
-		</section>
-		<section class="page" id="page-2"><!-- 2 -->
-			<div class="content">
-				<div class="left">
 					<p> The cicles that the algorithm takes for search are:</p>
 					<ol>
 						<li><code>X = A[I].ID = A[1].ID = 15789673 </code> different from 13844652.</li>
@@ -148,8 +150,6 @@
 					</p>
 					<p><code>A = [3,5,2,4,1,6,9,8,7]</code></p>
 					<p>Let’s find an algorithm that meets our purpose, let’s say:</p>
-				</div>
-				<div class="right">
 <pre class="code">
 	<code>sort(A)</code>
 	<code>  for i = 1 to A.length-1</code>
@@ -160,6 +160,8 @@
 	<code>    A[j] = A[i]</code>
 	<code>    A[i] = X</code>
 </pre>
+				</div>
+				<div class="right">
 					<p>The algorithm analysis will be:</p>
 					<div class="tableset">
 						<div class="analysis-left">
@@ -373,13 +375,6 @@
 						value will have a huge growth compared to the lineal one, so that just the quadratic will be taken 
 						into account resulting in a notation of big O(n2).
 					</p>
-					
-				</div>
-			</div>
-		</section>
-		<section class="page" id="page-4"><!-- 4 -->
-			<div class="content">
-				<div class="left">
 					<p>
 						Now, let’s check our election topic, in which we have an amount of 20 million of voters what means 
 						that our algorithm has to perform a task of cycles equivalents to:
@@ -388,6 +383,12 @@
 						  <img id="fig-10" src="./images/pic_10.png" alt="Algorithm Performance Analysis, sorting array cycles" style="width:70%">
 						  <figcaption>Fig.10 - Sorting electors array - cycles </figcaption>
 					</figure>
+				</div>
+			</div>
+		</section>
+		<section class="page" id="page-4"><!-- 4 -->
+			<div class="content">
+				<div class="left">
 					<p>
 						Having this result, we can conclude that our algorithm in extremely inefficient, therefore we have to find 
 						another way to solve our problem in order to sort an electors array with 20 millions of members. In the 
@@ -433,13 +434,24 @@
 						First, we need a class that allows us to collect all the information from the console, some kind of 
 						“GetFromConsole” Class by which the following code will be written:
 					</p>
+					<p>
+						Let’s construct the code above step by step naming our Java class “GetFromConsole” and so collect 
+						all data provided manually by the operator who is the alleged person in charge of insert it in the 
+						console giving at first the number of lines to be processed and then the lines that contain all the 
+						information of the voters.
+					</p>
+					<p>
+						Within the GetFromConsole class is required some method which allows read line by line, then word by word. 
+						For the first, exist in Java language a built-in class named BufferReader and inside this, a method 
+						called readLine(). So, checking the Java API for the class BufferReader we can see two constructors:
+					</p>
 				</div>
 			</div>
 		</section>
 		<section class="page" id="page-5"><!-- 5 -->
 			<div class="content">
 				<div class="left">
-<pre class="java_code">
+<pre class="java_code java1">
 <code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
 <code><span class="import">import</span> java.io.Console<span class="marks">;</span></code>
 <code><span class="import">import</span> java.io.Reader<span class="marks">;</span></code>
@@ -524,17 +536,7 @@
 <code>	<span class="marks">}</span></code>
 <code><span class="marks">}</span></code>
 </pre>				
-					<p>
-						Let’s construct the code above step by step naming our Java class “GetFromConsole” and so collect 
-						all data provided manually by the operator who is the alleged person in charge of insert it in the 
-						console giving at first the number of lines to be processed and then the lines that contain all the 
-						information of the voters.
-					</p>
-					<p>
-						Within the GetFromConsole class is required some method which allows read line by line, then word by word. 
-						For the first, exist in Java language a built-in class named BufferReader and inside this, a method 
-						called readLine(). So, checking the Java API for the class BufferReader we can see two constructors:
-					</p>
+
 				</div>
 				<div class="right">
 					<div class="elector-table-zone">
@@ -556,22 +558,22 @@
 					</div>
 					<figure>
 						<!--<img id="fig-13" src="./images/pic_13.png" alt="Java API for the class BufferReader" style="width:100%">-->
-						<iframe src="./JavaClassAPI/BufferedReader.html" style="width:100%;height:600px;" title="Java API for the class BufferReader"></iframe>
+						<iframe src="./JavaClassAPI/BufferedReader.html" style="width:100%;" title="Java API for the class BufferReader"></iframe>
 						<figcaption>Fig.13 - Java API for the class BufferReader.  <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/BufferedReader.html">Source</a></figcaption>
 					</figure>
-					<div><img  id="fig-14" src="./images/pic_14.png" alt="method" style="width:100%"></div>
-					<p>
-						The first constructor uses a parameter in from Reader class, so, let’s check the Reader class in order
-						to see how we could instantiate an object from such class:
-					</p>
 				</div>
 			</div>
 		</section>
 		<section class="page" id="page-6"><!-- 6 -->
 			<div class="content">
 				<div class="left">
+					<figure><img  id="fig-14" src="./images/pic_14.png" alt="method" style="width:100%"></figure>
+					<p>
+						The first constructor uses a parameter in from Reader class, so, let’s check the Reader class in order
+						to see how we could instantiate an object from such class:
+					</p>
 					<figure>
-						<iframe src="./JavaClassAPI/Reader.html" style="width:100%;height:600px;" title="Class Reader in the Java API"></iframe>
+						<iframe id="if-left" src="./JavaClassAPI/Reader.html" style="width:100%;" title="Class Reader in the Java API"></iframe>
 						<figcaption>Fig.14 - Java API for the class Reader. <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/Reader.html">Source</a></figcaption>
 					</figure>
 					<p>
@@ -592,7 +594,7 @@
 				<div class="right">
 					<figure>
 						<!--<img id="fig-17" src="./images/pic_17.png" alt="Java API for the class Console" style="width:100%">-->
-						<iframe src="./JavaClassAPI/Console.html" style="width:100%;height:600px;" title="Java API for the class Console"></iframe>
+						<iframe id="if-right" src="./JavaClassAPI/Console.html" style="width:100%;" title="Java API for the class Console"></iframe>
 						<figcaption>Fig.17 - Java API for the class Console. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Console.html">Source</a></figcaption>
 					</figure>
 					<p>
@@ -608,6 +610,11 @@
 					<p>
 						This method retrieves the unique Reader object associated with this console.
 					</p>
+					<p>
+						Ok, but we still need a Console object to instantiate the Read class. In the Java API for the 
+						Console class there is an explanation where is instantiated the Console object from a method 
+						in the System class. 
+					</p>
 				</div>
 				
 			</div>
@@ -615,11 +622,6 @@
 		<section class="page" id="page-7"><!-- 7 -->
 			<div class="content">
 				<div class="left">
-					<p>
-						Ok, but we still need a Console object to instantiate the Read class. In the Java API for the 
-						Console class there is an explanation where is instantiated the Console object from a method 
-						in the System class. 
-					</p>
 					<figure>
 						  <img id="fig-19" src="./images/pic_19.png" alt="Console object from a method in the System class" style="width:100%">
 						  <figcaption>Fig.19 - Console object from a method in the System class. </figcaption>
@@ -629,7 +631,7 @@
 					</p>
 					<figure>
 						  <!--<img id="fig-20" src="./images/pic_20.png" alt="Class System in the Java API" style="width:100%">-->
-						  <iframe src="./JavaClassAPI/System.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
+						  <iframe id="if-left" src="./JavaClassAPI/System.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>
 						  <figcaption>Fig.20 - Class System in the Java API. <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html"> Source</a></figcaption>
 					</figure>
 					<p>
@@ -648,7 +650,7 @@
 					</p>
 					<figure>
 						  <!--<img id="fig-21" src="./images/pic_21.png" alt="Class StringTokenizer in the Java API." style="width:100%">-->
-						  <iframe src="./JavaClassAPI/StringTokenizer.html" style="width:100%;height:600px;" title="Class StringTokenizer in the Java API"></iframe>
+						  <iframe id="if-right" src="./JavaClassAPI/StringTokenizer.html" style="width:100%;" title="Class StringTokenizer in the Java API"></iframe>
 						  <figcaption>Fig.21 - Class StringTokenizer in the Java API. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringTokenizer.html">Source</a></figcaption>
 					</figure>
 				</div>
@@ -705,12 +707,13 @@
 					The method readForDim() must handle an IOException because is mandatory for the method stringLine() from the BufferReader class encapsulated inside as we can look over 
 					the Java API documentation at BufferReader class section:
 				</p>
+				<figure>
+					  <img id="fig-22" src="./images/pic_22.png" alt="Class BufferedReader in the Java API." style="width:100%">
+					  <figcaption>Fig.22 - Class BufferedReader in the Java API. </figcaption>
+				</figure>
 				</div>
 				<div class="right">
-					<figure>
-						  <img id="fig-22" src="./images/pic_22.png" alt="Class BufferedReader in the Java API." style="width:100%">
-						  <figcaption>Fig.22 - Class BufferedReader in the Java API. </figcaption>
-					</figure>
+
 					<p>
 						Failure to meet this requirement lead to have compile-time exception consequences.
 					</p>
@@ -875,16 +878,16 @@
 <code>	<span class="reserved">protected</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this.</span>citizenId.citizenId.getBirthCertificate<span class="marks">()</span>.getPlaceOfBirth<span class="marks">();}</span></code>
 <code><span class="marks">}</span></code>
 </pre>
-					<p>
-						The first thing we can observe in <code>GetFromConsole.java</code> class is that we are using the 
-						<code>readForDim()</code> method created before to get an StringTokenizer object named tzer with 
-						which we will invoke the <code>nextToken()</code> method to get word by word of a line and 
-						<code>hasMoreTokens()</code> method that reply us if there is another word in the text line. Each 
-						word (token) must be inserted as appropriate inside the class Elector which in turn will be stored 
-						in an object collection as an array or an array List.
-					</p>
 				</div>
 				<div class="right">
+				<p>
+					The first thing we can observe in <code>GetFromConsole.java</code> class is that we are using the 
+					<code>readForDim()</code> method created before to get an StringTokenizer object named tzer with 
+					which we will invoke the <code>nextToken()</code> method to get word by word of a line and 
+					<code>hasMoreTokens()</code> method that reply us if there is another word in the text line. Each 
+					word (token) must be inserted as appropriate inside the class Elector which in turn will be stored 
+					in an object collection as an array or an array List.
+				</p>
 				<figure>
 					  <img id="fig-24" src="./images/pic_24.png" alt="StringTokenizer cycle" style="width:100%">
 					  <figcaption>Fig.24 - StringTokenizer cycle. </figcaption>
@@ -1011,7 +1014,7 @@
 					</p>
 					<figure>
 						  <!--<img id="fig-25" src="./images/pic_26.png" alt="ArrayList class" style="width:100%">-->
-						  <iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;height:600px;" title="Java API for the class ArrayList"></iframe>
+						  <iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>
 						  <figcaption>Fig.25 - ArrayList class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html">Source</a></figcaption>
 					</figure>
 				</div>
