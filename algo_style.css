@@ -39,7 +39,8 @@ section > div figure figcaption{
 .page > div .left,
 .page > div .right{
 	margin:auto;
-	width: 95%;
+	width: 300px;
+	width:95%;
 	max-width:600px;
 	height:1280px;
 }
@@ -111,7 +112,7 @@ pre.java4{
 	height:500px;
 }
 pre.java6{
-	height:600px;
+	height:900px;
 }
 pre.java_code::before {
     counter-reset: listing;
@@ -183,4 +184,28 @@ code .marks{
 }
 .elector-data tr .col-8{
 	width:60px;
+}
+
+#page-9 .content .right figure{
+	/*height:600px;*/
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+@media screen and (min-width: 1000px){
+	.page > div .left,
+	.page > div .right{
+		width: 450px;
+	}
+	.page .content{
+		flex-direction:row;
+	}
+	
+}
+@media screen and (min-width: 1300px){
+	.page > div .left,
+	.page > div .right{
+		width: 650px;
+	}
 }
