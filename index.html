@@ -1020,6 +1020,86 @@
 				</div>
 			</div>
 		</section>
+		<section class="page" id="page-11"><!-- 11 -->
+			<div class="content">
+				<div class="left">
+					<h2>The Class and Object</h2>
+					<p>
+						Figure 26 shown below this small pagagraph gives us a brief overview of how an object looks like and
+						what is not an object in java.
+					</p>
+					<figure>
+						  <img id="fig-26" src="./images/pic_27.png" alt="ArrayList class" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.26 - ArrayList class.</figcaption>
+					</figure>
+					<p>
+						The set of things that compose an object and the actions it is capable of perform is given by the 
+						class in which such object comes from. This class is a composite of fields and methods of primitive 
+						types and objects as well. A class is predefined (library built-in) or is custom designed by a 
+						programmer. The fields are spaces where a primitive data type or an object from another class could
+						be stored. The methods are spaces that generate a field through some process.  
+					</p>
+					<p>
+						Inside a class, a field or method will be private, public or protected depending on the way this is 
+						accessible from other classes. 
+					</p>
+					<figure>
+						  <img id="fig-27" src="./images/pic_28.png" alt="Java Methods and Fields" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.27 - Java Methods and Fields.</figcaption>
+					</figure>
+					<p>A field or a method is static if this belongs just to a class, not an object. For example</p>
+					<p><code><span class="reserved">public static</span> String country<span class="marks">;</span></code><p>
+					<p>
+						For each object that comes from Citizen class, it will be from the same country of citizenship therefore create an object of class Citizen is not needed to get the information about it. Country is a feature that is built-in.
+						To access it one just need write. for example:
+					</p>
+					<p><code>String country <span class="marks">=</span> Citizen.country<span class="marks">;</span></code></p>
+				</div>
+				<div class="right">
+					<p>
+						if we want to protect the country fields against such act we must declare the country field as final, 
+						for example:
+					</p>
+					</p><code><span class="reserved">public static final</span> String country <span class="marks">=</span> <span class="comment">“My Country”</span><span class="marks">;</span></code></p>
+					<p>
+						We do not need invoking a constructor to find out what the country field contains but if we would like to know what is in the field name?
+						We must create Citizen class object from another class:
+					</p>
+					<figure>
+						  <img id="fig-28" src="./images/pic_29.png" alt="Citizen class object from another class" style="width:100%;max-height:100px">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.29 - Citizen Class Object from Another Class.</figcaption>
+					</figure>
+					<p>
+						Name field is private, that means it is not accessible from outside the Citizen class, to achieve 
+						this the method must have a public accessor. Let’s see what about the getName() method which returns 
+						the name.
+					</p>
+					<figure>
+						  <img id="fig-28" src="./images/pic_30.png" alt="getName() Method" style="width:100%;max-height:80px">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.30 - getName() Method.</figcaption>
+					</figure>
+					<p>
+						The accessor protected refers to a field or method that only can be accessed from outside the class 
+						if this is a subclass of Citizen class. As we can see in the interior of Citizen, it is designed 
+						just to set values through the setters methods since they are the only ones which have public access. 
+					</p>
+					<figure>
+						  <img id="fig-29" src="./images/pic_31.png" alt="Setters Methods" style="width:100%;max-height:540px;">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.31 - Setters Methods.</figcaption>
+					</figure>
+					<p>
+						For this Citizen class we can say that if we want accessing to name, last name, gender and birth date
+						fields we must build a subclass of this, it is designed to be inherited because has protected accessor 
+						although is a custom designed class.
+					</p>
+				</div>
+			</div>
+		</section>
 
 	</article>
   <script src="index.js"></script>
