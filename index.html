@@ -1100,6 +1100,250 @@
 				</div>
 			</div>
 		</section>
+		<section class="page" id="page-12"><!-- 12 -->
+			<div class="content">
+				<div class="left">
+					<h2>Rebuilding the class and object.</h2>
+					<p>
+						Citizen is one of the classes previously written with the intention of explain the analysis performance of an algorithm, 
+						but this time we are going with the restructuration of the classes used.
+					</p>
+					<p>
+						The goal is having an object, in this case the Elector class that could be stored in a collection and perform all those 
+						operations which the data structure analysis contemplates. Building the Elector class implied writing many lines of code 
+						that at the end may entangle our lives if it is the case, we are meeting an error or want to change something. Counting 
+						on encapsulation and inheritance concept we could get this problem fixed.
+					</p>
+					<p>
+						To do this, we should enclose the appropriate code within a class and create a file for such class so that we can achieve 
+						a set of files, one for each class.
+					</p>
+					<figure>
+						  <img id="fig-30" src="./images/pic_32.png" alt="Election Class Root Directory" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.32 - Election Class Root Directory.</figcaption>
+					</figure>
+					<p>
+						Since the main method is located in the class Election2021, this must be public and will be the class that will be 
+						called when compiling the code as follows:
+					</p>
+					<p>
+						<code><span class="reserved">javac<span> Election2021<span class="marks">.</span><span class="import">java</span></code>
+					</p>
+					<p>
+						but how? In windows cmd as is this case:
+					</p>
+					<p>
+						<code><span class="reserved">C:\Users\MyPCname\ElectionClass> javac Election2021.java</code>
+					</p>
+					<p>
+						The class getFromConsole is designed to process the input data whereas the class BirthCertificate has the purpose of built 
+						an object getting the date of birth, gender and place of birth so that it could be wrapped in the class CitizenID.
+					</p>
+<pre class="java_code java7">
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code> <span class="comment">/**</span></code>
+<code> <span class="comment">* CitizenId is a class that works with Election2021 class </span></code>
+<code> <span class="comment">* in an application that will be used to give examples of some data structures</span></code>
+<code> <span class="comment">* and algorithms as well as talk about Java .</span></code>
+<code> <span class="comment">*</span></code>
+<code> <span class="comment">* The current class enclose fields such as id number, name and last name</span></code>
+<code> <span class="comment">* as well as an object of type BirthCertificate.</span></code>
+<code> <span class="comment">*</span> <span class="ets">@author</span>  <span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">*</span> <span class="ets">@version </span><span class="comment">1.0</span></code>
+<code><span class="comment">*</span> <span class="ets">@since </span>  <span class="comment">2021-05-15 </span></code>
+<code><span class="comment">*/</span></code>
+<code></code>
+<code><span class="reserved">class</span> CitizenId<span class="marks">{</span></code>
+<code>	<span class="reserved">private</span> BirthCertificate birthCert<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String id<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String name<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String lastName<span class="marks">;</span></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* The constructor that populate the fields birthCert, id, name and lastName.</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@param</span> <span class="comment">bc, a BirthCertificate object.</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@param</span><span class="comment"> id, a String type object representing an id number.</span></code>
+<code>	<span class="comment">*</span> <span class="ets">@return</span> <span class="comment"> Nothing.</span></code>
+<code>	<span class="comment">*/</span>	</code>
+<code></code>
+<code>	CitizenId<span class="marks">(</span>BirthCertificate bc<span class="marks">,</span>String id<span class="marks">){</span></code>
+<code>		<span class="import">this</span>.birthCert <span class="marks">=</span> bc<span class="marks">;</span></code>
+<code>		<span class="import">this</span>.id <span class="marks">=</span> id<span class="marks">;</span></code>
+<code>		<span class="import">this</span>.name <span class="marks">=</span> "Undefined"<span class="marks">;</span></code>
+<code>		<span class="import">this</span>.lastName <span class="marks">=</span> "Undefined"<span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* Setter and getter methods.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code>	<span class="reserved">public void</span> setName<span class="marks">(</span>String name<span class="marks">){</span><span class="import">this</span>.name <span class="marks">=</span> name<span class="marks">;}</span></code>
+<code>	<span class="reserved">public void</span> setLastName<span class="marks">(</span>String lastName<span class="marks">){</span><span class="import">this.lastName <span class="marks">=</span> lastName<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> BirthCertificate getBirthCertificate<span class="marks">(){</span><span class="import">return this</span>.birthCert<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getId<span class="marks">(){</span><span class="import">return this</span>.id<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getName<span class="marks">(){</span><span class="import">return this</span>.name<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getLastName<span class="marks">(){</span><span class="import">return this</span>.lastName<span class="marks">;}</span></code>
+<code><span class="marks">}</span></code>
+<code><span class="ets"></span></code>
+<code></code>
+</pre>
+
+
+				</div>
+				<div class="right">
+<pre class="java_code java1">
+<code><span class="reserved">package</span> societyAperson<span class="marks">;</span></code>
+<code><span class="import">import</span> java.time.LocalDate<span class="marks">;</span></code>
+
+<code></code>
+<code><span class="comment">/**</span></code>
+<code><span class="comment">* The BirthCertificate is a class that works with Election2021 class </span></code>
+<code><span class="comment">* in an application that will be used to give examples of some data structures</span></code>
+<code><span class="comment">* and algorithms as well as talk about Java .</span></code>
+<code><span class="comment">*</span></code>
+<code><span class="comment">* The current class enclose parameters such as birth place, birth date an gender.</span></code>
+<code><span class="comment">* <span class="ets">@author</span></span>  <span class="comment">Hector Jose Vurchio Hurtado</span></code>
+<code><span class="comment">* <span class="ets">@version</span></span> <span class="comment">1.0</span></code>
+<code><span class="comment">* <span class="ets">@since</span> </span>  <span class="comment">2021-05-15 </span></code>
+<code><span class="comment">*/</span></code>
+<code></code>
+<code><span class="reserved">class</span> BirthCertificate<span class="marks">{</span></code>
+<code>	<span class="reserved">private</span> LocalDate birth<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String gender<span class="marks">;</span></code>
+<code>	<span class="reserved">private</span> String placeOfBirth<span class="marks">;</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* The constructor that populate the fields birth, gender or placeOfBirth.</span></code>
+<code>	<span class="comment">* <span class="ets">@param</span></span>  <span class="comment">pob place of birth.</span></code>
+<code>	<span class="comment">* <span class="ets">@param</span></span> <span class="comment">birth date of birth e.g. "2021-01-30" or "2021/01/30". </span></code>
+<code>	<span class="comment">* <span class="ets">@param</span> </span>  <span class="comment">g e.g m or f.</span></code>
+<code>	<span class="comment">* <span class="ets">@return</span> </span>  <span class="comment">Nothing </span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public </span> BirthCertificate<span class="marks">(</span>String pob, String birth, <span class="reserved">char</span> g<span class="marks">){</span></code>
+<code>		<span class="import">this</span>.placeOfBirth <span class="marks">=</span> pob<span class="marks">;</span></code>
+<code>		<span class="import">this</span>.birth <span class="marks">=</span> setBirth<span class="marks">(</span>birth<span class="marks">)</span><span class="marks">;</span></code>
+<code>		<span class="import">this</span>.gender <span class="marks">=</span> setGender<span class="marks">(</span>g<span class="marks">)</span><span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code>	<span class="reserved">private</span> LocalDate setBirth<span class="marks">(</span>String birth<span class="marks">){</span></code>
+<code>		String<span class="marks">[]</span> bida<span class="marks">;</span></code>
+<code>		<span class="import">if</span><span class="marks">(</span>birth.contains<span class="marks">(</span><span class="comment">"/"</span><span class="marks">)){</span></code>
+<code>			bida <span class="marks">=</span> birth.split<span class="marks">(</span><span class="comment">"/"</span><span class="marks">);</span></code>
+<code>		<span class="marks">}</span><span class="import">else if</span><span class="marks">(</span>birth.contains<span class="marks">(</span><span class="comment">"-"</span><span class="marks">)){</span></code>
+<code>			bida <span class="marks">=</span> birth.split<span class="marks">(</span><span class="comment">"-"</span><span class="marks">);</span></code>
+<code>		<span class="marks">}</span><span class="import"> else</span><span class="marks"> {</span></code>
+<code>			bida <span class="marks">=</span> LocalDate.now<span class="marks">()</span>.toString<span class="marks">()</span>.split<span class="marks">(</span><span class="comment">"-"</span><span class="marks">);</span></code>
+<code>		<span class="marks">}</span></code>
+<code>		<span class="reserved">return</span> LocalDate.of<span class="marks">(</span>Integer.parseInt<span class="marks">(</span>bida<span class="marks">[</span><span class="import">0</span><span class="marks">]),</span></code>
+<code>					Integer.parseInt<span class="marks">(</span>bida<span class="marks">[</span><span class="import">1</span><span class="marks">]),</span></code>
+<code>						Integer.parseInt<span class="marks">(</span>bida<span class="marks">[</span><span class="import">2</span><span class="marks">]));</span></code>
+<code>	<span class="marks">}</span></code>
+<code></code>
+<code><span class="reserved">private</span> String setGender<span class="marks">(</span><span class="reserved">char</span> g<span class="marks">({</span></code>
+<code>	<span class="reserved">switch</span><span class="marks">(</span>g<span class="marks">){</span></code>
+<code>		<span class="reserved">case</span> <span class="comment">'f'</span><span class="marks">:</span></code>
+<code>			<span class="reserved">return</span> <span class="comment">"Female"</span><span class="marks">;</span></code>
+<code>		<span class="reserved">case</span> <span class="comment">'m'</span><span class="marks">:</span></code>
+<code>			<span class="reserved">return</span> <span class="comment">"Male"</span><span class="marks">;</span></code>
+<code>		<span class="reserved">default</span><span class="marks">:</span></code>
+<code>			<span class="reserved">return</span> <span class="comment">"Undefined"</span><span class="marks">;</span></code>
+<code>	<span class="marks">}</span></code>
+<code><span class="marks">}</span></code>
+<code></code>
+<code>	<span class="comment">/**</span></code>
+<code>	<span class="comment">* getters methods to obtain the value of the private declared fields</span></code>
+<code>	<span class="comment">* of the current class.</span></code>
+<code>	<span class="comment">*/</span></code>
+<code></code>
+<code>	<span class="reserved">public</span> String getGender<span class="marks">(){</span><span class="import">return this</span>.gender<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> LocalDate getBirth<span class="marks">(){</span><span class="import">return this</span>.birth<span class="marks">;}</span></code>
+<code>	<span class="reserved">public</span> String getPlaceOfBirth<span class="marks">(){</span><span class="import">return this</span>.placeOfBirth<span class="marks">;}</span></code>
+<code><span class="marks">}</span></code>
+<code></code>
+</pre>	
+				</div>
+			</div>
+		</section>
+		<section class="page" id="page-13"><!-- 12 -->
+			<div class="content">
+				<div class="left">
+					<p>
+						The files Election2021.java, GetFromConsole.java, BirthCertificate.java, CitizenId.java, Citizen.java 
+						and Elector.java must be compiled applying the following procedure:
+					</p>
+					<p>
+						1.	Writing in the Windows command line:
+					</p>
+					<p>
+						<code>C:\Users\MyPCname\ElectionClass> javac Election2021.java</code>
+					</p>
+					<figure>
+						  <img id="fig-31" src="./images/pic_33.png" alt="Java Compilation in Windows cmd" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.33 - Java Compilation in Windows cmd.</figcaption>
+					</figure>
+					<p>
+						2.	In the next line:
+					</p>
+					<p>
+						<code>C:\Users\MyPCname\ElectionClass> java Election2021</code>
+					</p>
+					<figure>
+						  <img id="fig-31" src="./images/pic_34.png" alt="Java Compilation in Windows cmd" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.34 - Java Compilation in Windows cmd.</figcaption>
+					</figure>
+					<p>
+						Above the Windows command line is requesting for the input and such input is:
+					</p>
+					<div class="elector-table-zone">
+						<table class="elector-data-two">
+							<tr><td class="col-1">12</td> <td class="col-2"></td> <td class="col-3"></td> <td class="col-4"></td> <td class="col-5"></td> <td class="col-6"></td> <td class="col-7"></td><td class="col-8"></td><td class="col-9"></td></tr>
+							<tr><td class="col-1">Gotham_City</td> <td class="col-2">1950-01-04</td> <td class="col-3">m</td> <td class="col-4">15789673</td> <td class="col-5">Bruce</td> <td class="col-6">Wayne</td> <td class="col-7">Comunist_Party</td><td class="col-8">y</td><td class="col-9">11:55:37</td></tr>
+							<tr><td class="col-1">Forest_hills</td> <td class="col-2"> 1960-08-24</td> <td class="col-3"> m</td> <td class="col-4"> 18554251</td> <td class="col-5"> Peter</td> <td class="col-6"> Parker</td> <td class="col-7"> Right_Wing_party</td><td class="col-8"> n</td> <td class="col-9"></td></tr>
+							<tr><td class="col-1">Gotham_City</td> <td class="col-2"> 1991-03-05</td> <td class="col-3"> f</td> <td class="col-4"> 13844652</td> <td class="col-5"> Selina</td> <td class="col-6"> Kyle</td> <td class="col-7"> Green_party</td><td class="col-8"> y</td> <td class="col-9">15:44:22</td></tr>
+							<tr><td class="col-1">Gotham_City</td> <td class="col-2"> 1985-05-18</td> <td class="col-3"> f</td> <td class="col-4"> 00000008</td> <td class="col-5"> Barbara</td> <td class="col-6"> Gordon</td> <td class="col-7"> Green_party</td><td class="col-8"> y</td> <td class="col-9">08:44:16</td></tr>
+							<tr><td class="col-1">Mount_Wundagore</td> <td class="col-2"> 1981-10-18</td> <td class="col-3"> f</td> <td class="col-4"> 00125252</td> <td class="col-5"> Jesica</td> <td class="col-6"> Drew</td> <td class="col-7"> Right_Wing_party</td><td class="col-8"> n</td> <td class="col-9"></td></tr>
+							<tr><td class="col-1">Queens</td> <td class="col-2"> 1998-11-18</td> <td class="col-3"> f</td> <td class="col-4"> 00005874</td> <td class="col-5"> Felicia</td> <td class="col-6"> Hardy</td> <td class="col-7"> Green_party</td><td class="col-8"> y</td> <td class="col-9">11:27:03</td></tr>
+							<tr><td class="col-1">Brooklin</td> <td class="col-2"> 1989-02-04</td> <td class="col-3"> m</td> <td class="col-4"> 10987432</td> <td class="col-5"> Steve</td> <td class="col-6"> Rogers</td> <td class="col-7"> Green_party</td><td class="col-8"> y</td> <td class="col-9">11:01:23</td></tr>
+							<tr><td class="col-1">Cambridge</td> <td class="col-2"> 1970-02-14</td> <td class="col-3"> m</td> <td class="col-4"> 18931501</td> <td class="col-5"> Tony</td> <td class="col-6"> Stark</td> <td class="col-7"> Right_Wing_party</td><td class="col-8"> y</td> <td class="col-9">14:17:09</td></tr>
+							<tr><td class="col-1">Marvel</td> <td class="col-2"> 1975-06-16</td> <td class="col-3"> f</td> <td class="col-4"> 19999999</td> <td class="col-5"> Janet</td> <td class="col-6"> VanDyne</td> <td class="col-7"> Right_Wing_party</td><td class="col-8"> n</td> <td class="col-9"></td></tr>
+							<tr><td class="col-1">Marvel</td> <td class="col-2"> 1983-05-19</td> <td class="col-3"> m</td> <td class="col-4"> 00060552</td> <td class="col-5"> Bruce</td> <td class="col-6"> Banner</td> <td class="col-7"> Comunist_Party</td><td class="col-8"> y</td> <td class="col-9">13:44:28</td></tr>
+							<tr><td class="col-1">Comics</td> <td class="col-2"> 1990-04-19</td> <td class="col-3"> f</td> <td class="col-4"> 00897456</td> <td class="col-5"> Carol</td> <td class="col-6"> Danvers</td> <td class="col-7"> Right_Wing_party</td><td class="col-8"> n</td> <td class="col-9"></td></tr>
+							<tr><td class="col-1">Smallville</td> <td class="col-2"> 1960-12-22</td> <td class="col-3"> m</td> <td class="col-4"> 00000465</td> <td class="col-5"> Clark</td> <td class="col-6"> Kent</td> <td class="col-7"> Comunist_Party</td><td class="col-8"> y</td> <td class="col-9">14:25:02</td></tr>
+						</table>
+					</div>
+					<p>
+						After compiling we can see the presence of .class extension in the folder where the .java files were located:
+					</p>
+					<p>
+						But this do not finish here, we should go far with the encapsulation and the next step would be the use of Java package.
+						With package we put all the classes inside and fix the mess displayed above within the folder.
+					</p>
+					<p>
+						One illustration of such level of encapsulation is shown when importing a Java built-in class as for example:
+					</p>
+					<pre class="java_code"><code><span class="reserved">import</span> java.io.console<span class="marks">;</span></code></pre>
+					<p>Java.io would be the installed package that contains the Console class.</p>
+				</div>
+				<div class="right">
+					<p>
+						The output for the data input above becomes as follows:
+					</p>
+					<figure>
+						  <img id="fig-32" src="./images/pic_35.png" alt="Data Output in Windows cmd" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.35 - Data Output in Windows cmd.</figcaption>
+					</figure>
+					<figure>
+						  <img id="fig-33" src="./images/pic_36.png" alt="Class Files in Root Folder" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.35 - Class Files in Root Folder.</figcaption>
+					</figure>
+					
+				</div>
+			</div>
+		</section>
 
 	</article>
   <script src="index.js"></script>

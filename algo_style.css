@@ -145,7 +145,9 @@ pre.java_code::before {
 pre.java_code code {
     counter-increment: listing;
 }
-
+pre.java7{
+	height:300px;
+}
 pre.java_code code::before {
     content: counter(listing) ".  ";
     display: inline-block;
@@ -216,6 +218,40 @@ code .marks{
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+}
+/*Electors table two*/
+
+.elector-data-two{
+	table-layout:fixed;
+	font-size:14px;
+	margin:auto;
+}
+.elector-data-two tr .col-1{
+	width:130px;
+}
+.elector-data-two tr .col-2{
+	width:80px;
+}
+.elector-data-two tr .col-3{
+	width:20px;
+}
+.elector-data-two tr .col-4{
+	width:70px;
+}
+.elector-data-two tr .col-5{
+	width:50px;
+}
+.elector-data-two tr .col-6{
+	width:70px;
+}
+.elector-data-two tr .col-7{
+	width:130px;
+}
+.elector-data-two tr .col-8{
+	width:20px;
+}
+.elector-data-two tr .col-9{
+	width:70px;
 }
 @media screen and (min-width: 500px){
 	#page-9 .content .right figure{
