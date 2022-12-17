@@ -1344,7 +1344,95 @@
 				</div>
 			</div>
 		</section>
-
+		<section class="page" id="page-14"><!-- 14 -->
+			<div class="content">
+				<div class="left">
+					<h2>Setting the Date and Time</h2>
+					<p>
+						Until now, the output has been displayed messy and without a specific format, therefore designing a 
+						proper console output would be desirable to any user who wants to read the data yielded by the program.
+					</p>
+					<p>
+						As you can see, the Election2021 class is enclosed within a package named societyAperson, reason for which 
+						“>java societyAperson.Election2021” is written in the Windows prompt after compilation stage so that the 
+						application start running. Going down so many lines as much as 11 x number of persons in the list, can you 
+						figure out the kind of mess when searching between 20000000 of different data?
+					</p>
+					<p>
+						Give a format is important in this case specially with dates and time. Let us give first a date stamp at 
+						the time of printing the data output. The suitable packages and classes from the Java built-in library that 
+						this format would require to write the code will be the follows:
+					</p>
+					<ul>
+						<li>java.time.ZoneId;</li>
+						<li>java.time.ZonedDateTime;</li>
+						<li>java.time.format.DateTimeFormatter;</li></li>
+						<li>java.time.format.FormatStyle;
+					</ul>
+					<p>
+						All four classes belong to java.time package and just in case if someone in another country wants the date 
+						and time in a local language can have it using the Locale class of java.util package.
+					</p>
+					<figure>
+						  <img id="fig-34" src="./images/pic_37.png" alt="Five Different Ways to Print the Date and Time" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ArrayList.html" style="width:100%;" title="Java API for the class ArrayList"></iframe>-->
+						  <figcaption>Fig.36 - Five Different Ways to Print the Date and Time.</figcaption>
+					</figure>
+					<p>
+						The image above shows five ways from the multiple ones to print the date and time chosen for the example that will be here 
+						indicated. The code that gave the results displayed is:
+					</p>
+<pre class="java_code java8">
+<code><span class="import">import</span> java.time.ZoneId<span class="marks">;</span></code>
+<code><span class="import">import</span> java.time.ZonedDateTime<span class="marks">;</span></code>
+<code><span class="import">import</span> java.time.format.DateTimeFormatter<span class="marks">;</span></code>
+<code><span class="import">import</span> java.time.format.FormatStyle<span class="marks">;</span></code>
+<code><span class="import">import</span> java.util.locale<span class="marks">;</span></code>
+<code></code>
+<code><span class="reserved">public</span> class FormatForToday<span class="marks">{</span></code>
+<code>	<span class="reserved">private void</span> today<span class="marks">(){</span></code>
+<code>		ZoneId zi <span class="marks">=</span> ZoneId.of<span class="marks">(</span><span class="comment">"America/New_York"</span><span class="marks">);</span></code>
+<code>		ZonedDateTime now <span class="marks">=</span> ZonedDateTime.now<span class="marks">(</span>zi<span class="marks">);</span></code>
+<code>		FormatStyle fs <span class="marks">=</span> FormatStyle.LONG<span class="marks">;</span></code>
+<code>		DateTimeFormatter formatter <span class="marks">=</span> DateTimeFormatter.ofLocalizedDateTime<span class="marks">(</span>fs<span class="marks">);</span></code>
+<code>		String formatted <span class="marks">=</span>  formatter.format<span class="marks">(</span>now<span class="marks">);</span></code>
+<code>		System.out.println<span class="marks">(</span>"Now format LONG: "<span class="marks">+</span>formatted<span class="marks">);</span></code>
+<code>		zi <span class="marks">=</span> ZoneId.of<span class="marks">(</span><span class="comment">"America/Caracas"</span><span class="marks">);</span></code>
+<code>		now <span class="marks">=</span> ZonedDateTime.now<span class="marks">(</span>zi</span><span class="marks">);</span></code>
+<code>		fs <span class="marks">=</span> FormatStyle.MEDIUM<span class="marks">;</span></code>
+<code>		formatter <span class="marks">=</span> DateTimeFormatter.ofLocalizedDateTime<span class="marks">(</span>fs<span class="marks">);</span></code>
+<code>		formatted <span class="marks">=</span>  formatter.format<span class="marks">(</span>now<span class="marks">);</span></code>
+<code>		System.out.println<span class="marks">(</span><span class="comment">"Now format MEDIUM: "</span><span class="marks">+</span>formatted<span class="marks">);</span></code>
+<code>		Locale lo <span class="marks">=</span> <span class="import">new</span> Locale<span class="marks">(</span><span class="comment">"es"</span><span class="marks">,</span><span class="comment">"VE"</span><span class="marks">);</span></code>
+<code>		fs <span class="marks">=</span> FormatStyle.FULL<span class="marks">;</span></code>
+<code>		formatter <span class="marks">=</span> DateTimeFormatter.ofLocalizedDateTime<span class="marks">(</span>fs<span class="marks">);</span></code>
+<code>		formatted <span class="marks">=</span>  formatter.withLocale<span class="marks">(</span>lo<span class="marks">)</span>.format<span class="marks">(</span>now<span class="marks">);</span></code>
+<code>		System.out.println<span class="marks">(</span><span class="comment">"Now format FULL: "</span><span class="marks">+</span>formatted<span class="marks">);</span></code>
+<code>		lo <span class="marks">=</span> <span class="import">new</span> Locale<span class="marks">(</span><span class="comment">"de"</span><span class="marks">,</span><span class="comment">"DE"</span><span class="marks">);</span></code>
+<code>		fs <span class="marks">=</span> FormatStyle.FULL<span class="marks">;</span></code>
+<code>		formatter <span class="marks">=</span> DateTimeFormatter.ofLocalizedDateTime<span class="marks">(</span>fs<span class="marks">);</span></code>
+<code>		formatted <span class="marks">=</span>  formatter.withLocale<span class="marks">(</span>lo<span class="marks">)</span>.format<span class="marks">(</span>now<span class="marks">);</span></code>
+<code>		System.out.println<span class="marks">(</span><span class="comment">"Now format FULL: "</span><span class="marks">+</span>formatted<span class="marks">);</span></code>
+<code>	<span class="marks">}</span></code>
+<code>	<span class="reserved">public static void</span> main <span class="marks">(</span>String<span class="marks">[]</span> args<span class="marks">){</span></code>
+<code>		FormatForToday fft <span class="marks">=</span> <span class="import">new</span> FormatForToday<span class="marks">();</span></code>
+<code>		fft.today<span class="marks">();</span></code>
+<code>	<span class="marks">}</span></code>
+<code><span class="marks">}</span></code>
+<code></code>
+</pre>
+				</div>
+				<div class="right">
+					<p>
+						The example treated with the code of the FormatForToday class is going to start printing the date 
+						and time when the data from Election2021.java is queried. But what is the building criteria for 
+						this code?
+					</p>
+					<p>1. A ZoneId object: The available zoneIds can be consulted with the static method getAvailableZoneIds() 
+						from ZoneId class. Here “America/New_York” and “America/Caracas” are the zone ids used.</p>
+				</div>
+			</div>
+		</section>
 	</article>
   <script src="index.js"></script>
   </body>

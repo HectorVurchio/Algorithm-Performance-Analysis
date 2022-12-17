@@ -148,6 +148,9 @@ pre.java_code code {
 pre.java7{
 	height:300px;
 }
+pre.java8{
+	height:460px;
+}
 pre.java_code code::before {
     content: counter(listing) ".  ";
     display: inline-block;
