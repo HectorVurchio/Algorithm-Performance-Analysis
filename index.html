@@ -1429,7 +1429,66 @@
 						this code?
 					</p>
 					<p>1. A ZoneId object: The available zoneIds can be consulted with the static method getAvailableZoneIds() 
-						from ZoneId class. Here “America/New_York” and “America/Caracas” are the zone ids used.</p>
+						from ZoneId class. Here “America/New_York” and “America/Caracas” are the zone ids used.
+					</p>
+					<figure>
+						  <!--<img id="fig-34" src="./images/pic_37.png" alt="Five Different Ways to Print the Date and Time" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/ZoneId.html" style="width:100%;height:440px;" title="Java ZoneId Class"></iframe>
+						  <figcaption>Fig.37 - ZoneId Class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZoneId.html">Source</a></figcaption>
+					</figure>
+					<p>
+						The available zoneIds can be consulted with the static method getAvailableZoneIds() from ZoneId class. Here “America/New_York” 
+						and “America/Caracas” are the zone ids used.
+					</p>
+					<p>
+						2.	A ZonedDateTime object getting from one of its static factory methods now():
+					</p>
+					<figure>
+						  <!--<img id="fig-34" src="./images/pic_37.png" alt="Five Different Ways to Print the Date and Time" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/ZonedDateTime.html" style="width:100%;height:440px;" title="Java ZonedDateTime Class"></iframe>
+						  <figcaption>Fig.38 - ZonedDateTime Class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZonedDateTime.html">Source</a></figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+		<section class="page" id="page-15"><!-- 15 -->
+			<div class="content">
+				<div class="left">
+					<figure>
+						  <img id="fig-35" src="./images/pic_38.png" alt="ZonedDateTime Selected Method" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/ZonedDateTime.html" style="width:100%;height:440px;" title="Java ZonedDateTime Class"></iframe>-->
+						  <figcaption>Fig.39 - ZonedDateTime Selected Method. </figcaption>
+					</figure>
+					<p>3.	A FormatStyleObject:</p>
+					<figure>
+						  <!--<img id="fig-34" src="./images/pic_37.png" alt="Five Different Ways to Print the Date and Time" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/FormatStyle.html" style="width:100%;height:440px;" title="Java ZonedDateTime Class"></iframe>
+						  <figcaption>Fig.39 - FormatStyle Enumeration. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/FormatStyle.html">Source</a></figcaption>
+					</figure>
+					<p>4.	Last but not least the DateTimeFormatter object:</p>
+					<figure>
+						  <!--<img id="fig-34" src="./images/pic_37.png" alt="Five Different Ways to Print the Date and Time" style="width:100%">-->
+						  <iframe src="./JavaClassAPI/DateTimeFormatter.html" style="width:100%;height:440px;" title="Java DateTimeFormatter class"></iframe>
+						  <figcaption>Fig.40 - DateTimeFormatter Class. <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/DateTimeFormatter.html">Source</a></figcaption>
+					</figure>
+				</div>
+				<div class="right">
+					<figure>
+						  <img id="fig-41" src="./images/pic_39.png" alt="DateTimeFormatter Selected Method" style="width:100%">
+						  <!--<iframe src="./JavaClassAPI/DateTimeFormatter.html" style="width:100%;height:440px;" title="Java DateTimeFormatter class"></iframe>-->
+						  <figcaption>Fig.41 - DateTimeFormatter Selected Method.</figcaption>
+					</figure>
+					<p>Once is achieved to build the last four object we finally could print:</p>
+<pre class="java_code java9">
+<code>ZoneId zi <span class="marks">=</span> ZoneId.of<span class="marks">(</span><span class="comment">"America/New_York"</span><span class="marks">);</span></code>
+<code>ZonedDateTime now <span class="marks">=</span> ZonedDateTime.now<span class="marks">(</span>zi<span class="marks">);</span></code>
+<code>FormatStyle fs <span class="marks">=</span> FormatStyle.LONG<span class="marks">;</span></code>
+<code>DateTimeFormatter formatter <span class="marks">=</span> DateTimeFormatter.ofLocalizedDateTime<span class="marks">(</span>fs<span class="marks">);</span></code>
+<code>String formatted <span class="marks">=</span>  formatter.format<span class="marks">(</span>now<span class="marks">);</span></code>
+<code>System.out.println<span class="marks">(</span>"Now format LONG: "<span class="marks">+</span>formatted<span class="marks">);</span></code>
+</pre>
+					<p>Yielding this code, a line in the windows prompt like this:</p>
+					<p style="background:black; color:white; height:30px; font-size:20px;"><code>Now Format LONG: May 12, 2021 at 6:49:21 PM EDT</code></p>
 				</div>
 			</div>
 		</section>

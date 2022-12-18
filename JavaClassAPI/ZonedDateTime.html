@@ -1,0 +1,725 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ZonedDateTime</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./java_style.css" title="Style">
+</head>
+<body>
+
+<main role="main">
+<div class="header">
+<div class="subTitle"><span class="moduleLabelInType">Module</span>&nbsp;<a href="../../module-summary.html">java.base</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">java.time</a></div>
+<h2 title="Class ZonedDateTime" class="title">Class ZonedDateTime</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="../lang/Object.html" title="class in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>java.time.ZonedDateTime</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><code><a href="../io/Serializable.html" title="interface in java.io">Serializable</a></code>, <code><a href="../lang/Comparable.html" title="interface in java.lang">Comparable</a>&lt;<a href="chrono/ChronoZonedDateTime.html" title="interface in java.time.chrono">ChronoZonedDateTime</a>&lt;?&gt;&gt;</code>, <code><a href="chrono/ChronoZonedDateTime.html" title="interface in java.time.chrono">ChronoZonedDateTime</a>&lt;<a href="LocalDate.html" title="class in java.time">LocalDate</a>&gt;</code>, <code><a href="temporal/Temporal.html" title="interface in java.time.temporal">Temporal</a></code>, <code><a href="temporal/TemporalAccessor.html" title="interface in java.time.temporal">TemporalAccessor</a></code></dd>
+</dl>
+<hr>
+<pre>public final class <span class="typeNameLabel">ZonedDateTime</span>
+extends <a href="../lang/Object.html" title="class in java.lang">Object</a>
+implements <a href="temporal/Temporal.html" title="interface in java.time.temporal">Temporal</a>, <a href="chrono/ChronoZonedDateTime.html" title="interface in java.time.chrono">ChronoZonedDateTime</a>&lt;<a href="LocalDate.html" title="class in java.time">LocalDate</a>&gt;, <a href="../io/Serializable.html" title="interface in java.io">Serializable</a></pre>
+<div class="block">A date-time with a time-zone in the ISO-8601 calendar system,
+ such as <code>2007-12-03T10:15:30+01:00 Europe/Paris</code>.
+ <p>
+ <code>ZonedDateTime</code> is an immutable representation of a date-time with a time-zone.
+ This class stores all date and time fields, to a precision of nanoseconds,
+ and a time-zone, with a zone offset used to handle ambiguous local date-times.
+ For example, the value
+ "2nd October 2007 at 13:45.30.123456789 +02:00 in the Europe/Paris time-zone"
+ can be stored in a <code>ZonedDateTime</code>.
+ </p><p>
+ This class handles conversion from the local time-line of <code>LocalDateTime</code>
+ to the instant time-line of <code>Instant</code>.
+ The difference between the two time-lines is the offset from UTC/Greenwich,
+ represented by a <code>ZoneOffset</code>.
+ </p><p>
+ Converting between the two time-lines involves calculating the offset using the
+ <a href="zone/ZoneRules.html" title="class in java.time.zone"><code>rules</code></a> accessed from the <code>ZoneId</code>.
+ Obtaining the offset for an instant is simple, as there is exactly one valid
+ offset for each instant. By contrast, obtaining the offset for a local date-time
+ is not straightforward. There are three cases:
+ <ul>
+ <li>Normal, with one valid offset. For the vast majority of the year, the normal
+  case applies, where there is a single valid offset for the local date-time.</li>
+ <li>Gap, with zero valid offsets. This is when clocks jump forward typically
+  due to the spring daylight savings change from "winter" to "summer".
+  In a gap there are local date-time values with no valid offset.</li>
+ <li>Overlap, with two valid offsets. This is when clocks are set back typically
+  due to the autumn daylight savings change from "summer" to "winter".
+  In an overlap there are local date-time values with two valid offsets.</li>
+ </ul>
+ </p><p>
+ Any method that converts directly or implicitly from a local date-time to an
+ instant by obtaining the offset has the potential to be complicated.
+ </p><p>
+ For Gaps, the general strategy is that if the local date-time falls in the
+ middle of a Gap, then the resulting zoned date-time will have a local date-time
+ shifted forwards by the length of the Gap, resulting in a date-time in the later
+ offset, typically "summer" time.
+ </p><p>
+ For Overlaps, the general strategy is that if the local date-time falls in the
+ middle of an Overlap, then the previous offset will be retained. If there is no
+ previous offset, or the previous offset is invalid, then the earlier offset is
+ used, typically "summer" time.. Two additional methods,
+ <a href="#withEarlierOffsetAtOverlap()"><code>withEarlierOffsetAtOverlap()</code></a> and <a href="#withLaterOffsetAtOverlap()"><code>withLaterOffsetAtOverlap()</code></a>,
+ help manage the case of an overlap.
+ </p><p>
+ In terms of design, this class should be viewed primarily as the combination
+ of a <code>LocalDateTime</code> and a <code>ZoneId</code>. The <code>ZoneOffset</code> is
+ a vital, but secondary, piece of information, used to ensure that the class
+ represents an instant, especially during a daylight savings overlap.
+
+ </p><p>
+ This is a <a href="../../../java.base/java/lang/doc-files/ValueBased.html">value-based</a>
+ class; use of identity-sensitive operations (including reference equality
+ (<code>==</code>), identity hash code, or synchronization) on instances of
+ <code>ZonedDateTime</code> may have unpredictable results and should be avoided.
+ The <code>equals</code> method should be used for comparisons.</p></div>
+<dl>
+<dt><span class="simpleTagLabel">Implementation Requirements:</span></dt>
+<dd>A <code>ZonedDateTime</code> holds state equivalent to three separate objects,
+ a <code>LocalDateTime</code>, a <code>ZoneId</code> and the resolved <code>ZoneOffset</code>.
+ The offset and local date-time are used to define an instant when necessary.
+ The zone ID is used to obtain the rules for how and when the offset changes.
+ The offset cannot be freely set, as the zone controls which offsets are valid.
+ <p>
+ This class is immutable and thread-safe.</p></dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.8</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../serialized-form.html#java.time.ZonedDateTime">Serialized Form</a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary">
+<caption><span id="t0" class="activeTableTab">All Methods</span><span class="tabEnd">&nbsp;</span><span id="t1" class="tableTab">Static Methods</span><span class="tabEnd">&nbsp;</span><span id="t2" class="tableTab">Instance Methods</span><span class="tabEnd">&nbsp;</span><span id="t3" class="tableTab">Abstract Methods</span><span class="tabEnd">&nbsp;</span><span id="t4" class="tableTab">Concrete Methods</span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Method</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(<a href="../lang/Object.html" title="class in java.lang">Object</a>&nbsp;obj)</code></td>
+<td class="colLast">
+<div class="block">Checks if this date-time is equal to another date-time.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../lang/String.html" title="class in java.lang">String</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#format(java.time.format.DateTimeFormatter)">format</a></span>&#8203;(<a href="format/DateTimeFormatter.html" title="class in java.time.format">DateTimeFormatter</a>&nbsp;formatter)</code></td>
+<td class="colLast">
+<div class="block">Formats this date-time using the specified formatter.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#from(java.time.temporal.TemporalAccessor)">from</a></span>&#8203;(<a href="temporal/TemporalAccessor.html" title="interface in java.time.temporal">TemporalAccessor</a>&nbsp;temporal)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a temporal object.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(java.time.temporal.TemporalField)">get</a></span>&#8203;(<a href="temporal/TemporalField.html" title="interface in java.time.temporal">TemporalField</a>&nbsp;field)</code></td>
+<td class="colLast">
+<div class="block">Gets the value of the specified field from this date-time as an <code>int</code>.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDayOfMonth()">getDayOfMonth</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the day-of-month field.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="DayOfWeek.html" title="enum in java.time">DayOfWeek</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDayOfWeek()">getDayOfWeek</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the day-of-week field, which is an enum <code>DayOfWeek</code>.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDayOfYear()">getDayOfYear</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the day-of-year field.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHour()">getHour</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the hour-of-day field.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLong(java.time.temporal.TemporalField)">getLong</a></span>&#8203;(<a href="temporal/TemporalField.html" title="interface in java.time.temporal">TemporalField</a>&nbsp;field)</code></td>
+<td class="colLast">
+<div class="block">Gets the value of the specified field from this date-time as a <code>long</code>.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMinute()">getMinute</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the minute-of-hour field.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="Month.html" title="enum in java.time">Month</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMonth()">getMonth</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the month-of-year field using the <code>Month</code> enum.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMonthValue()">getMonthValue</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the month-of-year field from 1 to 12.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNano()">getNano</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the nano-of-second field.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="ZoneOffset.html" title="class in java.time">ZoneOffset</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOffset()">getOffset</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the zone offset, such as '+01:00'.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecond()">getSecond</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the second-of-minute field.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getYear()">getYear</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the year field.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code><a href="ZoneId.html" title="class in java.time">ZoneId</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getZone()">getZone</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the time-zone, such as 'Europe/Paris'.</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></td>
+<td class="colLast">
+<div class="block">A hash code for this date-time.</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isSupported(java.time.temporal.TemporalField)">isSupported</a></span>&#8203;(<a href="temporal/TemporalField.html" title="interface in java.time.temporal">TemporalField</a>&nbsp;field)</code></td>
+<td class="colLast">
+<div class="block">Checks if the specified field is supported.</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isSupported(java.time.temporal.TemporalUnit)">isSupported</a></span>&#8203;(<a href="temporal/TemporalUnit.html" title="interface in java.time.temporal">TemporalUnit</a>&nbsp;unit)</code></td>
+<td class="colLast">
+<div class="block">Checks if the specified unit is supported.</div>
+</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minus(long,java.time.temporal.TemporalUnit)">minus</a></span>&#8203;(long&nbsp;amountToSubtract,
+     <a href="temporal/TemporalUnit.html" title="interface in java.time.temporal">TemporalUnit</a>&nbsp;unit)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the specified amount subtracted.</div>
+</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minus(java.time.temporal.TemporalAmount)">minus</a></span>&#8203;(<a href="temporal/TemporalAmount.html" title="interface in java.time.temporal">TemporalAmount</a>&nbsp;amountToSubtract)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the specified amount subtracted.</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusDays(long)">minusDays</a></span>&#8203;(long&nbsp;days)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of days subtracted.</div>
+</td>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusHours(long)">minusHours</a></span>&#8203;(long&nbsp;hours)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of hours subtracted.</div>
+</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusMinutes(long)">minusMinutes</a></span>&#8203;(long&nbsp;minutes)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of minutes subtracted.</div>
+</td>
+</tr>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusMonths(long)">minusMonths</a></span>&#8203;(long&nbsp;months)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of months subtracted.</div>
+</td>
+</tr>
+<tr id="i26" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusNanos(long)">minusNanos</a></span>&#8203;(long&nbsp;nanos)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of nanoseconds subtracted.</div>
+</td>
+</tr>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusSeconds(long)">minusSeconds</a></span>&#8203;(long&nbsp;seconds)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of seconds subtracted.</div>
+</td>
+</tr>
+<tr id="i28" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusWeeks(long)">minusWeeks</a></span>&#8203;(long&nbsp;weeks)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of weeks subtracted.</div>
+</td>
+</tr>
+<tr id="i29" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minusYears(long)">minusYears</a></span>&#8203;(long&nbsp;years)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of years subtracted.</div>
+</td>
+</tr>
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#now()">now</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Obtains the current date-time from the system clock in the default time-zone.</div>
+</td>
+</tr>
+<tr id="i31" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#now(java.time.Clock)">now</a></span>&#8203;(<a href="Clock.html" title="class in java.time">Clock</a>&nbsp;clock)</code></td>
+<td class="colLast">
+<div class="block">Obtains the current date-time from the specified clock.</div>
+</td>
+</tr>
+<tr id="i32" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#now(java.time.ZoneId)">now</a></span>&#8203;(<a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains the current date-time from the system clock in the specified time-zone.</div>
+</td>
+</tr>
+<tr id="i33" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#of(int,int,int,int,int,int,int,java.time.ZoneId)">of</a></span>&#8203;(int&nbsp;year,
+  int&nbsp;month,
+  int&nbsp;dayOfMonth,
+  int&nbsp;hour,
+  int&nbsp;minute,
+  int&nbsp;second,
+  int&nbsp;nanoOfSecond,
+  <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a year, month, day,
+ hour, minute, second, nanosecond and time-zone.</div>
+</td>
+</tr>
+<tr id="i34" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#of(java.time.LocalDate,java.time.LocalTime,java.time.ZoneId)">of</a></span>&#8203;(<a href="LocalDate.html" title="class in java.time">LocalDate</a>&nbsp;date,
+  <a href="LocalTime.html" title="class in java.time">LocalTime</a>&nbsp;time,
+  <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a local date and time.</div>
+</td>
+</tr>
+<tr id="i35" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#of(java.time.LocalDateTime,java.time.ZoneId)">of</a></span>&#8203;(<a href="LocalDateTime.html" title="class in java.time">LocalDateTime</a>&nbsp;localDateTime,
+  <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a local date-time.</div>
+</td>
+</tr>
+<tr id="i36" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ofInstant(java.time.Instant,java.time.ZoneId)">ofInstant</a></span>&#8203;(<a href="Instant.html" title="class in java.time">Instant</a>&nbsp;instant,
+         <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from an <code>Instant</code>.</div>
+</td>
+</tr>
+<tr id="i37" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ofInstant(java.time.LocalDateTime,java.time.ZoneOffset,java.time.ZoneId)">ofInstant</a></span>&#8203;(<a href="LocalDateTime.html" title="class in java.time">LocalDateTime</a>&nbsp;localDateTime,
+         <a href="ZoneOffset.html" title="class in java.time">ZoneOffset</a>&nbsp;offset,
+         <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from the instant formed by combining
+ the local date-time and offset.</div>
+</td>
+</tr>
+<tr id="i38" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ofLocal(java.time.LocalDateTime,java.time.ZoneId,java.time.ZoneOffset)">ofLocal</a></span>&#8203;(<a href="LocalDateTime.html" title="class in java.time">LocalDateTime</a>&nbsp;localDateTime,
+       <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone,
+       <a href="ZoneOffset.html" title="class in java.time">ZoneOffset</a>&nbsp;preferredOffset)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a local date-time
+ using the preferred offset if possible.</div>
+</td>
+</tr>
+<tr id="i39" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ofStrict(java.time.LocalDateTime,java.time.ZoneOffset,java.time.ZoneId)">ofStrict</a></span>&#8203;(<a href="LocalDateTime.html" title="class in java.time">LocalDateTime</a>&nbsp;localDateTime,
+        <a href="ZoneOffset.html" title="class in java.time">ZoneOffset</a>&nbsp;offset,
+        <a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> strictly validating the
+ combination of local date-time, offset and zone ID.</div>
+</td>
+</tr>
+<tr id="i40" class="altColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#parse(java.lang.CharSequence)">parse</a></span>&#8203;(<a href="../lang/CharSequence.html" title="interface in java.lang">CharSequence</a>&nbsp;text)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a text string such as
+ <code>2007-12-03T10:15:30+01:00[Europe/Paris]</code>.</div>
+</td>
+</tr>
+<tr id="i41" class="rowColor">
+<td class="colFirst"><code>static <a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#parse(java.lang.CharSequence,java.time.format.DateTimeFormatter)">parse</a></span>&#8203;(<a href="../lang/CharSequence.html" title="interface in java.lang">CharSequence</a>&nbsp;text,
+     <a href="format/DateTimeFormatter.html" title="class in java.time.format">DateTimeFormatter</a>&nbsp;formatter)</code></td>
+<td class="colLast">
+<div class="block">Obtains an instance of <code>ZonedDateTime</code> from a text string using a specific formatter.</div>
+</td>
+</tr>
+<tr id="i42" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plus(long,java.time.temporal.TemporalUnit)">plus</a></span>&#8203;(long&nbsp;amountToAdd,
+    <a href="temporal/TemporalUnit.html" title="interface in java.time.temporal">TemporalUnit</a>&nbsp;unit)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the specified amount added.</div>
+</td>
+</tr>
+<tr id="i43" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plus(java.time.temporal.TemporalAmount)">plus</a></span>&#8203;(<a href="temporal/TemporalAmount.html" title="interface in java.time.temporal">TemporalAmount</a>&nbsp;amountToAdd)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the specified amount added.</div>
+</td>
+</tr>
+<tr id="i44" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusDays(long)">plusDays</a></span>&#8203;(long&nbsp;days)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of days added.</div>
+</td>
+</tr>
+<tr id="i45" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusHours(long)">plusHours</a></span>&#8203;(long&nbsp;hours)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of hours added.</div>
+</td>
+</tr>
+<tr id="i46" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusMinutes(long)">plusMinutes</a></span>&#8203;(long&nbsp;minutes)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of minutes added.</div>
+</td>
+</tr>
+<tr id="i47" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusMonths(long)">plusMonths</a></span>&#8203;(long&nbsp;months)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of months added.</div>
+</td>
+</tr>
+<tr id="i48" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusNanos(long)">plusNanos</a></span>&#8203;(long&nbsp;nanos)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of nanoseconds added.</div>
+</td>
+</tr>
+<tr id="i49" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusSeconds(long)">plusSeconds</a></span>&#8203;(long&nbsp;seconds)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of seconds added.</div>
+</td>
+</tr>
+<tr id="i50" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusWeeks(long)">plusWeeks</a></span>&#8203;(long&nbsp;weeks)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of weeks added.</div>
+</td>
+</tr>
+<tr id="i51" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plusYears(long)">plusYears</a></span>&#8203;(long&nbsp;years)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the specified number of years added.</div>
+</td>
+</tr>
+<tr id="i52" class="altColor">
+<td class="colFirst"><code>&lt;R&gt;&nbsp;R</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#query(java.time.temporal.TemporalQuery)">query</a></span>&#8203;(<a href="temporal/TemporalQuery.html" title="interface in java.time.temporal">TemporalQuery</a>&lt;R&gt;&nbsp;query)</code></td>
+<td class="colLast">
+<div class="block">Queries this date-time using the specified query.</div>
+</td>
+</tr>
+<tr id="i53" class="rowColor">
+<td class="colFirst"><code><a href="temporal/ValueRange.html" title="class in java.time.temporal">ValueRange</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#range(java.time.temporal.TemporalField)">range</a></span>&#8203;(<a href="temporal/TemporalField.html" title="interface in java.time.temporal">TemporalField</a>&nbsp;field)</code></td>
+<td class="colLast">
+<div class="block">Gets the range of valid values for the specified field.</div>
+</td>
+</tr>
+<tr id="i54" class="altColor">
+<td class="colFirst"><code><a href="LocalDate.html" title="class in java.time">LocalDate</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toLocalDate()">toLocalDate</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the <code>LocalDate</code> part of this date-time.</div>
+</td>
+</tr>
+<tr id="i55" class="rowColor">
+<td class="colFirst"><code><a href="LocalDateTime.html" title="class in java.time">LocalDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toLocalDateTime()">toLocalDateTime</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the <code>LocalDateTime</code> part of this date-time.</div>
+</td>
+</tr>
+<tr id="i56" class="altColor">
+<td class="colFirst"><code><a href="LocalTime.html" title="class in java.time">LocalTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toLocalTime()">toLocalTime</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Gets the <code>LocalTime</code> part of this date-time.</div>
+</td>
+</tr>
+<tr id="i57" class="rowColor">
+<td class="colFirst"><code><a href="OffsetDateTime.html" title="class in java.time">OffsetDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toOffsetDateTime()">toOffsetDateTime</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Converts this date-time to an <code>OffsetDateTime</code>.</div>
+</td>
+</tr>
+<tr id="i58" class="altColor">
+<td class="colFirst"><code><a href="../lang/String.html" title="class in java.lang">String</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Outputs this date-time as a <code>String</code>, such as
+ <code>2007-12-03T10:15:30+01:00[Europe/Paris]</code>.</div>
+</td>
+</tr>
+<tr id="i59" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#truncatedTo(java.time.temporal.TemporalUnit)">truncatedTo</a></span>&#8203;(<a href="temporal/TemporalUnit.html" title="interface in java.time.temporal">TemporalUnit</a>&nbsp;unit)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the time truncated.</div>
+</td>
+</tr>
+<tr id="i60" class="altColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#until(java.time.temporal.Temporal,java.time.temporal.TemporalUnit)">until</a></span>&#8203;(<a href="temporal/Temporal.html" title="interface in java.time.temporal">Temporal</a>&nbsp;endExclusive,
+     <a href="temporal/TemporalUnit.html" title="interface in java.time.temporal">TemporalUnit</a>&nbsp;unit)</code></td>
+<td class="colLast">
+<div class="block">Calculates the amount of time until another date-time in terms of the specified unit.</div>
+</td>
+</tr>
+<tr id="i61" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#with(java.time.temporal.TemporalAdjuster)">with</a></span>&#8203;(<a href="temporal/TemporalAdjuster.html" title="interface in java.time.temporal">TemporalAdjuster</a>&nbsp;adjuster)</code></td>
+<td class="colLast">
+<div class="block">Returns an adjusted copy of this date-time.</div>
+</td>
+</tr>
+<tr id="i62" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#with(java.time.temporal.TemporalField,long)">with</a></span>&#8203;(<a href="temporal/TemporalField.html" title="interface in java.time.temporal">TemporalField</a>&nbsp;field,
+    long&nbsp;newValue)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the specified field set to a new value.</div>
+</td>
+</tr>
+<tr id="i63" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withDayOfMonth(int)">withDayOfMonth</a></span>&#8203;(int&nbsp;dayOfMonth)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the day-of-month altered.</div>
+</td>
+</tr>
+<tr id="i64" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withDayOfYear(int)">withDayOfYear</a></span>&#8203;(int&nbsp;dayOfYear)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the day-of-year altered.</div>
+</td>
+</tr>
+<tr id="i65" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withEarlierOffsetAtOverlap()">withEarlierOffsetAtOverlap</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time changing the zone offset to the
+ earlier of the two valid offsets at a local time-line overlap.</div>
+</td>
+</tr>
+<tr id="i66" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withFixedOffsetZone()">withFixedOffsetZone</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with the zone ID set to the offset.</div>
+</td>
+</tr>
+<tr id="i67" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withHour(int)">withHour</a></span>&#8203;(int&nbsp;hour)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the hour-of-day altered.</div>
+</td>
+</tr>
+<tr id="i68" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withLaterOffsetAtOverlap()">withLaterOffsetAtOverlap</a></span>()</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time changing the zone offset to the
+ later of the two valid offsets at a local time-line overlap.</div>
+</td>
+</tr>
+<tr id="i69" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withMinute(int)">withMinute</a></span>&#8203;(int&nbsp;minute)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the minute-of-hour altered.</div>
+</td>
+</tr>
+<tr id="i70" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withMonth(int)">withMonth</a></span>&#8203;(int&nbsp;month)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the month-of-year altered.</div>
+</td>
+</tr>
+<tr id="i71" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withNano(int)">withNano</a></span>&#8203;(int&nbsp;nanoOfSecond)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the nano-of-second altered.</div>
+</td>
+</tr>
+<tr id="i72" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withSecond(int)">withSecond</a></span>&#8203;(int&nbsp;second)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the second-of-minute altered.</div>
+</td>
+</tr>
+<tr id="i73" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withYear(int)">withYear</a></span>&#8203;(int&nbsp;year)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this <code>ZonedDateTime</code> with the year altered.</div>
+</td>
+</tr>
+<tr id="i74" class="altColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withZoneSameInstant(java.time.ZoneId)">withZoneSameInstant</a></span>&#8203;(<a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with a different time-zone,
+ retaining the instant.</div>
+</td>
+</tr>
+<tr id="i75" class="rowColor">
+<td class="colFirst"><code><a href="ZonedDateTime.html" title="class in java.time">ZonedDateTime</a></code></td>
+<td class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withZoneSameLocal(java.time.ZoneId)">withZoneSameLocal</a></span>&#8203;(<a href="ZoneId.html" title="class in java.time">ZoneId</a>&nbsp;zone)</code></td>
+<td class="colLast">
+<div class="block">Returns a copy of this date-time with a different time-zone,
+ retaining the local date-time if possible.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods declared in class&nbsp;java.lang.<a href="../lang/Object.html" title="class in java.lang">Object</a></h3>
+<code><a href="../lang/Object.html#clone()">clone</a>, <a href="../lang/Object.html#finalize()">finalize</a>, <a href="../lang/Object.html#getClass()">getClass</a>, <a href="../lang/Object.html#notify()">notify</a>, <a href="../lang/Object.html#notifyAll()">notifyAll</a>, <a href="../lang/Object.html#wait()">wait</a>, <a href="../lang/Object.html#wait(long)">wait</a>, <a href="../lang/Object.html#wait(long,int)">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.java.time.chrono.ChronoZonedDateTime">
+<!--   -->
+</a>
+<h3>Methods declared in interface&nbsp;java.time.chrono.<a href="chrono/ChronoZonedDateTime.html" title="interface in java.time.chrono">ChronoZonedDateTime</a></h3>
+<code><a href="chrono/ChronoZonedDateTime.html#compareTo(java.time.chrono.ChronoZonedDateTime)">compareTo</a>, <a href="chrono/ChronoZonedDateTime.html#getChronology()">getChronology</a>, <a href="chrono/ChronoZonedDateTime.html#isAfter(java.time.chrono.ChronoZonedDateTime)">isAfter</a>, <a href="chrono/ChronoZonedDateTime.html#isBefore(java.time.chrono.ChronoZonedDateTime)">isBefore</a>, <a href="chrono/ChronoZonedDateTime.html#isEqual(java.time.chrono.ChronoZonedDateTime)">isEqual</a>, <a href="chrono/ChronoZonedDateTime.html#toEpochSecond()">toEpochSecond</a>, <a href="chrono/ChronoZonedDateTime.html#toInstant()">toInstant</a></code></li>
+</ul>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</div>
+
+</div>
+</main>
+<!-- ========= END OF CLASS DATA ========= -->
+<footer role="contentinfo">
+
+</footer>
+
+</body>
+</html>
